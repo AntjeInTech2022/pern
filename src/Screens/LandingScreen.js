@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 
 function LandingScreen() {
   return (
@@ -17,6 +18,7 @@ function LandingScreen() {
           {/* <%= link_to "Fields to rent", 'fields', class: "btn btn-warning" %>
       <%= link_to "Rent your field", 'fields/new', class: "btn btn-warning" %> */}
         </div>
+        <Button variant="contained">MUI Button</Button>
       </div>
     </div>
   );

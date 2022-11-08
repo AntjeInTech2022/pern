@@ -1,7 +1,0 @@
-/* * means that this style is going to be applied to every element */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto';
-}

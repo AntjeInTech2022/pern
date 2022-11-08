@@ -10,12 +10,12 @@ import RegisterScreen from './Screens/RegisterScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 
 // COMPONENTS
-import ResponsiveAppBar from './components/AppBar';
+import NavAppBar from './components/AppBar';
 
 function App() {
   return (
     <div className="App">
-      <ResponsiveAppBar />
+      <NavAppBar />
       <Router>
         <Routes>
           <Route path="/" element={<LandingScreen />}></Route>

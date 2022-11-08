@@ -1,10 +1,18 @@
 import React from 'react';
+
+//MUI
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Grid from '@mui/material/Grid';
+
+//COMPONENTS
+import Cards from '../components/Cards';
 
 function LandingScreen() {
   return (
-    <div class="banner">
-      <div class="container">
+    <>
+      <Container maxWidth="sm">
         <h1>
           <strong>Looking for a place to bee</strong>?
         </h1>
@@ -14,13 +22,15 @@ function LandingScreen() {
           Got bees but nowhere to be?
         </p>
         <p>BUZZ brings you together</p>
-        <div>
-          {/* <%= link_to "Fields to rent", 'fields', class: "btn btn-warning" %>
-      <%= link_to "Rent your field", 'fields/new', class: "btn btn-warning" %> */}
-        </div>
         <Button variant="contained">MUI Button</Button>
-      </div>
-    </div>
+        <Grid container spacing={5}>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+        </Grid>
+      </Container>
+    </>
   );
 }
 

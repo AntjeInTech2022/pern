@@ -13,17 +13,15 @@ function LandingScreen() {
   return (
     <>
       <Container maxWidth="sm">
-        {/* <Container maxWidth="sm"> */}
-        <h1>
-          <strong>Looking for a place to bee</strong>?
-        </h1>
-        <p>
+        <Typography variant="h2" gutterBottom>
+          Looking for a place to bee?
+        </Typography>
+        <Typography variant="h5" gutterBottom>
           You have space for bees to thrive but no hive?
           <br />
           Got bees but nowhere to be?
-        </p>
-        <p>BUZZ brings you together</p>
-        <Button variant="contained">MUI Button</Button>
+          <br /> BUZZ brings you together
+        </Typography>
       </Container>
       <Container>
         <Grid container spacing={5}>

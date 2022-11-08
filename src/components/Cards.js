@@ -6,7 +6,13 @@ import Grid from '@mui/material/Grid';
 const Cards = () => {
   return (
     <Grid item xs={3}>
-      <Paper>Paper Card</Paper>
+      <Paper>
+        <img
+          scr="https://i.picsum.photos/id/11/2500/1667.jpg?hmac=xxjFJtAPgshYkysU_aqx2sZir-kIOjNR9vx0te7GycQ"
+          className="img"
+          //   alt="https://picsum.photos/images"
+        />
+      </Paper>
     </Grid>
 
     // <Box

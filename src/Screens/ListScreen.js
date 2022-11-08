@@ -10,7 +10,7 @@ import Cards from '../components/Cards';
 function ListScreen() {
   return (
     <Container>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h2" gutterBottom marginTop={3}>
         Featured Hosts
       </Typography>
       <Grid container spacing={5}>

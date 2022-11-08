@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+//IMAGES
 import card_picture from '../Images/pexels-anete-lusina-5247969.jpg';
 
 //MUI

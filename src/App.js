@@ -9,9 +9,13 @@ import DetailsScreen from './Screens/DetailsScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 
+// COMPONENTS
+import ResponsiveAppBar from './components/AppBar';
+
 function App() {
   return (
     <div className="App">
+      <ResponsiveAppBar />
       <Router>
         <Routes>
           <Route path="/" element={<LandingScreen />}></Route>

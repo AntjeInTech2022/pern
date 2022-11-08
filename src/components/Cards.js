@@ -1,5 +1,5 @@
 import * as React from 'react';
-import logo from '../Images/pexels-anete-lusina-5247969.jpg';
+import card_picture from '../Images/pexels-anete-lusina-5247969.jpg';
 
 //MUI
 import Card from '@mui/material/Card';
@@ -17,7 +17,7 @@ const Cards = () => {
         <CardMedia
           component="img"
           height="140"
-          src={logo}
+          src={card_picture}
           alt="Photo by Anete Lusina from Pexels"
         />
         <CardContent>

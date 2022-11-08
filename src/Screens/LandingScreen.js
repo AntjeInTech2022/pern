@@ -20,16 +20,8 @@ function LandingScreen() {
           You have space for bees to thrive but no hive?
           <br />
           Got bees but nowhere to be?
-          <br /> BUZZ brings you together
+          <br /> BuZz brings you together.
         </Typography>
-      </Container>
-      <Container>
-        <Grid container spacing={5}>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-        </Grid>
       </Container>
     </>
   );

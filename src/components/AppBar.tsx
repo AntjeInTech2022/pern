@@ -44,7 +44,10 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <HiveIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <HiveIcon
+            // color="success"
+            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap

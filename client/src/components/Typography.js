@@ -43,7 +43,7 @@ const styles = ({ theme }) => ({
     width: 55,
     display: 'block',
     margin: `${theme.spacing(1)} auto 0`,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#ffc400',
   },
   [`& .${markClassesMapping.center.h4}`]: {
     height: 4,

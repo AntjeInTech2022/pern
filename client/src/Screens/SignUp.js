@@ -1,3 +1,6 @@
+// SOURCE:
+//github.com/mui/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/SignUp.js
+
 import React from 'react';
 
 //MUI
@@ -42,7 +45,7 @@ const SignUp = () => {
     <AppForm>
       <React.Fragment>
         <Typography variant="h3" gutterBottom marked="center" align="center">
-          Sign Up
+          Register
         </Typography>
         <Typography variant="body2" align="center">
           <Link href="/premium-themes/onepirate/sign-in/" underline="always">
@@ -117,7 +120,7 @@ const SignUp = () => {
                 ) : null
               }
             </FormSpy> */}
-            <Button></Button>
+            <Button>Sumbit registration</Button>
             {/* <FormButton
               sx={{ mt: 3, mb: 2 }}
               disabled={submitting || sent}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 //IMAGES
-import card_picture from '../Images/pexels-anete-lusina-5247969.jpg';
+// import card_picture from '../Images/pexels-anete-lusina-5247969.jpg';
 
 //MUI
 import Card from '@mui/material/Card';
@@ -12,61 +12,67 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-const Cards = () => {
-  return (
-    <Grid item xs={3}>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          src={card_picture}
-          alt="Photo by Anete Lusina from Pexels"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    </Grid>
-    // <Grid item xs={3}>
-    //   <Paper>
-    //     <img
-    //       scr="https://picsum.photos/images"
-    //       className="img"
-    //       //   alt="https://picsum.photos/images"
-    //     />
-    //   </Paper>
-    // </Grid>
+//DUMMY HOSTS
+const data = [
+  {
+    src: 'https://images.unsplash.com/photo-1563281709-7af174759d98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80',
+    alt: 'https://unsplash.com/photos/z8gKIE4Kz0Y',
+    host_name: 'Gunda',
+    description:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricie',
+    location: 'Brandenburg',
+    createdAt: 'a week ago',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1582374927372-b06cb28a3bc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    alt: 'https://unsplash.com/photos/fgzDK9ga43M',
+    host_name: 'Daniela',
+    description:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricie',
+    location: 'Pfalz',
+    createdAt: '3 years ago',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1463319492205-164b553bfae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    alt: 'https://unsplash.com/photos/OnKIsDLCeZ8',
+    host_name: 'Markus',
+    description:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricie',
+    location: 'Brandenburg',
+    createdAt: '10 months ago',
+  },
+];
 
-    // <Box
-    //   sx={{
-    //     display: 'flex',
-    //     flexWrap: 'wrap',
-    //     '& > :not(style)': {
-    //       m: 1,
-    //       width: 128,
-    //       height: 128,
-    //     },
-    //   }}
-    // >
-    //   <Paper>
-    //     <img
-    //       scr="https://picsum.photos/200"
-    //       className="img"
-    //       //   alt="https://picsum.photos/images"
-    //     />
-    //   </Paper>
-    // </Box>
+const HostCards = () => {
+  return (
+    <Grid container wrap="nowrap">
+      <Grid>
+        {/* <Grid item xs={3}> */}
+        {data.map((item, index) => (
+          <Card sx={{ maxWidth: 345 }} key={index}>
+            <CardMedia
+              component="img"
+              height="140"
+              src={item.src}
+              alt={item.alt}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {item.host_name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {item.description}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Add to favorites</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Grid>
+    </Grid>
   );
 };
 
-export default Cards;
+export default HostCards;

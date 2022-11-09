@@ -36,7 +36,7 @@ const styles = ({ theme }) => ({
     width: 73,
     display: 'block',
     margin: `${theme.spacing(1)} auto 0`,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#ffc400',
   },
   [`& .${markClassesMapping.center.h3}`]: {
     height: 4,
@@ -50,7 +50,7 @@ const styles = ({ theme }) => ({
     width: 55,
     display: 'block',
     margin: `${theme.spacing(1)} auto 0`,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#ffc400',
   },
   [`& .${markClassesMapping.left.h6}`]: {
     height: 2,

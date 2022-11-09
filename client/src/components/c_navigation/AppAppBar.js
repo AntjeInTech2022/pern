@@ -15,9 +15,7 @@ const rightLink = {
 function AppAppBar() {
   return (
     <div>
-      <AppBar 
-        backgroundColor: '#ffc400',
-      position="fixed">
+      <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
           <HiveIcon />

@@ -1,4 +1,6 @@
 import * as React from 'react';
+// import Button from '../Button';
+// import Button from '@mui/material/Button';
 import Button from '../Button';
 import Typography from '../Typography';
 import ProductHeroLayout from './ProductHeroLayout';
@@ -36,8 +38,6 @@ export default function ProductHero() {
         color="secondary"
         variant="contained"
         size="large"
-        component="a"
-        // href="/premium-themes/onepirate/sign-up/"
         sx={{ minWidth: 200 }}
       >
         Register

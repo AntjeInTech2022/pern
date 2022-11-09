@@ -45,33 +45,38 @@ const data = [
 
 const HostCards = () => {
   return (
-    <Grid container wrap="nowrap">
-      <Grid>
-        {/* <Grid item xs={3}> */}
-        {data.map((item, index) => (
-          <Card sx={{ maxWidth: 345 }} key={index}>
-            <CardMedia
-              component="img"
-              height="140"
-              src={item.src}
-              alt={item.alt}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.host_name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {item.description}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Add to favorites</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-        ))}
-      </Grid>
-    </Grid>
+    <>
+      {/* <Grid
+        container 
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      > */}
+      {data.map((item, index) => (
+        // <Grid item xs={2} sm={4} md={4}>
+        <Card sx={{ minWidth: 345 }} key={index}>
+          <CardMedia
+            component="img"
+            height="140"
+            src={item.src}
+            alt={item.alt}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {item.host_name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {item.description}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Add to favorites</Button>
+            <Button size="small">Learn More</Button>
+          </CardActions>
+        </Card>
+        // </Grid>
+      ))}
+      {/* </Grid> */}
+    </>
   );
 };
 

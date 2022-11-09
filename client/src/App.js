@@ -12,7 +12,7 @@ import ProfileScreen from './Screens/ProfileScreen';
 // COMPONENTS
 
 import AppAppBar from './components/c_navigation/AppAppBar';
-import AppFooter from './components/c_footer/AppFooter';
+// import AppFooter from './components/c_footer/AppFooter';
 import SignUp from './Screens/SignUp';
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           {/* <Route path="/login" element={<Login />}></Route> */}
           <Route path="/profile" element={<ProfileScreen />}></Route>
         </Routes>
-        <AppFooter />
+        {/* <AppFooter /> */}
       </Router>
     </div>
   );

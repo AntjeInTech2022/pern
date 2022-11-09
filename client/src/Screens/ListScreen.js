@@ -10,14 +10,22 @@ import HostCards from '../components/Cards';
 function ListScreen() {
   return (
     <Container>
-      <Typography variant="h2" gutterBottom marginTop={3}>
+      <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>
         Featured Hosts
       </Typography>
-      <Grid container>
-        {/* <Grid container spacing={5}> */}
-        {/* <Grid container wrap="nowrap"> */}
+      <Grid
+        container
+        // spacing={4}
+        // direction="row"
+        // columns={16}
+        //rowSpacing={1}
+        //columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
+        {/* <Grid item xs={12} sm={6} md={4}> */}
+        {/* <Grid item> */}
         <HostCards />
         {/* <BeeKeeper_Cards /> */}
+        {/* </Grid> */}
       </Grid>
     </Container>
   );

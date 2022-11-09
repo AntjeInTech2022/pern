@@ -12,12 +12,16 @@ import card_picture from '../Images/pexels-anete-lusina-5247969.jpg';
 
 //COMPONENTS
 import Cards from '../components/Cards';
+import ProductHero from '../components/c_landingPage/ProductHero';
+import HowItWorks from '../components/c_landingPage/HowItWorks';
 
 function LandingScreen() {
   return (
     <>
       {/* <Container maxWidth="sm"> */}
-      <Container sx={{ width: 900 }}>
+      <ProductHero />
+      <HowItWorks />
+      {/* <Container sx={{ width: 900 }}>
         <Box marginTop={3} sx={{ display: 'flex' }}>
           <img src={card_picture} height={325} />
         </Box>
@@ -30,7 +34,7 @@ function LandingScreen() {
           Got bees but nowhere to be?
           <br /> BuZz brings you together.
         </Typography>
-      </Container>
+      </Container> */}
     </>
   );
 }

@@ -12,6 +12,7 @@ import ProfileScreen from './Screens/ProfileScreen';
 // COMPONENTS
 import NavAppBar from './components/c_navigation/AppBar';
 import AppAppBar from './components/c_navigation/AppAppBar';
+import AppFooter from './components/c_footer/AppFooter';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/register" element={<RegisterScreen />}></Route>
           <Route path="/profile" element={<ProfileScreen />}></Route>
         </Routes>
+        <AppFooter />
       </Router>
     </div>
   );

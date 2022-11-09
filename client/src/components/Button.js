@@ -3,7 +3,7 @@ import { experimentalStyled as styled } from '@mui/material/styles';
 import MuiButton from '@mui/material/Button';
 
 const ButtonRoot = styled(MuiButton)(({ theme, size }) => ({
-  borderRadius: 4,
+  borderRadius: 2,
   backgroundColor: '#ffc400',
   fontWeight: theme.typography.fontWeightMedium,
   fontFamily: theme.typography.h1.fontFamily,

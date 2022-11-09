@@ -1,13 +1,18 @@
 import * as React from 'react';
 
+//MUI
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import { amber } from '@mui/material/colors';
+
+//COMPONENTS
 import Button from '../Button';
 import Typography from '../Typography';
 // import Button from '../components/Button';
 // import Typography from '../components/Typography';
 
+//IMAGES
 import pic1 from '../../Images/pexels-anete-lusina-5247969.jpg';
 import pic2 from '../../Images/simon-wilkes-RbjSCrgH5to-unsplash.jpg';
 import pic3 from '../../Images/boba-jaglicic-TxA8cgFnfNQ-unsplash.jpg';
@@ -22,13 +27,14 @@ const item = {
 const number = {
   fontSize: 24,
   fontFamily: 'default',
-  color: 'secondary.main',
+  color: amber[500],
   fontWeight: 'medium',
 };
 
 const image = {
   height: 225,
   my: 4,
+  borderRadius: 2,
 };
 
 function HowItWorks() {
@@ -47,7 +53,7 @@ function HowItWorks() {
           alignItems: 'center',
         }}
       >
-        <Box
+        {/* <Box
           component="img"
           //   src={card_picture}
           //   src="/static/themes/onepirate/productCurvyLines.png"
@@ -58,7 +64,7 @@ function HowItWorks() {
             top: -180,
             opacity: 0.7,
           }}
-        />
+        /> */}
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
           How it works
         </Typography>

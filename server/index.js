@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 // instantiate router feature and add it to the express app
 // app.use(router);
-app.use(express.json());
+app.use(express.json()); //req.body
 app.use(cors());
 app.use(
   express.urlencoded({

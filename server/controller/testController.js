@@ -1,5 +1,26 @@
 import pool from "../dbConfig.js";
 
+//// TESTS
+
+// create new user
+const createNewUser = async (req, res) => {
+  try {
+    console.log("createNewUser");
+    console.log("reg.Body");
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// get all users
+
+// get a specific user
+
+// update a user
+
+// delete a user
+
+/////
 const getTestRoute = async (req, res) => {
   console.log("get testroute");
   const results = await pool.query("SELECT * FROM testtable");
@@ -19,4 +40,4 @@ const createTableData = async (req, res) => {
   res.status(200).json("table updated");
 };
 
-export { getTestRoute, createTableData };
+export { getTestRoute, createTableData, createNewUser };

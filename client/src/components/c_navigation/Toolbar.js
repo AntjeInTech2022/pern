@@ -9,10 +9,10 @@ import MuiToolbar from '@mui/material/Toolbar';
 
 const Toolbar = styled(MuiToolbar)(({ theme }) => ({
   backgroundColor: '#ffc400',
-  height: 64,
-  [theme.breakpoints.up('sm')]: {
-    height: 70,
-  },
+  // height: 64,
+  // [theme.breakpoints.up('sm')]: {
+  //   height: 70,
+  // },
 }));
 
 export default Toolbar;

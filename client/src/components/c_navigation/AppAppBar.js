@@ -2,9 +2,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import AppBar from './AppBar';
-import Toolbar from '../c_landingPage/Toolbar';
+import Toolbar from './Toolbar';
 //MUI ICONS
 import HiveIcon from '@mui/icons-material/Hive';
+
+//local IMAGES
+import BeeLogo from '../../Images/bee_line.png';
 
 const rightLink = {
   fontSize: 16,
@@ -18,6 +21,7 @@ function AppAppBar() {
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
+          {/* <BeeLogo /> */}
           <HiveIcon />
           <Link
             variant="h6"

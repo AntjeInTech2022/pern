@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // MUI
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -9,9 +10,11 @@ import Box from '@mui/material/Box';
 import HostCard from '../components/Cards';
 
 //DUMMY DATA
-import dummyHostData from '../fakeData/dummyHostData';
+import dummyHostData from '../dummyData/dummyHostData';
 
 function ListScreen() {
+  // const navigate = useNavigate();
+
   return (
     <Container>
       <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>

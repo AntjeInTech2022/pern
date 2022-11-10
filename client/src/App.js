@@ -9,7 +9,6 @@ import DetailsScreen from './Screens/DetailsScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 
 // COMPONENTS
-import AppAppBar from './components/c_navigation/AppAppBar';
 import ResponsiveAppBar from './components/c_navigation/AppBar';
 // import AppFooter from './components/c_footer/AppFooter';
 import SignUp from './Screens/SignUp';
@@ -40,7 +39,6 @@ function App() {
     <div className="App">
       <ThemeProvider theme={customTheme}>
         <ResponsiveAppBar />
-        {/* <NavAppBar /> */}
         <Router>
           <Routes>
             <Route path="/" element={<LandingScreen />}></Route>

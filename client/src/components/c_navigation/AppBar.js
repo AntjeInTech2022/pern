@@ -15,10 +15,11 @@ import MenuItem from '@mui/material/MenuItem';
 import HiveIcon from '@mui/icons-material/Hive';
 
 //local IMAGES
+import avatarPic from '../../Images/user.png';
 // import BeeLogo from '../../Images/bee_line.png';
 
 // const pages = ['Products', 'Pricing', 'Blog'];
-const pages = ['About'];
+const pages = ['About', 'Bee keepers', 'Bee hosts'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -41,10 +42,9 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <BeeLogo /> */}
           <HiveIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -134,7 +134,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="User" src={avatarPic} />
               </IconButton>
             </Tooltip>
             <Menu

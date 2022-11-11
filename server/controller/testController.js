@@ -48,18 +48,30 @@ const updateUniqueHost = async (req, res) => {
   try {
     const { pid } = req.params;
     const { user_name } = req.body;
-    const host = await pool.query(
+    const updateHost = await pool.query(
       "UPDATE users_hosts SET user_name = $1  WHERE pid = $2",
       [user_name, pid]
     );
     res.status(200).json("host name updated");
-    // res.status(200).json(host.rows);
+    res.status(200).json(updateHost.rows);
   } catch (error) {
     console.error(error.message);
   }
 };
 
-// delete a user
+// delete a user/host
+const deleteUniqueHost = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    const deleteHost = await pool.query(
+      "DELETE from users_hosts WHERE pid = $1",
+      [pid]
+    );
+    res.status(200).json("host was deleted");
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 ///// OLD
 const getTestRoute = async (req, res) => {
@@ -88,4 +100,5 @@ export {
   getAllHosts,
   getUniqueHost,
   updateUniqueHost,
+  deleteUniqueHost,
 };

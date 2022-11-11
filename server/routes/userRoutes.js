@@ -6,6 +6,7 @@ import {
   getAllHosts,
   getUniqueHost,
   updateUniqueHost,
+  deleteUniqueHost,
 } from "../controller/testController.js";
 const router = express.Router();
 
@@ -31,6 +32,7 @@ router.get("/users/:pid", getUniqueHost);
 router.put("/users/:pid", updateUniqueHost);
 
 // delete a user
+router.delete("/users/:pid", deleteUniqueHost);
 
 export default router;
 

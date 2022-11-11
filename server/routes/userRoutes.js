@@ -2,9 +2,10 @@ import express from "express";
 import {
   getTestRoute,
   createTableData,
-  createNewUser,
+  createNewHost,
   getAllHosts,
   getUniqueHost,
+  updateUniqueHost,
 } from "../controller/testController.js";
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.post("/newData", createTableData);
 // TEST ROUTES
 
 // create new user/host
-router.post("/users", createNewUser);
+router.post("/users", createNewHost);
 
 // get all users/hosts
 router.get("/users", getAllHosts);
@@ -26,9 +27,10 @@ router.get("/users", getAllHosts);
 // get a specific user/host
 router.get("/users/:pid", getUniqueHost);
 
-// update a name
+// update a user/host
+router.put("/users/:pid", updateUniqueHost);
 
-// delete a name
+// delete a user
 
 export default router;
 

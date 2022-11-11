@@ -5,7 +5,7 @@ import pool from "../dbConfig.js";
 
 // CREATE NEW USER / HOST
 // in table users_hosts
-const createNewUser = async (req, res) => {
+const createNewHost = async (req, res) => {
   try {
     console.log("createNewUser");
     console.log("reg.Body");
@@ -30,8 +30,34 @@ const getAllHosts = async (req, res) => {
 };
 
 // get a specific user/host
+const getUniqueHost = async (req, res) => {
+  try {
+    const { pid } = req.params;
 
-// update a user
+    const host = await pool.query("SELECT * FROM users_hosts WHERE pid = $1", [
+      pid,
+    ]);
+    res.status(200).json(host.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// update a user/host
+const updateUniqueHost = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    const { user_name } = req.body;
+    const host = await pool.query(
+      "UPDATE users_hosts SET user_name = $1  WHERE pid = $2",
+      [user_name, pid]
+    );
+    res.status(200).json("host name updated");
+    res.status(200).json(host.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 // delete a user
 
@@ -55,5 +81,11 @@ const createTableData = async (req, res) => {
   res.status(200).json("table updated");
 };
 
-export { getTestRoute, createTableData, createNewUser, getAllHosts };
-// export { getTestRoute, createTableData, createNewUser };
+export {
+  getTestRoute,
+  createTableData,
+  createNewHost,
+  getAllHosts,
+  getUniqueHost,
+  updateUniqueHost,
+};

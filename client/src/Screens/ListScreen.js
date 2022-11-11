@@ -9,32 +9,31 @@ import Box from '@mui/material/Box';
 
 //COMPONENTS
 import HostCard from '../components/Cards';
-import ShowAllUsers from '../components/c_Users/showAllUsers';
+import UserCard from '../components/c_Users/showAllUsers';
 
 //DUMMY DATA
 import dummyHostData from '../dummyData/dummyHostData';
 //CONTEXT
-import { UsersContext } from '../Context/userContext';
+// import { UsersContext } from '../Context/userContext';
 
 function ListScreen() {
-  const { users } = useContext(UsersContext);
-  // const navigate = useNavigate();
-  // const [users, setUsers] = useState([]);
+  // const { users } = useContext(UsersContext);
+  const [users, setUsers] = useState([]);
 
-  // const getUsers = async () => {
-  //   try {
-  //     // fetch makes a get request by default
-  //     const response = await fetch('http://localhost:5000/api/users');
-  //     const jsonData = await response.json();
-  //     // console.log(jsonData);
-  //     setUsers(jsonData);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getUsers();
-  // }, []); //  '[]' makes sure there is only one request
+  const getUsers = async () => {
+    try {
+      // fetch makes a get request by default
+      const response = await fetch('http://localhost:5000/api/users');
+      const jsonData = await response.json();
+      // console.log(jsonData);
+      setUsers(jsonData);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  useEffect(() => {
+    getUsers();
+  }, []); //  '[]' makes sure there is only one request
 
   // console.log(users);
 
@@ -53,7 +52,8 @@ function ListScreen() {
       <Grid container spacing={4}>
         {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>
-            <ShowAllUsers item={user} />
+            {/* <UserCard item={[user.user_name, user.pid]} /> */}
+            <UserCard item={user} />
           </Grid>
         ))}
       </Grid>

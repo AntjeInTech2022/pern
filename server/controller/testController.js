@@ -53,7 +53,7 @@ const updateUniqueHost = async (req, res) => {
       [user_name, pid]
     );
     res.status(200).json("host name updated");
-    res.status(200).json(host.rows);
+    // res.status(200).json(host.rows);
   } catch (error) {
     console.error(error.message);
   }

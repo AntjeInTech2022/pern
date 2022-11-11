@@ -2,6 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
+//CONTEXT
+import {
+  ProductsContextProvider,
+  UsersContextProvider,
+} from './Context/userContext';
+
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
 import ListScreen from './Screens/ListScreen';
@@ -38,17 +44,19 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={customTheme}>
-        <ResponsiveAppBar />
         <Router>
-          <Routes>
-            <Route path="/" element={<LandingScreen />}></Route>
-            <Route path="/list" element={<ListScreen />}></Route>
-            <Route path="/details/:id" element={<DetailsScreen />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
-            {/* <Route path="/login" element={<Login />}></Route> */}
-            <Route path="/profile" element={<ProfileScreen />}></Route>
-          </Routes>
-          {/* <AppFooter /> */}
+          <UsersContextProvider>
+            <ResponsiveAppBar />
+            <Routes>
+              <Route path="/" element={<LandingScreen />}></Route>
+              <Route path="/list" element={<ListScreen />}></Route>
+              <Route path="/details/:id" element={<DetailsScreen />}></Route>
+              <Route path="/signup" element={<SignUp />}></Route>
+              {/* <Route path="/login" element={<Login />}></Route> */}
+              <Route path="/profile" element={<ProfileScreen />}></Route>
+            </Routes>
+            {/* <AppFooter /> */}
+          </UsersContextProvider>
         </Router>
       </ThemeProvider>
     </div>

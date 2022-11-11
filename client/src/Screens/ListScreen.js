@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 // MUI
 import Container from '@mui/material/Container';
@@ -8,12 +9,34 @@ import Box from '@mui/material/Box';
 
 //COMPONENTS
 import HostCard from '../components/Cards';
+import ShowAllUsers from '../components/c_Users/showAllUsers';
 
 //DUMMY DATA
 import dummyHostData from '../dummyData/dummyHostData';
+//CONTEXT
+import { UsersContext } from '../Context/userContext';
 
 function ListScreen() {
+  const { users } = useContext(UsersContext);
   // const navigate = useNavigate();
+  // const [users, setUsers] = useState([]);
+
+  // const getUsers = async () => {
+  //   try {
+  //     // fetch makes a get request by default
+  //     const response = await fetch('http://localhost:5000/api/users');
+  //     const jsonData = await response.json();
+  //     // console.log(jsonData);
+  //     setUsers(jsonData);
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getUsers();
+  // }, []); //  '[]' makes sure there is only one request
+
+  // console.log(users);
 
   return (
     <Container>
@@ -24,6 +47,13 @@ function ListScreen() {
         {dummyHostData.map((item, index) => (
           <Grid item key={index} xs={12} md={3} lg={4}>
             <HostCard item={item} />
+          </Grid>
+        ))}
+      </Grid>
+      <Grid container spacing={4}>
+        {users.map((user, pid) => (
+          <Grid item key={pid} xs={12} md={3} lg={4}>
+            <ShowAllUsers item={user} />
           </Grid>
         ))}
       </Grid>

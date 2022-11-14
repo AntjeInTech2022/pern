@@ -31,7 +31,10 @@ function ListScreen() {
           </Grid>
         ))}
       </Grid>
-      <h1>...</h1>
+      <p>
+        <br></br>
+        <br></br>
+      </p>
       <Grid container spacing={4}>
         {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>

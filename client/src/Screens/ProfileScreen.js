@@ -50,9 +50,15 @@ function ProfileScreen() {
   return (
     <div>
       <h1>ProfileScreen</h1>
-      <h1>...</h1>
+      <p>
+        <br></br>
+        <br></br>
+      </p>
       <CreateNewUser />
-      <h1>...</h1>
+      <p>
+        <br></br>
+        <br></br>
+      </p>
       <Container fixed>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>

@@ -116,6 +116,10 @@ const Register = () => {
               type="password"
               margin="normal"
             />
+            <p>
+              <br></br>
+              <br></br>
+            </p>
             <Button color="success" variant="contained">
               Sumbit registration
             </Button>

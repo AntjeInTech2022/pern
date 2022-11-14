@@ -37,7 +37,7 @@ const getUniqueHost = async (req, res) => {
     const host = await pool.query("SELECT * FROM users_hosts WHERE pid = $1", [
       pid,
     ]);
-    res.status(200).json(host.rows);
+    res.status(200).json(host.rows[0]);
   } catch (error) {
     console.error(error.message);
   }

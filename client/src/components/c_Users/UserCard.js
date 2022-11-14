@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 // Source:
 // https.youtube.com/watch?v=ldYcgPKEZC8&t=1106s
 
-function UserCard(user) {
+function UserCard({ user }) {
   console.log('user', user);
   // const [users, setUsers] = useState([]);
 

@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 
 //COMPONENTS
 import HostCard from '../components/Cards';
-import UserCard from '../components/c_Users/showAllUsers';
+import UserCard from '../components/c_Users/UserCard';
 
 //DUMMY DATA
 import dummyHostData from '../dummyData/dummyHostData';
@@ -53,7 +53,7 @@ function ListScreen() {
         {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>
             {/* <UserCard item={[user.user_name, user.pid]} /> */}
-            <UserCard item={user} />
+            <UserCard user={user} />
           </Grid>
         ))}
       </Grid>

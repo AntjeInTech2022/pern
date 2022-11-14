@@ -4,7 +4,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from '../TextField';
+import TextField from '../c_registration/TextField';
 
 function RFTextField(props) {
   const {
@@ -26,7 +26,7 @@ function RFTextField(props) {
         },
         ...InputProps,
       }}
-      helperText={touched ? error || submitError : ''}
+      // helperText={touched ? error || submitError : ''}
       variant="standard"
     />
   );

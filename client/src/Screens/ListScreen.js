@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 //COMPONENTS
-import HostCard from '../components/HostCards';
+import HostCard from '../components/c_Users/HostCards';
 import UserCard from '../components/c_Users/UserCard';
 
 //DUMMY DATA

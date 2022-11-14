@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 const PaperRoot = styled(MuiPaper, {
   shouldForwardProp: (prop) => prop !== 'background' && prop !== 'padding',
 })(({ theme, background, padding }) => ({
-  backgroundColor: theme.palette.secondary[background],
+  backgroundColor: '#ffc107',
   ...(padding && {
     padding: theme.spacing(1),
   }),
@@ -20,7 +20,7 @@ function Paper(props) {
 
   return (
     <PaperRoot
-      square
+      // square
       elevation={0}
       background={background}
       padding={padding}

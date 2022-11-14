@@ -48,7 +48,7 @@ const Register = () => {
           Register
         </Typography>
         <Typography variant="body2" align="center">
-          <Link href="/" underline="always">
+          <Link color="#212121" href="/login" underline="always">
             Already have an account?
           </Link>
         </Typography>
@@ -74,7 +74,8 @@ const Register = () => {
                   disabled={submitting || sent}
                   autoComplete="given-name"
                   fullWidth
-                  label="First name"
+                  placeholder="First name"
+                  // label="First name"
                   name="firstName"
                   required
                 />
@@ -85,7 +86,8 @@ const Register = () => {
                   disabled={submitting || sent}
                   autoComplete="family-name"
                   fullWidth
-                  label="Last name"
+                  placeholder="Last name"
+                  // label="Last name"
                   name="lastName"
                   required
                 />
@@ -96,7 +98,8 @@ const Register = () => {
               component={RFTextField}
               disabled={submitting || sent}
               fullWidth
-              label="Email"
+              placeholder="Email"
+              // label="Email"
               margin="normal"
               name="email"
               required
@@ -108,11 +111,14 @@ const Register = () => {
               required
               name="password"
               autoComplete="new-password"
-              label="Password"
+              placeholder="Password"
+              // label="Password"
               type="password"
               margin="normal"
             />
-            <Button>Sumbit registration</Button>
+            <Button color="success" variant="contained">
+              Sumbit registration
+            </Button>
           </Box>
         )}
       </Form>

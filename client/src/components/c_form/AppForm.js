@@ -16,7 +16,7 @@ function AppForm(props) {
         display: 'flex',
         // backgroundImage: 'url(/static/onepirate/appCurvyLines.png)',
         backgroundRepeat: 'no-repeat',
-        // backgroundColor: 'primary.dark',
+        // backgroundColor: '#ffcf33',
       }}
     >
       <Container maxWidth="sm">

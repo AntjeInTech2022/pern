@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import CreateNewUser from '../components/c_Users/createNewUser';
 import Container from '@mui/material/Container';
 
+import EditUserBtn from '../components/c_Users/editUserBtn';
+
 //CONTEXT
 // import { UsersContext } from '../Context/userContext';
 
@@ -52,23 +54,17 @@ function ProfileScreen() {
       <CreateNewUser />
       <h1>...</h1>
       <Container fixed>
-        <Card sx={{ maxWidth: 275 }}>
+        <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
+            <Typography gutterBottom variant="h5" component="div">
               {user.user_name}
             </Typography>
-            <Typography variant="h5" component="div">
-              {user.pid}
+            <Typography variant="body2" color="text.secondary">
+              {user.profile_header}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button variant="outlined" size="small">
-              Edit
-            </Button>
+            <EditUserBtn />
             <Button
               variant="contained"
               size="small"

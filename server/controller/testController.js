@@ -3,6 +3,29 @@ import pool from "../dbConfig.js";
 //// TESTS
 // Before I created the table 'users_hosts' in the db 'test' via Mac terminal (see my cheat sheet)
 
+// Registration
+
+const Register = async (req, res) => {
+  try {
+    // 1.  destructure the req.body (name,email, password)
+    const { name, email, password } = req.body;
+    // 2. check if user exists (if user exists throw error)
+    const user = await pool.query("SELECT * FROM users WHERE user_email =$1", [
+      email,
+    ]);
+    // if user exists throw error:
+    if (user.rows.lenght !== 0) {
+      return res.status(401);
+    }
+    // 3. bcrypt the user password
+    // 4. add user to database table 'users'
+    // 5. generate jwt token
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error");
+  }
+};
+
 // CREATE NEW USER / HOST
 // in table users_hosts
 const createNewHost = async (req, res) => {
@@ -105,4 +128,5 @@ export {
   getUniqueHost,
   updateUniqueHost,
   deleteUniqueHost,
+  Register,
 };

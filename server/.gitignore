@@ -3,6 +3,10 @@
 # private
 dbConfig.js
 /dbConfig.js
+/.dbConfig.js
+db.sql
+/db.sql
+
 
 # dependencies
 /node_modules

@@ -7,6 +7,7 @@ import {
   getUniqueHost,
   updateUniqueHost,
   deleteUniqueHost,
+  Register,
 } from "../controller/testController.js";
 const router = express.Router();
 
@@ -18,6 +19,8 @@ router.get("/test", getTestRoute);
 router.post("/newData", createTableData);
 
 // TEST ROUTES
+
+router.post("/register", Register);
 
 // create new user/host
 router.post("/users", createNewHost);

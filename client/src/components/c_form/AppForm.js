@@ -16,12 +16,14 @@ function AppForm(props) {
         display: 'flex',
         // backgroundImage: 'url(/static/onepirate/appCurvyLines.png)',
         backgroundRepeat: 'no-repeat',
+        // backgroundColor: 'primary.dark',
       }}
     >
       <Container maxWidth="sm">
         <Box sx={{ mt: 7, mb: 12 }}>
           <Paper
             background="light"
+            // background-color="#ffcf33"
             sx={{ py: { xs: 4, md: 8 }, px: { xs: 3, md: 6 } }}
           >
             {children}

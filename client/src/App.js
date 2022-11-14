@@ -14,7 +14,7 @@ import ProfileScreen from './Screens/ProfileScreen';
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
 // import AppFooter from './components/c_footer/AppFooter';
-import SignUp from './Screens/SignUp';
+import Register from './Screens/Register';
 
 // MUI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -48,7 +48,7 @@ function App() {
               <Route path="/" element={<LandingScreen />}></Route>
               <Route path="/list" element={<ListScreen />}></Route>
               <Route path="/details/:id" element={<DetailsScreen />}></Route>
-              <Route path="/signup" element={<SignUp />}></Route>
+              <Route path="/register" element={<Register />}></Route>
               {/* <Route path="/login" element={<Login />}></Route> */}
               <Route path="/profile" element={<ProfileScreen />}></Route>
             </Routes>

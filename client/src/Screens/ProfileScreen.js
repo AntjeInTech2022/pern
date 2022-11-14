@@ -64,7 +64,7 @@ function ProfileScreen() {
             </Typography>
           </CardContent>
           <CardActions>
-            <EditUserBtn />
+            <EditUserBtn user={user} />
             <Button
               variant="contained"
               size="small"

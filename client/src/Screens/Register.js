@@ -18,7 +18,7 @@ import RFTextField from '../components/c_form/RFTextField';
 import { Button } from '@mui/material';
 // import FormFeedback from '../components/c_form/FormFeedback';
 
-const SignUp = () => {
+const Register = () => {
   const [sent, setSent] = React.useState(false);
 
   const validate = (values) => {
@@ -48,11 +48,12 @@ const SignUp = () => {
           Register
         </Typography>
         <Typography variant="body2" align="center">
-          <Link href="/premium-themes/onepirate/sign-in/" underline="always">
+          <Link href="/" underline="always">
             Already have an account?
           </Link>
         </Typography>
       </React.Fragment>
+
       <Form
         onSubmit={handleSubmit}
         subscription={{ submitting: true }}
@@ -111,24 +112,7 @@ const SignUp = () => {
               type="password"
               margin="normal"
             />
-            {/* <FormSpy subscription={{ submitError: true }}>
-              {({ submitError }) =>
-                submitError ? (
-                  <FormFeedback error sx={{ mt: 2 }}>
-                    {submitError}
-                  </FormFeedback>
-                ) : null
-              }
-            </FormSpy> */}
             <Button>Sumbit registration</Button>
-            {/* <FormButton
-              sx={{ mt: 3, mb: 2 }}
-              disabled={submitting || sent}
-              color="secondary"
-              fullWidth
-            >
-              {submitting || sent ? 'In progress…' : 'Sign Up'}
-            </FormButton> */}
           </Box>
         )}
       </Form>
@@ -136,4 +120,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;

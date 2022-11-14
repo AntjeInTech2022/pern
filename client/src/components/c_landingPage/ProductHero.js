@@ -4,11 +4,13 @@ import * as React from 'react';
 import Button from '../Button';
 import Typography from '../Typography';
 import ProductHeroLayout from './ProductHeroLayout';
+import { useNavigate } from 'react-router-dom';
 
 const backgroundImage =
   'https://images.unsplash.com/photo-1590334280249-a8f0c9f46a1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80';
 
 export default function ProductHero() {
+  const navigate = useNavigate();
   return (
     <ProductHeroLayout
       sxBackground={{
@@ -39,6 +41,7 @@ export default function ProductHero() {
         variant="contained"
         size="large"
         sx={{ minWidth: 200 }}
+        onClick={() => navigate('/register')}
       >
         Register
       </Button>

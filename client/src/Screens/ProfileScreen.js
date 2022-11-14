@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 function ProfileScreen() {
   const [user, setUser] = useState([]);
 
-  const getUsers = async () => {
+  const getUser = async () => {
     try {
       // fetch makes a get request by default
       const response = await fetch('http://localhost:5000/api/users/1');
@@ -25,7 +25,7 @@ function ProfileScreen() {
     }
   };
   useEffect(() => {
-    getUsers();
+    getUser();
   }, []); //  '[]' makes sure there is only one request
 
   console.log('User 1', user);
@@ -36,7 +36,7 @@ function ProfileScreen() {
       // const deleteUser = await fetch(`http://localhost:5000/api/users/${pid}`, {
       //   method: 'DELETE',
       // });
-      const deleteUser = await fetch('http://localhost:5000/api/users/:1', {
+      const deleteUser = await fetch('http://localhost:5000/api/users/1', {
         method: 'DELETE',
       });
       console.log('deleted user', deleteUser);

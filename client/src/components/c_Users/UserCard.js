@@ -11,48 +11,20 @@ import Grid from '@mui/material/Grid';
 
 function UserCard({ user }) {
   console.log('user', user);
-  // const [users, setUsers] = useState([]);
 
-  // const getUsers = async () => {
-  //   try {
-  //     // fetch makes a get request by default
-  //     const response = await fetch('http://localhost:5000/api/users');
-  //     const jsonData = await response.json();
-  //     // console.log(jsonData);
-  //     setUsers(jsonData);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getUsers();
-  // }, []); //  '[]' makes sure there is only one request
-
-  // console.log(users);
-
-  // return users.map((user, pid) => (
-  //   <Grid item key={pid} xs={12} md={3} lg={4}>
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography gutterBottom variant="h5" component="div">
           {user.user_name}
         </Typography>
-        <Typography variant="h5" component="div">
-          {user.pid}
+        <Typography variant="body2" color="text.secondary">
+          {user.profile_header}
         </Typography>
-        {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  adjective
-                </Typography>
-                <Typography variant="body2">
-                  well meaning and kindly.
-                  <br />
-                  {'"a benevolent smile"'}
-                </Typography> */}
       </CardContent>
       <CardActions>
-        <Button size="small">Edit</Button>
-        <Button size="small">Delete</Button>
+        <Button size="small">Add to favorites</Button>
+        <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
     // </Grid>

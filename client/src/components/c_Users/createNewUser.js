@@ -16,7 +16,8 @@ function CreateNewUser() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-      console.log(response);
+      console.log('new user created!', response);
+      console.log(user_name);
     } catch (error) {
       console.error(error.message);
     }

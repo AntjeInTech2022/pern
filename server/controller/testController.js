@@ -1,4 +1,5 @@
 import pool from "../dbConfig.js";
+import bcrypt from "bcrypt";
 
 //// TESTS
 // Before I created the table 'users_hosts' in the db 'test' via Mac terminal (see my cheat sheet)
@@ -19,7 +20,7 @@ const Register = async (req, res) => {
     }
     // 3. bcrypt the user password
     // npm i bcrypt (https://www.npmjs.com/package/bcrypt)
-    const bcrypt = require("bcrypt");
+    // const bcrypt = require("bcrypt");
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
 

@@ -32,7 +32,7 @@ const Register = async (req, res) => {
       [name, email, bcryptPassword]
     );
 
-    res.json(newUser.rows[0]);
+    // res.json(newUser.rows[0]);
 
     // 5. generate jwt token
     // npm install dotenv

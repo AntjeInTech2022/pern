@@ -2,8 +2,6 @@ import pool from "../dbConfig.js";
 import bcrypt from "bcrypt";
 import jwtGenerator from "../utils/jwtGenerator.js";
 
-
-
 // REGISTRATION table: users
 const Register = async (req, res) => {
   // 1.  destructure the req.body (name,email, password)
@@ -86,9 +84,4 @@ const Verification = async (req, res) => {
   }
 };
 
-/
-export {
-  Register,
-  Login,
-  Verification,
-};
+export { Register, Login, Verification };

@@ -10,6 +10,8 @@ import {
   Register,
   Login,
 } from "../controller/testController.js";
+import validInfo from "../middleware/validInfo.js";
+
 const router = express.Router();
 
 // TEST ROUTES
@@ -17,10 +19,10 @@ router.get("/test", getTestRoute);
 router.post("/newData", createTableData);
 
 // REGISTRATION
-router.post("/register", Register);
+router.post("/register", validInfo, Register);
 
 // LOGIN
-router.post("/login", Login);
+router.post("/login", validInfo, Login);
 
 // create new user/host
 router.post("/users", createNewHost);

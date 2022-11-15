@@ -16,7 +16,7 @@ const Register = async (req, res) => {
       email,
     ]);
     // if user exists throw error:
-    if (user.rows.lenght !== 0) {
+    if (user.rows.length !== 0) {
       return res.status(401).send("User already exists");
     }
     // 3. bcrypt the user password

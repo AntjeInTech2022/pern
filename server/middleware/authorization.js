@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
-const authorization = async (req, res, next) => {
+const Authorization = async (req, res, next) => {
   try {
     const jwtToken = req.header("token");
     if (!jwtToken) {
@@ -17,4 +17,4 @@ const authorization = async (req, res, next) => {
   }
 };
 
-export default authorization;
+export default Authorization;

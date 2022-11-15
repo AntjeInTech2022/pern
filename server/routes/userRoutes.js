@@ -9,20 +9,25 @@ import {
   deleteUniqueHost,
   Register,
   Login,
+  Verification,
 } from "../controller/testController.js";
 import validInfo from "../middleware/validInfo.js";
+import Authorization from "../middleware/authorization.js";
 
 const router = express.Router();
-
-// TEST ROUTES
-router.get("/test", getTestRoute);
-router.post("/newData", createTableData);
 
 // REGISTRATION
 router.post("/register", validInfo, Register);
 
 // LOGIN
 router.post("/login", validInfo, Login);
+
+// VERIFICATION
+router.get("/verification", Authorization, Verification);
+
+// TEST ROUTES
+router.get("/test", getTestRoute);
+router.post("/newData", createTableData);
 
 // create new user/host
 router.post("/users", createNewHost);

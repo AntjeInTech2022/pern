@@ -1,3 +1,4 @@
+import express from "express";
 import {
   getTestRoute,
   createTableData,
@@ -7,6 +8,8 @@ import {
   updateUniqueHost,
   deleteUniqueHost,
 } from "../controller/testController.js";
+
+const router = express.Router();
 
 // TEST ROUTES
 router.get("/test", getTestRoute);

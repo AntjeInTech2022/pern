@@ -7,20 +7,20 @@ import {
 import validInfo from "../middleware/validInfo.js";
 import Authorization from "../middleware/authorization.js";
 
-const router = express.Router();
+const router1 = express.Router();
 
 // REGISTRATION
-router.post("/register", validInfo, Register);
+router1.post("/register", validInfo, Register);
 
 // LOGIN
-router.post("/login", validInfo, Login);
+router1.post("/login", validInfo, Login);
 
 // VERIFICATION
-router.get("/verification", Authorization, Verification);
+router1.get("/verification", Authorization, Verification);
 
 //
 
-export default router;
+export default router1;
 
 // TEST ROUTES
 // router.get("/test", getTestRoute);

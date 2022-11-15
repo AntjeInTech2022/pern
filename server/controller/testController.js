@@ -1,5 +1,6 @@
 import pool from "../dbConfig.js";
 import bcrypt from "bcrypt";
+import jwtGenerator from "../utils/jwtGenerator.js";
 
 //// TESTS
 // Before I created the table 'users_hosts' in the db 'test' via Mac terminal (see my cheat sheet)
@@ -35,6 +36,8 @@ const Register = async (req, res) => {
 
     // 5. generate jwt token
     // npm install dotenv
+    const token = jwtGenerator(newUser.rows[0].pid);
+    res.json({ token });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");

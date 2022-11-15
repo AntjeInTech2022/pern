@@ -1,7 +1,10 @@
 // npm i jsonwebtoken
 import jwt from "jsonwebtoken";
+// require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const jwtGenerator = () => {
+const jwtGenerator = (pid) => {
   const payload = {
     user: pid,
   };

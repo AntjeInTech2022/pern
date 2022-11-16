@@ -1,7 +1,5 @@
 import express from "express";
-import router from "./routes/testRoutes.js";
-import router1 from "./routes/jwtAuthRoutes.js";
-// import router2 from "./routes/PrivateRoutes.js";
+import router from "./routes/userRoutes.js";
 import cors from "cors";
 
 // create express  app
@@ -27,10 +25,10 @@ app.listen(5000, () => {
 });
 
 //routes
-app.use("/api", router);
-app.use("/auth", router1);
-// app.use("/api/users", userRoutes);
-app.use("/private", router1);
+// app.use("/api", router);
+// app.use("/auth", router);
+app.use("/api/users", router);
+// app.use("/private", router1);
 // app.use("/private", router2);
 
 // register and login routes

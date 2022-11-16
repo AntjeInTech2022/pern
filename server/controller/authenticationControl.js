@@ -2,9 +2,6 @@ import pool from "../dbConfig.js";
 import bcrypt from "bcrypt";
 import jwtGenerator from "../utils/jwtGenerator.js";
 
-// GET ALL USERS
-// const getAllUsers = async (req, res) => {};
-
 // REGISTRATION table: users
 const Register = async (req, res) => {
   // 1.  destructure the req.body (name,email, password)
@@ -40,6 +37,20 @@ const Register = async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error registration");
+  }
+};
+
+// GET ALL USERS
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await pool.query(`SELECT * FROM users`); //Checking if user already exists
+    console.log("users", users);
+    res.status(200).json(users.rows);
+  } catch (error) {
+    res.status(500).json({
+      error: error,
+      success: false,
+    });
   }
 };
 
@@ -88,18 +99,18 @@ const Verification = async (req, res) => {
 };
 
 // PRIVATE ROUTE
-const Private = async (req, res) => {
-  try {
-    //req.user has the payload
-    // res.json(req.user);
-    const user = await pool.query("SELECT * FROM users WHERE pid = $1", [
-      req.user,
-    ]);
-    res.json(user.rows[0]);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server Error");
-  }
-};
+// const Private = async (req, res) => {
+//   try {
+//     //req.user has the payload
+//     // res.json(req.user);
+//     const user = await pool.query("SELECT * FROM users WHERE pid = $1", [
+//       req.user,
+//     ]);
+//     res.json(user.rows[0]);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Server Error");
+//   }
+// };
 
-export { Register, Login, Verification, Private };
+export { Register, Login, Verification, getAllUsers };

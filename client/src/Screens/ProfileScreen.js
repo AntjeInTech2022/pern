@@ -4,59 +4,28 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import CreateNewUser from '../components/c_Users/createNewUser';
+// import CreateNewUser from '../../archiv/createNewUser';
 import Container from '@mui/material/Container';
 
-import EditUserBtn from '../components/c_Users/editUserBtn';
-import { UsersContext } from '../Context/userContext.js';
+// import EditUserBtn from '../components/c_Users/editUserBtn';
+
+import { AuthContext } from '../Context/authContext';
 
 //CONTEXT
 // import { UsersContext } from '../Context/userContext';
 
 function ProfileScreen() {
-  const { user } = useContext(UsersContext);
-  // const [user, setUser] = useState([]);
-
-  // const getUser = async () => {
-  //   try {
-  //     // fetch makes a get request by default
-  //     const response = await fetch('http://localhost:5000/api/users/1');
-  //     const jsonData = await response.json();
-  //     console.log(jsonData);
-  //     setUser(jsonData);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getUser();
-  // }, []); //  '[]' makes sure there is only one request
-
-  // console.log('User 1', user);
-
-  // DELETE ACCOUNT
-  // const deleteUser = async (pid) => {
-  //   try {
-  //     // const deleteUser = await fetch(`http://localhost:5000/api/users/${pid}`, {
-  //     //   method: 'DELETE',
-  //     // });
-  //     const deleteUser = await fetch('http://localhost:5000/api/users/1', {
-  //       method: 'DELETE',
-  //     });
-  //     console.log('deleted user', deleteUser);
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
       <h1>ProfileScreen</h1>
+      <p>Hello {user ? user.user_name : 'stranger'}</p>
       <p>
         <br></br>
         <br></br>
       </p>
-      <CreateNewUser />
+      {/* <CreateNewUser /> */}
       <p>
         <br></br>
         <br></br>

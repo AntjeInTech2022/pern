@@ -4,6 +4,7 @@ import './App.css';
 
 //CONTEXT
 import { UsersContextProvider } from './Context/userContext';
+import { AuthProvider } from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
@@ -42,18 +43,20 @@ function App() {
     <div className="App">
       <ThemeProvider theme={customTheme}>
         <Router>
-          <UsersContextProvider>
-            <ResponsiveAppBar />
-            <Routes>
-              <Route path="/" element={<LandingScreen />}></Route>
-              <Route path="/list" element={<ListScreen />}></Route>
-              <Route path="/details/:id" element={<DetailsScreen />}></Route>
-              <Route path="/register" element={<Register />}></Route>
-              {/* <Route path="/login" element={<Login />}></Route> */}
-              <Route path="/profile" element={<ProfileScreen />}></Route>
-            </Routes>
-            {/* <AppFooter /> */}
-          </UsersContextProvider>
+          <AuthProvider>
+            <UsersContextProvider>
+              <ResponsiveAppBar />
+              <Routes>
+                <Route path="/" element={<LandingScreen />}></Route>
+                <Route path="/list" element={<ListScreen />}></Route>
+                <Route path="/details/:id" element={<DetailsScreen />}></Route>
+                <Route path="/register" element={<Register />}></Route>
+                {/* <Route path="/login" element={<Login />}></Route> */}
+                <Route path="/profile" element={<ProfileScreen />}></Route>
+              </Routes>
+              {/* <AppFooter /> */}
+            </UsersContextProvider>
+          </AuthProvider>
         </Router>
       </ThemeProvider>
     </div>

@@ -10,18 +10,18 @@ export const AuthProvider = (props) => {
   const [user, setUser] = useState([]);
 
   //REGISTER
-  const register = async (email, password, name) => {
+  const register = async (email, password) => {
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password, name }),
+      body: JSON.stringify({ email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/register`, options);
-    const { success, error, jwt, name } = await res.json();
+    const { success, error, jwt } = await res.json();
     localStorage.setItem('jwt', jwt);
-    setUser({ ...user, name });
+    setUser({ ...user });
     return { success, error };
   };
 
@@ -36,9 +36,9 @@ export const AuthProvider = (props) => {
       body: JSON.stringify({ email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/login`, options);
-    const { success, token, error, name } = await res.json();
+    const { success, token, error } = await res.json();
     localStorage.setItem('jwt', token);
-    setUser({ ...user, name });
+    setUser({ ...user });
     return { success, error };
   };
 

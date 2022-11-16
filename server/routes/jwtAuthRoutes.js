@@ -20,7 +20,7 @@ router1.post("/login", validInfo, Login);
 router1.get("/verification", Authorization, Verification);
 
 // PRIVATE
-router1.get("/private", Authorization, Private);
+router1.get("/", Authorization, Private);
 
 export default router1;
 

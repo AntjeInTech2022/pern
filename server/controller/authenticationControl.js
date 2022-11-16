@@ -54,6 +54,25 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+// GET USER BY ID
+const getUserById = async (req, res) => {
+  try {
+    const { pid } = req.params;
+
+    const user = await pool.query(`SELECT * FROM users WHERE pid = $1;`, [pid]); //Checking if user already exists
+    console.log("user", user);
+    res.status(200).json({
+      user: user.rows[0],
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error,
+      success: false,
+    });
+  }
+};
+
 // LOGIN table: users
 const Login = async (req, res) => {
   // 1.  destructure the req.body (email, password)
@@ -113,4 +132,4 @@ const Verification = async (req, res) => {
 //   }
 // };
 
-export { Register, Login, Verification, getAllUsers };
+export { Register, Login, Verification, getAllUsers, getUserById };

@@ -1,8 +1,9 @@
 import express from "express";
 import {
-  getAllUsers,
   Register,
   Login,
+  getAllUsers,
+  getUserById,
   Verification,
 } from "../controller/authenticationControl.js";
 import validInfo from "../middleware/validInfo.js";
@@ -13,7 +14,7 @@ const router = express.Router();
 router.get("/", getAllUsers);
 
 // GET SPECIFIC USER
-// router.get("/:id", getUserById);
+router.get("/:pid", getUserById);
 
 // REGISTRATION
 router.post("/register", validInfo, Register);

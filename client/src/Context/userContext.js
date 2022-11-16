@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 
+const backendUrl = 'http://localhost:5000';
+
 // 2. Create Context / Global Store
 export const UsersContext = createContext();
 
@@ -10,7 +12,7 @@ export const UsersContextProvider = (props) => {
   const getUsers = async () => {
     try {
       // fetch makes a get request by default
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch(`${backendUrl}/api/users/`);
       const jsonData = await response.json();
       // console.log(jsonData);
       setUsers(jsonData);

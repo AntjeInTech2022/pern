@@ -13,7 +13,7 @@ const Register = async (req, res) => {
     ]);
     // if user exists throw error:
     if (user.rows.length !== 0) {
-      return res.status(401).send("User already exists");
+      return res.status(401).send("User email already exists");
     }
     // 3. bcrypt the user password
     // npm i bcrypt (https://www.npmjs.com/package/bcrypt)

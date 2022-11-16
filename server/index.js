@@ -29,6 +29,7 @@ app.listen(5000, () => {
 //routes
 app.use("/api", router);
 app.use("/auth", router1);
+// app.use("/api/users", userRoutes);
 app.use("/private", router1);
 // app.use("/private", router2);
 

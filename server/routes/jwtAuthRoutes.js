@@ -3,6 +3,7 @@ import {
   Register,
   Login,
   Verification,
+  Private,
 } from "../controller/authenticationControl.js";
 import validInfo from "../middleware/validInfo.js";
 import Authorization from "../middleware/authorization.js";
@@ -18,7 +19,8 @@ router1.post("/login", validInfo, Login);
 // VERIFICATION
 router1.get("/verification", Authorization, Verification);
 
-//
+// PRIVATE
+router1.get("/private", Authorization, Private);
 
 export default router1;
 

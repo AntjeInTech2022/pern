@@ -1,10 +1,10 @@
-import express from "express";
-import { Private } from "../controller/authorizationControl.js";
-import Authorization from "../middleware/authorization.js";
+// import express from "express";
+// import { Private } from "../controller/authorizationControl.js";
+// import Authorization from "../middleware/authorization.js";
 
-const router2 = express.Router();
+// const router2 = express.Router();
 
-//app.use("/private", router);
-router2.get("/", Authorization, Private);
+// //app.use("/private", router);
+// router2.get("/", Authorization, Private);
 
-export default router2;
+// export default router2;

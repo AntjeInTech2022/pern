@@ -1,7 +1,7 @@
 import express from "express";
 import router from "./routes/testRoutes.js";
 import router1 from "./routes/jwtAuthRoutes.js";
-import router2 from "./routes/PrivateRoutes.js";
+// import router2 from "./routes/PrivateRoutes.js";
 import cors from "cors";
 
 // create express  app
@@ -28,7 +28,7 @@ app.listen(5000, () => {
 //routes
 app.use("/api", router);
 app.use("/auth", router1);
-app.use("/private", router2);
+// app.use("/private", router2);
 
 // register and login routes
 // app.use("/authentication", require("./routes/jwtAuth"));

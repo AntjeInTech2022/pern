@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  // getAllUsers,
   Register,
   Login,
   Verification,
@@ -9,6 +10,8 @@ import validInfo from "../middleware/validInfo.js";
 import Authorization from "../middleware/authorization.js";
 
 const router1 = express.Router();
+// GET ALL USERS
+// router1.get("/", getAllUsers);
 
 // REGISTRATION
 router1.post("/register", validInfo, Register);

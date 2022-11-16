@@ -2,6 +2,9 @@ import pool from "../dbConfig.js";
 import bcrypt from "bcrypt";
 import jwtGenerator from "../utils/jwtGenerator.js";
 
+// GET ALL USERS
+// const getAllUsers = async (req, res) => {};
+
 // REGISTRATION table: users
 const Register = async (req, res) => {
   // 1.  destructure the req.body (name,email, password)

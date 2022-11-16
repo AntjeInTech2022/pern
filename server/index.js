@@ -9,6 +9,7 @@ const app = express();
 // instantiate router feature and add it to the express app
 // app.use(router);
 app.use(express.json()); //req.body
+// set the cross origin security to allow all origin (TO BE CHANGED IN PRODUCTION!):
 app.use(cors());
 app.use(
   express.urlencoded({

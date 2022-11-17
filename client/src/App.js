@@ -11,7 +11,7 @@ import LandingScreen from './Screens/LandingScreen';
 import ListScreen from './Screens/ListScreen';
 import DetailsScreen from './Screens/DetailsScreen';
 import ProfileScreen from './Screens/ProfileScreen';
-import Login from './Screens/Login';
+import Login from './Screens/LoginScreen';
 import Register from './Screens/Register';
 
 // COMPONENTS

@@ -1,6 +1,6 @@
 # About
 
-This project was part of the Code Academy Berlin Full-Stack Web Developer Bootcamp. The project consisted in building a free-of-choice Full-Stack Web Progressive Application using the PERN stack
+This project was part of the Code Academy Berlin Full-Stack Web Developer Bootcamp. The project consisted in building a free-of-choice Full-Stack Web Progressive Application using the PERN (PostgresSQL, Express, REACT,Node.js) stack.
 
 - CSS framework used: MUI
 
@@ -12,7 +12,8 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 - Learn how structure your database
 - In each Sprint working on both client and server side at the same time.
 - In addition keep improving your React skills.
-- Learn JWT with the PERN stack by building a Registration/Login system
+- Learn JWT (JSON Web Token) by building a Registration/Login system
+- Building a Authentication and Authorisation system for the user
 - Apply TypeScript (optional)
 
 ## Requirements:
@@ -33,4 +34,4 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 
 ## Additional features implemented:
 
--
+- uuid-ossp extension for PostgresSQL: applying universally unique identifiers (UUIDs) for the user id's

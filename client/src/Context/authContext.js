@@ -5,9 +5,36 @@ const backendUrl = 'http://localhost:5000';
 // 2. Create Context / Global Store
 export const AuthContext = createContext();
 
+// AUTHENTICATOR
+
 // 3. Create provider
 export const AuthProvider = (props) => {
   const [user, setUser] = useState([]);
+
+  // AUTHENTICATION
+  // const checkAuthenticated = async () => {
+  //   try {
+  //     const res = await fetch('http://localhost:5000/authentication/verify', {
+  //       method: 'POST',
+  //       headers: { jwt_token: localStorage.token },
+  //     });
+
+  //     const parseRes = await res.json();
+
+  //     parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   checkAuthenticated();
+  // }, []);
+
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const setAuth = (boolean) => {
+  //   setIsAuthenticated(boolean);
+  // };
 
   //REGISTER
   const register = async (email, password) => {
@@ -39,11 +66,12 @@ export const AuthProvider = (props) => {
     const { success, token, error } = await res.json();
     localStorage.setItem('jwt', token);
     setUser({ ...user });
+    // setIsAuthenticated(true);
     return { success, error };
   };
 
   return (
-    <AuthContext.Provider value={{ user, register, login }}>
+    <AuthContext.Provider value={{ setUser, user, register, login }}>
       {props.children}
     </AuthContext.Provider>
   );

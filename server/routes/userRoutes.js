@@ -5,8 +5,8 @@ import {
   getAllUsers,
   getUserById,
   // Verification,
-} from "../controller/userController.js";
-// from "../controller/authenticationControl.js";
+  // from "../controller/userController.js";
+} from "../controller/authenticationControl.js";
 import validInfo from "../middleware/validInfo.js";
 import Authorization from "../middleware/authorization.js";
 

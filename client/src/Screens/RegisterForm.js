@@ -5,32 +5,37 @@ import '../App.css';
 import { AuthContext } from '../Context/authContext.js';
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
-  const { login } = useContext(AuthContext);
-  const [values, setValues] = useState({
-    password: '',
-    email: '',
-    error: '',
-  });
+const RegisterForm = () => {
+  const [values, setValues] = useState();
+
   const navigate = useNavigate();
 
-  const handleChange = () => (event) => {
-    setValues(event.target.value);
+  const { register } = useContext(AuthContext);
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { success, error } = await login(values.email, values.password);
-    if (success) {
-      navigate('/profile');
-    } else {
-      error && setValues({ ...values, error: error });
+    try {
+      const { success, error } = await register(
+        values.email,
+        values.password,
+        values.name
+      );
+      if (success) {
+        navigate('/');
+      } else {
+        error && setValues({ ...values, error: error });
+      }
+    } catch (e) {
+      setValues({ ...values, error: 'e.message' });
     }
   };
 
   return (
-    // <FormControl>
     <form className="form" action="submit">
       <TextField
         label="Email"
@@ -64,8 +69,7 @@ const LoginForm = () => {
         Login
       </Button>
     </form>
-    // </FormControl>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -12,7 +12,7 @@ import ListScreen from './Screens/ListScreen';
 import DetailsScreen from './Screens/DetailsScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import Login from './Screens/LoginScreen';
-import Register from './Screens/Register';
+import Register from './Screens/RegisterScreen';
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';

@@ -18,7 +18,7 @@ const Login = () => {
           </Link>
         </Typography>
       </React.Fragment>
-      <Box component="form" sx={{ mt: 6 }} noValidate autoComplete="off">
+      <Box sx={{ mt: 6 }} noValidate autoComplete="off">
         <LoginForm />
       </Box>
     </AppForm>

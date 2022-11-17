@@ -4,8 +4,9 @@ import {
   Login,
   getAllUsers,
   getUserById,
-  Verification,
-} from "../controller/authenticationControl.js";
+  // Verification,
+} from "../controller/userController.js";
+// from "../controller/authenticationControl.js";
 import validInfo from "../middleware/validInfo.js";
 import Authorization from "../middleware/authorization.js";
 
@@ -23,6 +24,6 @@ router.post("/register", validInfo, Register);
 router.post("/login", validInfo, Login);
 
 // VERIFICATION
-router.get("/verification", Authorization, Verification);
+// router.get("/verification", Authorization, Verification);
 
 export default router;

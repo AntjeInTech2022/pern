@@ -2,14 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import '../App.css';
-
 import { AuthContext } from '../Context/authContext.js';
-import { Field, Form } from 'react-final-form';
 import { useNavigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import AppForm from '../components/c_form/AppForm';
-import Typography from '../components/Typography';
-import Link from '@mui/material/Link';
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -36,16 +30,21 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="form">
+    <form className="form" action="submit">
       <TextField
         labelText="Email"
         id="email"
         formControlProps={{
           fullWidth: true,
         }}
-        // handleChange={this.handleChange}
-        type="text"
+        type="email"
+        required
+        onChange={handleChange('email')}
+        value={values.email}
       />
+      <p>
+        <br></br>
+      </p>
       <TextField
         labelText="Password"
         id="password"
@@ -54,10 +53,22 @@ const LoginForm = () => {
         }}
         // handleChange={this.handleChange}
         type="password"
+        required
+        onChange={handleChange('password')}
+        value={values.password}
       />
-
-      <Button type="button" color="primary" className="form__custom-button">
-        Log in
+      <legend color="red">{values.error}</legend>
+      <p>
+        <br></br>
+      </p>
+      <Button
+        color="primary"
+        variant="outlined"
+        // className="form__custom-button"
+        type="submit"
+        onClick={handleSubmit}
+      >
+        Login
       </Button>
     </form>
   );

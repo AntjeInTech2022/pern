@@ -8,7 +8,7 @@ const jwtGenerator = (pid) => {
   const payload = {
     user: pid,
   };
-  return jwt.sign(payload, process.env.jwtSecret, { expiresIn: "1hr" });
+  return jwt.sign(payload, process.env.jwtSecret, { expiresIn: "5d" });
 };
 
 export default jwtGenerator;

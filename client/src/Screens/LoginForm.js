@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import '../App.css';
@@ -8,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
   const [values, setValues] = useState({
-    password: '',
-    email: '',
+    password: 'Password',
+    email: 'Email',
     error: '',
   });
   const navigate = useNavigate();
@@ -30,8 +31,7 @@ const LoginForm = () => {
   };
 
   return (
-    // <FormControl>
-    <form className="form" action="submit">
+    <Box sx={{ mt: 6 }} component="form" noValidate autoComplete="off">
       <TextField
         label="Email"
         id="email"
@@ -61,10 +61,9 @@ const LoginForm = () => {
         type="submit"
         onClick={handleSubmit}
       >
-        Login
+        Sign in
       </Button>
-    </form>
-    // </FormControl>
+    </Box>
   );
 };
 

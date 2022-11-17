@@ -28,9 +28,8 @@ const Register = () => {
           </Link>
         </Typography>
       </React.Fragment>
-      <Box sx={{ mt: 6 }} noValidate autoComplete="off">
-        <RegisterForm />
-      </Box>
+
+      <RegisterForm />
     </AppForm>
   );
 };

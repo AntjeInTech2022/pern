@@ -4,6 +4,7 @@ import AppForm from '../../components/c_form/AppForm';
 import Typography from '../../components/Typography';
 import Link from '@mui/material/Link';
 import LoginForm from './LoginForm.js';
+import LoginForm2 from './LoginForm2';
 
 const Login = () => {
   return (
@@ -18,8 +19,11 @@ const Login = () => {
           </Link>
         </Typography>
       </React.Fragment>
-
-      <LoginForm />
+      <p>
+        <br></br>
+      </p>
+      {/* <LoginForm /> */}
+      <LoginForm2 />
     </AppForm>
   );
 };

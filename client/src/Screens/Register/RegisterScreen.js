@@ -8,12 +8,12 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 
 //COMPONENTS
-import Typography from '../components/Typography';
-import AppForm from '../components/c_form/AppForm';
+import Typography from '../../components/Typography';
+import AppForm from '../../components/c_form/AppForm';
 import RegisterForm from './RegisterForm.js';
 
 //CNOTEXT
-import { AuthContext } from '../Context/authContext.js';
+import { AuthContext } from '../../Context/authContext.js';
 
 const Register = () => {
   return (

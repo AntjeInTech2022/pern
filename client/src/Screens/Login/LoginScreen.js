@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import AppForm from '../components/c_form/AppForm';
-import Typography from '../components/Typography';
+import AppForm from '../../components/c_form/AppForm';
+import Typography from '../../components/Typography';
 import Link from '@mui/material/Link';
 import LoginForm from './LoginForm.js';
 

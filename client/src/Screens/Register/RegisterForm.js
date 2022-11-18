@@ -1,21 +1,26 @@
 import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import '../../App.css';
+import { AuthContext } from '../../Context/authContext.js';
+import { useNavigate } from 'react-router-dom';
+
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import '../App.css';
-import { AuthContext } from '../Context/authContext.js';
-import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
-  const { login } = useContext(AuthContext);
+const RegisterForm = () => {
   const [values, setValues] = useState({
-    password: '',
+    name: '',
     email: '',
+    password: '',
     error: '',
   });
+
   const navigate = useNavigate();
+
+  const { register } = useContext(AuthContext);
 
   const handleChange = (property) => (event) => {
     setValues({ ...values, [property]: event.target.value });
@@ -24,23 +29,44 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { success, error } = await login(values.email, values.password);
-    if (success) {
-      navigate('/profile');
-    } else {
-      error && setValues({ ...values, error: error });
+    try {
+      const { success, error } = await register(
+        values.name,
+        values.email,
+        values.password
+      );
+      if (success) {
+        navigate('/profile');
+      } else {
+        error && setValues({ ...values, error: error });
+      }
+    } catch (e) {
+      setValues({ ...values, error: 'e.message' });
     }
   };
-  console.log('values', values);
+
   return (
     <Box sx={{ mt: 6 }} component="form" noValidate autoComplete="off">
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-simple">Email</InputLabel>
+        <InputLabel htmlFor="component-simple">Name</InputLabel>
         <Input
           required
+          id="name"
+          value={values.name}
+          onChange={handleChange('name')}
+        />
+      </FormControl>
+      <p>
+        <br></br>
+      </p>
+      <FormControl variant="standard">
+        <InputLabel htmlFor="component-simple">Email</InputLabel>
+        <Input
+          type="email"
           id="email"
           value={values.email}
           onChange={handleChange('email')}
+          required
         />
       </FormControl>
       <p>
@@ -49,15 +75,15 @@ const LoginForm = () => {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-simple">Password</InputLabel>
         <Input
-          // style={{ backgroundColor: '#fffde7' }}
-          required
-          id="password"
           type="password"
+          id="password"
           value={values.password}
           onChange={handleChange('password')}
+          required
         />
       </FormControl>
-      <legend color="red">{values.error}</legend>
+
+      {/* <legend color="red">{values.error}</legend> */}
       <p>
         <br></br>
         <br></br>
@@ -68,10 +94,10 @@ const LoginForm = () => {
         type="submit"
         onClick={handleSubmit}
       >
-        Sign in
+        Sign up
       </Button>
     </Box>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

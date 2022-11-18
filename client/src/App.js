@@ -11,8 +11,8 @@ import LandingScreen from './Screens/LandingScreen';
 import ListScreen from './Screens/ListScreen';
 import DetailsScreen from './Screens/DetailsScreen';
 import ProfileScreen from './Screens/ProfileScreen';
-import Login from './Screens/LoginScreen';
-import Register from './Screens/RegisterScreen';
+import Login from './Screens/Login/LoginScreen';
+import Register from './Screens/Register/RegisterScreen';
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';

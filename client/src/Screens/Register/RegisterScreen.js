@@ -1,19 +1,16 @@
 // SOURCE: TEMPLATE from:
 //github.com/mui/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/SignUp.js
 import React from 'react';
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 //MUI
-import Box from '@mui/material/Box';
+
 import Link from '@mui/material/Link';
 
 //COMPONENTS
 import Typography from '../../components/Typography';
 import AppForm from '../../components/c_form/AppForm';
-import RegisterForm from './RegisterForm.js';
-
-//CNOTEXT
-import { AuthContext } from '../../Context/authContext.js';
+// import RegisterForm from './RegisterForm.js';
+import RegisterForm2 from './RegisterForm2.js';
 
 const Register = () => {
   return (
@@ -28,8 +25,11 @@ const Register = () => {
           </Link>
         </Typography>
       </React.Fragment>
-
-      <RegisterForm />
+      <p>
+        <br></br>
+      </p>
+      {/* <RegisterForm /> */}
+      <RegisterForm2 />
     </AppForm>
   );
 };

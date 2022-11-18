@@ -12,9 +12,9 @@ import InputLabel from '@mui/material/InputLabel';
 
 const RegisterForm = () => {
   const [values, setValues] = useState({
-    name: 'Name',
-    email: 'Email',
-    password: 'Password',
+    name: '',
+    email: '',
+    password: '',
     error: '',
   });
 
@@ -22,8 +22,8 @@ const RegisterForm = () => {
 
   const { register } = useContext(AuthContext);
 
-  const handleChange = () => (event) => {
-    setValues(event.target.value);
+  const handleChange = (property) => (event) => {
+    setValues({ ...values, [property]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -31,9 +31,9 @@ const RegisterForm = () => {
 
     try {
       const { success, error } = await register(
+        values.name,
         values.email,
-        values.password,
-        values.name
+        values.password
       );
       if (success) {
         navigate('/profile');
@@ -46,7 +46,6 @@ const RegisterForm = () => {
   };
 
   return (
-    // <form className="form" action="submit">
     <Box sx={{ mt: 6 }} component="form" noValidate autoComplete="off">
       <FormControl variant="standard">
         <InputLabel htmlFor="component-simple">Name</InputLabel>

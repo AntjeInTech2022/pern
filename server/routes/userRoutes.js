@@ -18,9 +18,11 @@ router.get("/", getAllUsers);
 router.get("/:pid", getUserById);
 
 // REGISTRATION
+// router.post("/register", Register);
 router.post("/register", validInfo, Register);
 
 // LOGIN
+// router.post("/login", Login);
 router.post("/login", validInfo, Login);
 
 // VERIFICATION

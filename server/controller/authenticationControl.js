@@ -28,12 +28,10 @@ const Register = async (req, res) => {
       [name, email, bcryptPassword]
     );
 
-    res.json(newUser.rows[0]);
-
     // 5. generate jwt token
     // npm install dotenv
     const token = jwtGenerator(newUser.rows[0].pid);
-    res.json({ token });
+    res.json({ user: newUser.rows[0], token });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error registration");
@@ -99,8 +97,8 @@ const Login = async (req, res) => {
       return res.status(401).json("PW or email is incorrect");
     }
     // 4. give them the jwt token
-    const jwtToken = jwtGenerator(user.rows[0].pid);
-    res.json({ jwtToken });
+    const token = jwtGenerator(user.rows[0].pid);
+    res.json({ token, user: user.rows[0] });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error login");

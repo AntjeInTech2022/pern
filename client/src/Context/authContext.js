@@ -12,18 +12,18 @@ export const AuthProvider = (props) => {
   const [user, setUser] = useState([]);
 
   //REGISTER
-  const register = async (email, password) => {
+  const register = async (name, email, password) => {
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/register`, options);
-    const { success, error, jwtToken } = await res.json();
-    localStorage.setItem('jwt', jwtToken);
-    setUser({ ...user });
+    const { success, error, token, user } = await res.json();
+    localStorage.setItem('jwt', token);
+    setUser(user);
     return { success, error };
   };
 
@@ -38,13 +38,15 @@ export const AuthProvider = (props) => {
       body: JSON.stringify({ email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/login`, options);
-    const { success, jwtToken, error } = await res.json();
-    localStorage.setItem('jwt', jwtToken);
-    setUser({ ...user });
+    const { success, token, error, user } = await res.json();
+    localStorage.setItem('jwt', token);
+    setUser(user);
+
     // setIsAuthenticated(true);
+
     return { success, error };
   };
-
+  console.log('loged in user', user);
   return (
     <AuthContext.Provider value={{ setUser, user, register, login }}>
       {props.children}

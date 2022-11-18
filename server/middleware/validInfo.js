@@ -1,6 +1,6 @@
 const validInfo = (req, res, next) => {
   const { email, name, password } = req.body;
-
+  console.log("validInfo req.body", req.body);
   function validEmail(userEmail) {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
   }

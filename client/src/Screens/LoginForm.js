@@ -11,14 +11,14 @@ import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
   const [values, setValues] = useState({
-    password: 'Password',
-    email: 'Email',
+    password: '',
+    email: '',
     error: '',
   });
   const navigate = useNavigate();
 
-  const handleChange = () => (event) => {
-    setValues(event.target.value);
+  const handleChange = (property) => (event) => {
+    setValues({ ...values, [property]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -31,7 +31,7 @@ const LoginForm = () => {
       error && setValues({ ...values, error: error });
     }
   };
-
+  console.log('values', values);
   return (
     <Box sx={{ mt: 6 }} component="form" noValidate autoComplete="off">
       <FormControl variant="standard">
@@ -49,19 +49,21 @@ const LoginForm = () => {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-simple">Password</InputLabel>
         <Input
+          // style={{ backgroundColor: '#fffde7' }}
           required
           id="password"
           type="password"
           value={values.password}
-          onChange={handleChange('email')}
+          onChange={handleChange('password')}
         />
       </FormControl>
       <legend color="red">{values.error}</legend>
       <p>
         <br></br>
+        <br></br>
       </p>
       <Button
-        color="primary"
+        color="success"
         variant="outlined"
         type="submit"
         onClick={handleSubmit}

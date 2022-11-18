@@ -5,12 +5,10 @@ import TextField from '@mui/material/TextField';
 import '../App.css';
 import { AuthContext } from '../Context/authContext.js';
 import { useNavigate } from 'react-router-dom';
-import FilledInput from '@mui/material/FilledInput';
+
 import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
 
 const RegisterForm = () => {
   const [values, setValues] = useState({

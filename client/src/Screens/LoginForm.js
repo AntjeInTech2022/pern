@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
 import '../App.css';
 import { AuthContext } from '../Context/authContext.js';
 import { useNavigate } from 'react-router-dom';
@@ -32,25 +34,28 @@ const LoginForm = () => {
 
   return (
     <Box sx={{ mt: 6 }} component="form" noValidate autoComplete="off">
-      <TextField
-        label="Email"
-        id="email"
-        type="email"
-        required
-        onChange={handleChange('email')}
-        value={values.email}
-      />
+      <FormControl variant="standard">
+        <InputLabel htmlFor="component-simple">Email</InputLabel>
+        <Input
+          required
+          id="email"
+          value={values.email}
+          onChange={handleChange('email')}
+        />
+      </FormControl>
       <p>
         <br></br>
       </p>
-      <TextField
-        id="password"
-        label="Password"
-        type="password"
-        required
-        onChange={handleChange('password')}
-        value={values.password}
-      />
+      <FormControl variant="standard">
+        <InputLabel htmlFor="component-simple">Password</InputLabel>
+        <Input
+          required
+          id="password"
+          type="password"
+          value={values.password}
+          onChange={handleChange('email')}
+        />
+      </FormControl>
       <legend color="red">{values.error}</legend>
       <p>
         <br></br>

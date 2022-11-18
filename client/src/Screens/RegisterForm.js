@@ -85,12 +85,14 @@ const RegisterForm = () => {
           required
         />
       </FormControl>
-      <legend color="red">{values.error}</legend>
+
+      {/* <legend color="red">{values.error}</legend> */}
       <p>
+        <br></br>
         <br></br>
       </p>
       <Button
-        color="primary"
+        color="success"
         variant="outlined"
         type="submit"
         onClick={handleSubmit}

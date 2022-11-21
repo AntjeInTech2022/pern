@@ -24,14 +24,6 @@ app.listen(5000, () => {
   console.log("Sever is now listening at port 5000");
 });
 
-//routes
-// app.use("/api", router);
-// app.use("/auth", router);
 app.use("/api/users", router);
-// app.use("/private", router1);
-// app.use("/private", router2);
-
-// register and login routes
-// app.use("/authentication", require("./routes/jwtAuth"));
 
 export default app;

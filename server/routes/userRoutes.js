@@ -27,5 +27,8 @@ router.post("/login", validInfo, Login);
 
 // PRIVATE ROUTE
 router.get("/profile", authMiddleware, getProfile);
+// note on testing in Postman:
+// copypaste token from login
+// Authorization Type: Bearer Token
 
 export default router;

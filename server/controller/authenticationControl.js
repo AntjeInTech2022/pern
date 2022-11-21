@@ -17,29 +17,30 @@ const Register = async (req, res) => {
         error: "User email already exists. No need to register again.",
         success: false,
       });
+    } else {
+      // 3. bcrypt the user password
+      // npm i bcrypt (https://www.npmjs.com/package/bcrypt)
+      // const bcrypt = require("bcrypt");
+      const saltRounds = 10;
+      const salt = await bcrypt.genSalt(saltRounds);
+
+      const bcryptPassword = await bcrypt.hash(password, salt);
+      // 4. add new user to database table 'users'
+      const newUser = await pool.query(
+        "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
+        [name, email, bcryptPassword]
+      );
+
+      // 5. generate jwt token
+      // npm install dotenv
+      const token = jwtGenerator(newUser.rows[0].pid);
+      res.status(200).json({ user: newUser.rows[0], token, success: true });
+      // res.status(200).send({
+      //   success: true,
+      //   name: user.name,
+      //   jwt: token,
+      // });
     }
-    // 3. bcrypt the user password
-    // npm i bcrypt (https://www.npmjs.com/package/bcrypt)
-    // const bcrypt = require("bcrypt");
-    const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
-
-    const bcryptPassword = await bcrypt.hash(password, salt);
-    // 4. add new user to database table 'users'
-    const newUser = await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
-      [name, email, bcryptPassword]
-    );
-
-    // 5. generate jwt token
-    // npm install dotenv
-    const token = jwtGenerator(newUser.rows[0].pid);
-    res.json({ user: newUser.rows[0], token });
-    res.status(200).send({
-      success: true,
-      name: user.name,
-      jwt: token,
-    });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({
@@ -104,11 +105,7 @@ const Login = async (req, res) => {
       user.rows[0].user_password
     );
     console.log("validPassword", validPassword);
-    res.status(200).json({
-      success: true,
-      name: user.name,
-      token: token,
-    });
+
     if (!validPassword) {
       return res.status(400).json({
         error: "Enter correct password!",
@@ -118,7 +115,7 @@ const Login = async (req, res) => {
 
     // 4. give them the jwt token
     const token = jwtGenerator(user.rows[0].pid);
-    res.json({ token, user: user.rows[0] });
+    res.json({ token, user: user.rows[0], success: true });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({
@@ -128,6 +125,7 @@ const Login = async (req, res) => {
   }
 };
 
+/// PRIVATE ROUTE
 const getProfile = async (req, res) => {
   console.log("req.payload >>>>", req.payload);
 

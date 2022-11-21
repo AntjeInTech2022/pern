@@ -1,6 +1,11 @@
 import express from "express";
+import userRoutes from "./routes/userRoutes.js";
+// import studentsRoutes from "./routes/studentsRoutes.js";
 import router from "./routes/userRoutes.js";
 import cors from "cors";
+import passport from "passport";
+import * as dotenv from "dotenv";
+import { passportConfig } from "./middleware/passport.js";
 
 // create express  app
 const app = express();
@@ -18,12 +23,16 @@ app.use(
 // router.get("/test", (req, res) => {
 //   res.send({ msg: "Test route is working!" });
 // });
+app.use(passport.initialize());
+passportConfig(passport);
 
 // define the port of our server
 app.listen(5000, () => {
   console.log("Sever is now listening at port 5000");
 });
 
-app.use("/api/users", router);
+//using the routes for a specific api
+app.use("/api/users", userRoutes);
+// app.use("/api/students", studentsRoutes);
 
 export default app;

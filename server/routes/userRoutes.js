@@ -8,12 +8,14 @@ import {
 } from "../controller/authenticationControl.js";
 
 import validInfo from "../middleware/validInfo.js";
-import { authMiddleware } from "../middleware/authMiddleware.js";
+import { jwtAuth } from "../middleware/passport.js";
+// import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 // GET ALL USERS
-router.get("/", getAllUsers);
+router.get("/", jwtAuth, getAllUsers);
 
+router.get("/profile", jwtAuth, getProfile);
 // GET SPECIFIC USER
 router.get("/:pid", getUserById);
 
@@ -26,7 +28,9 @@ router.post("/register", validInfo, Register);
 router.post("/login", validInfo, Login);
 
 // PRIVATE ROUTE
-router.get("/profile", authMiddleware, getProfile);
+// router.get("/profile", jwtAuth, getProfile);
+// router.get("/profile/userProfile", jwtAuth, getProfile);
+// router.get("/profile", authMiddleware, getProfile);
 // note on testing in Postman:
 // copypaste token from login
 // Authorization Type: Bearer Token

@@ -127,9 +127,9 @@ const Login = async (req, res) => {
 
 /// PRIVATE ROUTE
 const getProfile = async (req, res) => {
-  console.log("req.payload >>>>", req.payload);
-
-  res.status(201).json(`authorized request for ${req.payload.email}`);
+  // console.log("user >>>>", user);
+  console.log("req>>>>", req.user);
+  res.status(201).json(`authorized request for ${req.user.user_name}`);
 };
 
 export { Register, Login, getAllUsers, getUserById, getProfile };

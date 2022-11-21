@@ -15,7 +15,9 @@ const router = express.Router();
 // GET ALL USERS
 router.get("/", jwtAuth, getAllUsers);
 
+// PRIVATE ROUTE
 router.get("/profile", jwtAuth, getProfile);
+
 // GET SPECIFIC USER
 router.get("/:pid", getUserById);
 
@@ -27,7 +29,6 @@ router.post("/register", validInfo, Register);
 // router.post("/login", Login);
 router.post("/login", validInfo, Login);
 
-// PRIVATE ROUTE
 // router.get("/profile", jwtAuth, getProfile);
 // router.get("/profile/userProfile", jwtAuth, getProfile);
 // router.get("/profile", authMiddleware, getProfile);

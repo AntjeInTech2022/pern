@@ -13,7 +13,10 @@ const Register = async (req, res) => {
     ]);
     // if user exists throw error:
     if (user.rows.length !== 0) {
-      return res.status(401).send("User email already exists");
+      return res.status(400).json({
+        error: "User email already exists. No need to register again.",
+        success: false,
+      });
     }
     // 3. bcrypt the user password
     // npm i bcrypt (https://www.npmjs.com/package/bcrypt)
@@ -32,9 +35,17 @@ const Register = async (req, res) => {
     // npm install dotenv
     const token = jwtGenerator(newUser.rows[0].pid);
     res.json({ user: newUser.rows[0], token });
+    res.status(200).send({
+      success: true,
+      name: user.name,
+      jwt: token,
+    });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Server error registration");
+    res.status(500).json({
+      error: "Database error while registering user!", //Database connection error
+      success: false,
+    });
   }
 };
 
@@ -82,52 +93,45 @@ const Login = async (req, res) => {
     ]);
     // if user doesnt exist throw error:
     if (user.rows.length === 0) {
-      return res
-        .status(401)
-        .send("User doesn't exists / PW or email is incorrect");
-      // .json("User doesn't exists / PW or email is incorrect");
+      return res.status(400).json({
+        error: "User is not registered. Sign Up first",
+        success: false,
+      });
     }
     // 3. check if incoming password is the same as the db pw
     const validPassword = await bcrypt.compare(
       password,
       user.rows[0].user_password
     );
-    console.log("validPassword", validPassword); // working
+    console.log("validPassword", validPassword);
+    res.status(200).json({
+      success: true,
+      name: user.name,
+      token: token,
+    });
     if (!validPassword) {
-      return res.status(401).json("PW or email is incorrect");
+      return res.status(400).json({
+        error: "Enter correct password!",
+        success: false,
+      });
     }
+
     // 4. give them the jwt token
     const token = jwtGenerator(user.rows[0].pid);
     res.json({ token, user: user.rows[0] });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Server error login");
+    res.status(500).json({
+      error: "Database error occurred while signing in!", //Database connection error
+      success: false,
+    });
   }
 };
 
-// VERIFICATION table: users
-const Verification = async (req, res) => {
-  try {
-    res.json(true);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server error");
-  }
+const getProfile = async (req, res) => {
+  console.log("req.payload >>>>", req.payload);
+
+  res.status(201).json(`authorized request for ${req.payload.email}`);
 };
 
-// PRIVATE ROUTE
-// const Private = async (req, res) => {
-//   try {
-//     //req.user has the payload
-//     // res.json(req.user);
-//     const user = await pool.query("SELECT * FROM users WHERE pid = $1", [
-//       req.user,
-//     ]);
-//     res.json(user.rows[0]);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send("Server Error");
-//   }
-// };
-
-export { Register, Login, Verification, getAllUsers, getUserById };
+export { Register, Login, getAllUsers, getUserById, getProfile };

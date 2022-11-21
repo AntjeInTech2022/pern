@@ -52,24 +52,27 @@ function App() {
                 <Route path="/" element={<LandingScreen />}></Route>
                 <Route path="/list" element={<ListScreen />}></Route>
                 <Route path="/details/:id" element={<DetailsScreen />}></Route>
-                {/* {!user ? ( */}
                 <Route path="/login" element={<Login />}></Route>
-                {/* ) : (
+                <Route path="/register" element={<Register />}></Route>
+                <Route path="/profile" element={<ProfileScreen />}></Route>
+                {/* {!user ? (
+                  <Route path="/login" element={<Login />}></Route>
+                ) : (
                   <Route path="/profile" element={<ProfileScreen />}></Route>
                 )}
                 ;
-                {!user ? ( */}
-                <Route path="/register" element={<Register />}></Route>
-                {/* ) : (
+                {!user ? (
+                  <Route path="/register" element={<Register />}></Route>
+                ) : (
                   <Route path="/login" element={<Login />}></Route>
                 )}
-                ; */}
-                {/* {user ? ( */}
-                <Route path="/profile" element={<ProfileScreen />}></Route>
-                {/* ) : (
+                ;
+                {user ? (
+                  <Route path="/profile" element={<ProfileScreen />}></Route>
+                ) : (
                   <Route path="/login" element={<Login />}></Route>
-                )}
-                ; */}
+                )} */}
+                ;
               </Routes>
               {/* <AppFooter /> */}
             </UsersContextProvider>

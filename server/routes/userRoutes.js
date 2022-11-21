@@ -4,11 +4,11 @@ import {
   Login,
   getAllUsers,
   getUserById,
-  // Verification,
-  // from "../controller/userController.js";
+  getProfile,
 } from "../controller/authenticationControl.js";
+
 import validInfo from "../middleware/validInfo.js";
-import Authorization from "../middleware/authorization.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 // GET ALL USERS
@@ -25,7 +25,7 @@ router.post("/register", validInfo, Register);
 // router.post("/login", Login);
 router.post("/login", validInfo, Login);
 
-// VERIFICATION
-// router.get("/verification", Authorization, Verification);
+// PRIVATE ROUTE
+router.get("/profile", authMiddleware, getProfile);
 
 export default router;

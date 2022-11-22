@@ -21,10 +21,11 @@ import Menu from '@mui/material/Menu';
 import { AuthContext } from '../../Context/authContext';
 
 export default function MenuAppBar() {
-  const { user } = useContext(AuthContext);
+  const { user, login, setUser } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
+  // GUEST LOGIN
   // const handleChange = (event) => {
   //   setUser(event.target.checked);
   // };
@@ -40,16 +41,20 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <FormGroup>
-        {/* <FormControlLabel
+        <FormControlLabel
           control={
             <Switch
-              checked={auth}
-              onChange={handleChange}
+              // checked={setUser({
+              //   password: 'boolprop_testCheatesEnabled_falseaaaaaTrue1234567',
+              //   email: 'kristina@stester1234567.ea',
+              //   error: '',
+              // })}
+              // onChange={handleChange}
               aria-label="login switch"
             />
           }
-          label={auth ? 'Logout' : 'Login'}
-        /> */}
+          label={user ? 'Logout as guest' : 'Login as guest'}
+        />
       </FormGroup>
       <AppBar position="static">
         <Toolbar>

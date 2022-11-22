@@ -12,7 +12,7 @@ export const UsersContextProvider = (props) => {
   const getUsers = async () => {
     try {
       // fetch makes a get request by default
-      const response = await fetch(`${backendUrl}/api/users/`);
+      const response = await fetch(`${backendUrl}/api/users/all`);
       const jsonData = await response.json();
       // console.log(jsonData);
       setUsers(jsonData);

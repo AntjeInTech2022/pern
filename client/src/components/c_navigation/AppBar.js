@@ -21,17 +21,24 @@ import Menu from '@mui/material/Menu';
 import { AuthContext } from '../../Context/authContext';
 
 export default function MenuAppBar() {
-  const { user, login, setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
+
+  const handleLogOut = (event) => {
+    setUser(null);
+    //  localStorage.setItem('jwt', token);
+  };
 
   // GUEST LOGIN
   const handleChange = (event) => {
     setUser({
-      password: 'boolprop_testCheatesEnabled_falseaaaaaTrue1234567',
-      email: 'kristina@stester1234567.ea',
+      password: '123456',
+      email: 'guest@testing.com',
       error: '',
     });
+    navigate('/list');
+    console.log('a guest user has signed in');
   };
 
   const handleMenu = (event) => {
@@ -44,12 +51,17 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch onChange={handleChange} aria-label="login switch" />}
-          label={user ? 'Logout as guest' : 'Login as guest'}
-        />
-      </FormGroup>
+      {!user && (
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch onChange={handleChange} aria-label="login switch" />
+            }
+            label={user ? 'Logout as guest' : 'Login as guest'}
+          />
+        </FormGroup>
+      )}
+
       <AppBar position="static">
         <Toolbar>
           <Button color="inherit" onClick={() => navigate('/list')}>
@@ -58,23 +70,7 @@ export default function MenuAppBar() {
           <Button color="inherit" onClick={() => navigate('/list')}>
             Bee keepers
           </Button>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
-          <Typography
-            // variant="h4"
-            // component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            {/* <img src="BeeLogo" /> */}
-            {/* <HiveIcon /> */}
-
+          <Typography sx={{ flexGrow: 1 }}>
             <Link
               variant="h6"
               underline="none"
@@ -90,10 +86,7 @@ export default function MenuAppBar() {
               Login
             </Button>
           ) : (
-            <Button
-              color="inherit"
-              // onClick={() => navigate('/login')}
-            >
+            <Button color="inherit" onClick={handleLogOut}>
               Sign out
             </Button>
           )}

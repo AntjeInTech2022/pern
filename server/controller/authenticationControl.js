@@ -35,11 +35,6 @@ const Register = async (req, res) => {
       // npm install dotenv
       const token = jwtGenerator(newUser.rows[0].pid);
       res.status(200).json({ user: newUser.rows[0], token, success: true });
-      // res.status(200).send({
-      //   success: true,
-      //   name: user.name,
-      //   jwt: token,
-      // });
     }
   } catch (error) {
     console.error(error.message);
@@ -132,4 +127,27 @@ const getProfile = async (req, res) => {
   res.status(201).json(`authorized request for ${req.user.user_name}`);
 };
 
-export { Register, Login, getAllUsers, getUserById, getProfile };
+//create a profile_description
+
+const updateProfileDescription = async (req, res) => {
+  try {
+    const { profile_description } = req.body;
+    const updateProfileTxt = await pool.query(
+      "INSERT INTO users (pid, profile_description) VALUES($1, $2) RETURNING *",
+      [req.user.pid, profile_description]
+    );
+
+    res.json(updateProfileTxt.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+export {
+  Register,
+  Login,
+  getAllUsers,
+  getUserById,
+  getProfile,
+  updateProfileDescription,
+};

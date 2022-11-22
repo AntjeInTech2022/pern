@@ -38,7 +38,7 @@ function ProfileScreen() {
               {/* User Name */}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {user.profile_header}
+              {user.user_email}
               {/* Profile Header */}
             </Typography>
           </CardContent>

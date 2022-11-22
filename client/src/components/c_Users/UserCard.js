@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 // https.youtube.com/watch?v=ldYcgPKEZC8&t=1106s
 
 function UserCard({ user }) {
-  console.log('user', user);
+  // console.log('user', user);
 
   return (
     <Card sx={{ minWidth: 275 }}>

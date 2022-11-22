@@ -10,6 +10,14 @@ CREATE TABLE users(
     PRIMARY KEY(pid)
 );
 
+CREATE TABLE messages(
+    messg_id SERIAL,
+    pid UUID,
+    mssg_text VARCHAR(255) NOT NULL,
+   PRIMARY KEY (mssg_id),
+   FOREIGN KEY REFERENCES users(pid)
+);
+
     
 -- insert fake users
 -- note: it has to be in single quotes ''

@@ -26,9 +26,13 @@ export default function MenuAppBar() {
   const navigate = useNavigate();
 
   // GUEST LOGIN
-  // const handleChange = (event) => {
-  //   setUser(event.target.checked);
-  // };
+  const handleChange = (event) => {
+    setUser({
+      password: 'boolprop_testCheatesEnabled_falseaaaaaTrue1234567',
+      email: 'kristina@stester1234567.ea',
+      error: '',
+    });
+  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,17 +46,7 @@ export default function MenuAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <FormGroup>
         <FormControlLabel
-          control={
-            <Switch
-              // checked={setUser({
-              //   password: 'boolprop_testCheatesEnabled_falseaaaaaTrue1234567',
-              //   email: 'kristina@stester1234567.ea',
-              //   error: '',
-              // })}
-              // onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
+          control={<Switch onChange={handleChange} aria-label="login switch" />}
           label={user ? 'Logout as guest' : 'Login as guest'}
         />
       </FormGroup>

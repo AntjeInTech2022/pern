@@ -34,12 +34,12 @@ function ProfileScreen() {
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {/* {user.user_name} */}
-              User Name
+              {user.user_name}
+              {/* User Name */}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {/* {user.profile_header}  */}
-              Profile Header
+              {user.profile_header}
+              {/* Profile Header */}
             </Typography>
           </CardContent>
           <CardActions>

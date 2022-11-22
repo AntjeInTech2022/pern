@@ -4,7 +4,6 @@ import BeeLogo from '../../Images/bee_line.png';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
-
 import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,15 +17,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+//CONTEXT
+import { AuthContext } from '../../Context/authContext';
 
 export default function MenuAppBar() {
-  const [user, setUser] = useState();
+  const { user } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setUser(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setUser(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -79,15 +80,22 @@ export default function MenuAppBar() {
               variant="h6"
               underline="none"
               color="inherit"
-              href="/"
+              onClick={() => navigate('/')}
               sx={{ fontSize: 24 }}
             >
               BuZz
             </Link>
           </Typography>
-          {!user && (
+          {!user ? (
             <Button color="inherit" onClick={() => navigate('/login')}>
               Login
+            </Button>
+          ) : (
+            <Button
+              color="inherit"
+              // onClick={() => navigate('/login')}
+            >
+              Sign out
             </Button>
           )}
           {!user && (

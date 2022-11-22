@@ -13,10 +13,10 @@ import { jwtAuth } from "../middleware/passport.js";
 
 const router = express.Router();
 // GET ALL USERS
-router.get("/", jwtAuth, getAllUsers);
+router.get("/", getAllUsers);
 
 // PRIVATE ROUTE
-router.get("/profile", jwtAuth, getProfile);
+router.get("/profile", getProfile);
 
 // GET SPECIFIC USER
 router.get("/:pid", getUserById);

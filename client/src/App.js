@@ -18,6 +18,9 @@ import Register from './Screens/Register/RegisterScreen';
 import ResponsiveAppBar from './components/c_navigation/AppBar';
 // import AppFooter from './components/c_footer/AppFooter';
 
+// UTILITIES
+import ProtectedRoute from './utilities/protectedRoute';
+
 // MUI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -50,29 +53,32 @@ function App() {
               <ResponsiveAppBar />
               <Routes>
                 <Route path="/" element={<LandingScreen />}></Route>
-                <Route path="/list" element={<ListScreen />}></Route>
-                <Route path="/details/:id" element={<DetailsScreen />}></Route>
+                <Route
+                  path="/list"
+                  element={
+                    <ProtectedRoute>
+                      <ListScreen />
+                    </ProtectedRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/details/:id"
+                  element={
+                    <ProtectedRoute>
+                      <DetailsScreen />
+                    </ProtectedRoute>
+                  }
+                ></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/register" element={<Register />}></Route>
-                <Route path="/profile" element={<ProfileScreen />}></Route>
-                {/* {!user ? (
-                  <Route path="/login" element={<Login />}></Route>
-                ) : (
-                  <Route path="/profile" element={<ProfileScreen />}></Route>
-                )}
-                ;
-                {!user ? (
-                  <Route path="/register" element={<Register />}></Route>
-                ) : (
-                  <Route path="/login" element={<Login />}></Route>
-                )}
-                ;
-                {user ? (
-                  <Route path="/profile" element={<ProfileScreen />}></Route>
-                ) : (
-                  <Route path="/login" element={<Login />}></Route>
-                )} */}
-                ;
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <ProfileScreen />
+                    </ProtectedRoute>
+                  }
+                ></Route>
               </Routes>
               {/* <AppFooter /> */}
             </UsersContextProvider>

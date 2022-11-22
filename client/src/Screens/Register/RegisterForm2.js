@@ -39,10 +39,11 @@ const RegisterForm2 = () => {
         values.password
       );
       if (success) {
-        toast.success('Registration successful!');
+        toast.success('🐝  Registration successful!');
         navigate('/profile');
       } else {
         error && setValues({ ...values, error: error });
+        // toast.error(values.error);
         toast.error('Registration failed');
       }
     } catch (e) {

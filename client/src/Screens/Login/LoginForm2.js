@@ -40,7 +40,7 @@ const LoginForm2 = () => {
 
     const { success, error } = await login(values.email, values.password);
     if (success) {
-      toast.success('You are signed in now!');
+      toast.success('🐝 You are signed in now!');
       navigate('/profile');
     } else {
       error && setValues({ ...values, error: error });

@@ -31,10 +31,10 @@ export default function MenuAppBar() {
     try {
       // frontend logout:
       setUser(null);
-      // 2DO: backend logout
-      // localStorage.removeItem('jwt token');
+      // backend logout:
+      localStorage.removeItem('jwt token');
       // setAuth(false);
-      toast.success('Sign out successfully');
+      toast.success('🐝 Sign out successfully');
     } catch (error) {
       console.error(error.message);
     }
@@ -47,6 +47,7 @@ export default function MenuAppBar() {
       email: 'guest@testing.com',
       error: '',
     });
+    toast.success('🐝 You are signed in as a guest!');
     navigate('/list');
     console.log('a guest user has signed in');
   };

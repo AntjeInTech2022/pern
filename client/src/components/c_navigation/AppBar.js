@@ -17,6 +17,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //CONTEXT
 import { AuthContext } from '../../Context/authContext';
 
@@ -27,10 +29,12 @@ export default function MenuAppBar() {
 
   const handleLogOut = (event) => {
     try {
+      // frontend logout:
       setUser(null);
+      // 2DO: backend logout
       // localStorage.removeItem('jwt token');
       // setAuth(false);
-      // toast.success('Sign out successfully');
+      toast.success('Sign out successfully');
     } catch (error) {
       console.error(error.message);
     }

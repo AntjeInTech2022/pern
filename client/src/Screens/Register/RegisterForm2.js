@@ -9,6 +9,9 @@ import {
 } from '@mui/material';
 import { AuthContext } from '../../Context/authContext.js';
 import { useNavigate } from 'react-router-dom';
+// TOASTIFY
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterForm2 = () => {
   const [values, setValues] = useState({
@@ -36,9 +39,11 @@ const RegisterForm2 = () => {
         values.password
       );
       if (success) {
+        toast.success('Registration successful!');
         navigate('/profile');
       } else {
         error && setValues({ ...values, error: error });
+        toast.error('Registration failed');
       }
     } catch (e) {
       setValues({ ...values, error: 'e.message' });

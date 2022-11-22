@@ -41,10 +41,10 @@ const LoginForm2 = () => {
     const { success, error } = await login(values.email, values.password);
     if (success) {
       toast.success('You are signed in now!');
-      // navigate('/profile');
+      navigate('/profile');
     } else {
       error && setValues({ ...values, error: error });
-      toast.error('Login failed');
+      toast.error(values.error);
     }
   };
   console.log('values', values);

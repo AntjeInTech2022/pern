@@ -2,8 +2,10 @@ import HiveIcon from '@mui/icons-material/Hive';
 import avatarPic from '../../Images/user.png';
 import BeeLogo from '../../Images/bee_line.png';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import Link from '@mui/material/Link';
 
-import * as React from 'react';
+import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,11 +20,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
 export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [user, setUser] = useState();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
-    setAuth(event.target.checked);
+    setUser(event.target.checked);
   };
 
   const handleMenu = (event) => {
@@ -36,7 +39,7 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <FormGroup>
-        <FormControlLabel
+        {/* <FormControlLabel
           control={
             <Switch
               checked={auth}
@@ -45,12 +48,16 @@ export default function MenuAppBar() {
             />
           }
           label={auth ? 'Logout' : 'Login'}
-        />
+        /> */}
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <Button color="inherit">Find a host</Button>
-          <Button color="inherit">Bee keepers</Button>
+          <Button color="inherit" onClick={() => navigate('/list')}>
+            Find a host
+          </Button>
+          <Button color="inherit" onClick={() => navigate('/list')}>
+            Bee keepers
+          </Button>
           {/* <IconButton
             size="large"
             edge="start"
@@ -61,16 +68,34 @@ export default function MenuAppBar() {
             <MenuIcon />
           </IconButton> */}
           <Typography
-            variant="h4"
+            // variant="h4"
             // component="div"
             sx={{ flexGrow: 1 }}
           >
+            {/* <img src="BeeLogo" /> */}
             {/* <HiveIcon /> */}
-            BuZz
+
+            <Link
+              variant="h6"
+              underline="none"
+              color="inherit"
+              href="/"
+              sx={{ fontSize: 24 }}
+            >
+              BuZz
+            </Link>
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Register</Button>
-          {auth && (
+          {!user && (
+            <Button color="inherit" onClick={() => navigate('/login')}>
+              Login
+            </Button>
+          )}
+          {!user && (
+            <Button color="inherit" onClick={() => navigate('/register')}>
+              Register
+            </Button>
+          )}
+          {user && (
             <div>
               <IconButton
                 size="large"
@@ -97,8 +122,12 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={() => navigate('/profile')}>
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={() => navigate('/profile')}>
+                  My account
+                </MenuItem>
               </Menu>
             </div>
           )}

@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 // https://codesandbox.io/s/simple-react-login-form-using-material-ui-with-custom-theme-lwic5?file=/src/App.js:163-1287
 
 const LoginForm2 = () => {
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = useState(true);
 
   const handleChange2 = (event) => {
     setChecked(event.target.checked);

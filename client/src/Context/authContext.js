@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 
 // 3. Create provider
 export const AuthProvider = (props) => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
   //REGISTER
   const register = async (name, email, password) => {

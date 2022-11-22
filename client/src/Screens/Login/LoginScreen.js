@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import AppForm from '../../components/c_form/AppForm';
 import Typography from '../../components/Typography';
 import Link from '@mui/material/Link';
-import LoginForm from './LoginForm.js';
+
 import LoginForm2 from './LoginForm2';
 
 const Login = () => {

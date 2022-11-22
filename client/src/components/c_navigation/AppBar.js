@@ -26,8 +26,14 @@ export default function MenuAppBar() {
   const navigate = useNavigate();
 
   const handleLogOut = (event) => {
-    setUser(null);
-    //  localStorage.setItem('jwt', token);
+    try {
+      setUser(null);
+      // localStorage.removeItem('jwt token');
+      // setAuth(false);
+      // toast.success('Sign out successfully');
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   // GUEST LOGIN

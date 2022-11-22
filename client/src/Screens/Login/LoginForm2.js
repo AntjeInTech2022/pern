@@ -9,6 +9,9 @@ import {
 } from '@mui/material';
 import { AuthContext } from '../../Context/authContext.js';
 import { useNavigate } from 'react-router-dom';
+// TOASTIFY
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // input form adapted from:
 // https://codesandbox.io/s/simple-react-login-form-using-material-ui-with-custom-theme-lwic5?file=/src/App.js:163-1287
@@ -37,9 +40,11 @@ const LoginForm2 = () => {
 
     const { success, error } = await login(values.email, values.password);
     if (success) {
-      navigate('/profile');
+      toast.success('You are signed in now!');
+      // navigate('/profile');
     } else {
       error && setValues({ ...values, error: error });
+      toast.error('Login failed');
     }
   };
   console.log('values', values);

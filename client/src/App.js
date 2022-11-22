@@ -24,6 +24,10 @@ import ProtectedRoute from './utilities/protectedRoute';
 // MUI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// TOAST
+// https://fkhadra.github.io/react-toastify/installation
+import { ToastContainer } from 'react-toastify';
+
 // THEME
 const customTheme = createTheme({
   palette: {
@@ -46,6 +50,7 @@ function App() {
   // const { user } = useContext(AuthContext);
   return (
     <div className="App">
+      <ToastContainer />
       <ThemeProvider theme={customTheme}>
         <Router>
           <AuthProvider>

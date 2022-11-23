@@ -4,12 +4,13 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import { AuthContext } from '../Context/authContext';
+import { AuthContext } from '../../Context/authContext';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { Button } from '@mui/material';
 
 //COMPONENTS
-import ProfilePictureCard from '../components/c_Users/ProfileCard';
+import ProfileCard from './ProfileCard';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -32,29 +33,7 @@ function ProfileScreen() {
         <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
           👋 Hello '{user ? user.user_name : 'stranger'}'
         </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <ProfilePictureCard user={user} />
-          </Grid>
-          <Grid item xs={6}>
-            <Item>Your profile description</Item>
-          </Grid>
-          <Grid item xs>
-            <Item>Your profile header</Item>
-          </Grid>
-        </Grid>
-
-        <p>
-          <br></br>
-          <br></br>
-        </p>
-        <Box sx={{ width: '100%' }}>
-          <Stack spacing={2}>
-            <Item>Item 1</Item>
-            <Item>Item 2</Item>
-            <Item>Item 3</Item>
-          </Stack>
-        </Box>
+        <ProfileCard user={user} />
       </Container>
     </>
   );

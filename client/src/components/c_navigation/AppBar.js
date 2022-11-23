@@ -62,7 +62,7 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {!user && (
+      {/* {!user && (
         <FormGroup>
           <FormControlLabel
             control={
@@ -71,7 +71,7 @@ export default function MenuAppBar() {
             label={user ? 'Logout as guest' : 'Login as guest'}
           />
         </FormGroup>
-      )}
+      )} */}
 
       <AppBar position="static">
         <Toolbar>

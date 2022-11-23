@@ -43,8 +43,8 @@ const RegisterForm2 = () => {
         navigate('/profile');
       } else {
         error && setValues({ ...values, error: error });
-        // toast.error(values.error);
-        toast.error('Registration failed');
+
+        toast.error(' 🪲   Registration failed');
       }
     } catch (e) {
       setValues({ ...values, error: 'e.message' });

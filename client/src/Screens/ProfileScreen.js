@@ -1,60 +1,62 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import React, { useContext } from 'react';
 import Typography from '@mui/material/Typography';
-// import CreateNewUser from '../../archiv/createNewUser';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-
-// import EditUserBtn from '../components/c_Users/editUserBtn';
-
 import { AuthContext } from '../Context/authContext';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
-//CONTEXT
-// import { UsersContext } from '../Context/userContext';
+//COMPONENTS
+import ProfilePictureCard from '../components/c_Users/ProfileCard';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 function ProfileScreen() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
-      <h1>ProfileScreen</h1>
-      <p>Hello {user ? user.user_name : 'stranger'}</p>
+    <>
       <p>
         <br></br>
         <br></br>
       </p>
-      {/* <CreateNewUser /> */}
-      <p>
-        <br></br>
-        <br></br>
-      </p>
-      <Container fixed>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {user.user_name}
-              {/* User Name */}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {user.user_email}
-              {/* Profile Header */}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            {/* <EditUserBtn user={user} /> */}
-            <Button
-              variant="contained"
-              size="small"
-              // onClick={(deleteUser) => user.pid}
-            >
-              Delete account
-            </Button>
-          </CardActions>
-        </Card>
+      <Container>
+        <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
+          👋 Hello '{user ? user.user_name : 'stranger'}'
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <ProfilePictureCard user={user} />
+          </Grid>
+          <Grid item xs={6}>
+            <Item>Your profile description</Item>
+          </Grid>
+          <Grid item xs>
+            <Item>Your profile header</Item>
+          </Grid>
+        </Grid>
+
+        <p>
+          <br></br>
+          <br></br>
+        </p>
+        <Box sx={{ width: '100%' }}>
+          <Stack spacing={2}>
+            <Item>Item 1</Item>
+            <Item>Item 2</Item>
+            <Item>Item 3</Item>
+          </Stack>
+        </Box>
       </Container>
-    </div>
+    </>
   );
 }
 

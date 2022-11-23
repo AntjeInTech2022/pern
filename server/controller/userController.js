@@ -129,38 +129,21 @@ const getProfile = async (req, res) => {
 
 //create a profile_description
 
-const updateProfileDescription1 = async (req, res) => {
+const updateProfileDescription = async (req, res) => {
   try {
-    const { pid } = req.params;
+    // console.log("updateProfileDescription1 req.body", req.body);
+    const { pid } = req.user;
+    // console.log("req.user", pid);
     const { profile_description } = req.body;
     const updateProfileTxt = await pool.query(
       "UPDATE users SET profile_description= $1 WHERE pid = $2",
       [profile_description, pid]
     );
 
-    res.json("Profile description v1 is updated");
+    res.json("Profile description is updated");
     // res.json(updateProfileTxt.rows[0]);
   } catch (error) {
     console.log(error.message);
-  }
-};
-
-const updateProfileDescription2 = async (req, res) => {
-  try {
-    const { profile_description } = req.body;
-    const updateProfileTxt = await pool.query(
-      // syntax error at or near "WHERE"
-      // "INSERT INTO users (profile_description) VALUES($1) WHERE pid =$2 RETURNING *",
-      // "INSERT INTO users (profile_description) VALUES($1) WHERE pid =($2)",
-      // "INSERT INTO users (profile_description) WHERE pid =$1 VALUES($2) ",
-      "UPDATE users SET profile_description= $1 WHERE pid = $2",
-      [profile_description, req.user.pid]
-    );
-
-    res.json("Profile description v2 is updated");
-    // res.json(updateProfileTxt.rows[0]);
-  } catch (err) {
-    console.error(err.message);
   }
 };
 
@@ -170,6 +153,5 @@ export {
   getAllUsers,
   getUserById,
   getProfile,
-  updateProfileDescription1,
-  updateProfileDescription2,
+  updateProfileDescription,
 };

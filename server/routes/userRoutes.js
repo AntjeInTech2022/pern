@@ -5,9 +5,8 @@ import {
   getAllUsers,
   getUserById,
   getProfile,
-  updateProfileDescription1,
-  updateProfileDescription2,
-} from "../controller/authenticationControl.js";
+  updateProfileDescription,
+} from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
 import { jwtAuth } from "../middleware/passport.js";
@@ -21,8 +20,7 @@ router.get("/all", getAllUsers);
 // PRIVATE ROUTE
 router.get("/profile", jwtAuth, getProfile);
 
-router.put("/update1", jwtAuth, updateProfileDescription1);
-router.put("/update2", jwtAuth, updateProfileDescription2);
+router.put("/updateProfileDesc", jwtAuth, updateProfileDescription);
 
 // GET SPECIFIC USER
 router.get("/:pid", getUserById);

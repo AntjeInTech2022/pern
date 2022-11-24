@@ -4,6 +4,8 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 
 - CSS framework used: MUI
 
+## Demo:
+
 ## Learning goals:
 
 - Learn you how to use Node.js, Express and PostgresSQL

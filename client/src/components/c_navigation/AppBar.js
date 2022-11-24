@@ -32,7 +32,8 @@ export default function MenuAppBar() {
       // frontend logout:
       setUser(null);
       // backend logout:
-      localStorage.removeItem('jwt token');
+      // localStorage.removeItem('jwt token');
+      localStorage.clear();
       // setAuth(false);
       toast.success('🐝 Sign out successfully');
     } catch (error) {

@@ -82,6 +82,7 @@ export default function MenuAppBar() {
           <Button color="inherit" onClick={() => navigate('/list')}>
             Bee keepers
           </Button>
+
           <Typography sx={{ flexGrow: 1 }}>
             <Link
               variant="h6"
@@ -90,6 +91,8 @@ export default function MenuAppBar() {
               onClick={() => navigate('/')}
               sx={{ fontSize: 24 }}
             >
+              {/* <img width="100" height="auto" src={BeeLogo} />
+              <br></br> */}
               BuZz
             </Link>
           </Typography>

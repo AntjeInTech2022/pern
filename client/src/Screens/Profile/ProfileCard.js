@@ -39,20 +39,27 @@ const ProfileCard = ({ user }) => {
   };
   // UPDATE PROFILE
   const { updateProfileHeader } = useContext(AuthContext);
-  const [profile_header, setHeader] = useState(user.profile_header);
 
-  const handleChange = (event) => {
+  const [profile_header, setHeader] = useState(
+    user?.profile_header ? user?.profile_header : ''
+  );
+
+  const handleUpdate = (event) => {
     event.preventDefault();
-    const { success } = updateProfileHeader(user.profile_header);
+    console.log(user);
+    const { success } = updateProfileHeader(profile_header);
+    console.log('success', success)
     if (success) {
       toast.success('🐝 Your profile headline has been updated!');
       setOpen(false);
       setHeader(event.target.value);
     } else {
-      toast.error('Something went wrong. Please contact the customer service');
+      toast.error(
+        'Something went wrong. Please contact the customer service' 
+      );
     }
   };
-
+  console.log(profile_header);
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
@@ -105,13 +112,14 @@ const ProfileCard = ({ user }) => {
                     label="Write new headline here"
                     type="text"
                     fullWidth
+                    onChange={(e) => setHeader(e.target.value)}
                     variant="standard"
                     value={profile_header}
                   />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleChange}>Update</Button>
+                  <Button onClick={handleUpdate}>Update</Button>
                 </DialogActions>
               </Dialog>
             </>

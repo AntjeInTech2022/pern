@@ -40,14 +40,14 @@ const ProfileCard = ({ user }) => {
   // UPDATE PROFILE
   const { updateProfileHeader } = useContext(AuthContext);
 
-  const [profile_header, setHeader] = useState(
+  const [header, setHeader] = useState(
     user?.profile_header ? user?.profile_header : ''
   );
 
   const handleUpdate = (event) => {
     event.preventDefault();
     console.log(user);
-    const { success } = updateProfileHeader(profile_header);
+    const { success } = updateProfileHeader(header) ;
     console.log('success', success)
     if (success) {
       toast.success('🐝 Your profile headline has been updated!');
@@ -59,7 +59,7 @@ const ProfileCard = ({ user }) => {
       );
     }
   };
-  console.log(profile_header);
+  console.log(header);
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
@@ -89,10 +89,9 @@ const ProfileCard = ({ user }) => {
             variant="h5"
             component="div"
           >
-            Your profile headline:
             {user.profile_header !== null
               ? user.profile_header
-              : ' Is empty. Please add a headline to your profile.'}
+              : ' Please add a headline to your profile.'}
             <>
               <Button onClick={handleClickOpen}>Edit</Button>
               {/* <EditProfileDescriptionModal user={user} /> */}
@@ -100,10 +99,9 @@ const ProfileCard = ({ user }) => {
                 <DialogTitle>Profile headline</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    Your profile headline:
                     {user.profile_header !== null
                       ? user.profile_header
-                      : ' Is empty. Please add a headline to your profile.'}
+                      : 'Please add a headline to your profile.'}
                   </DialogContentText>
                   <TextField
                     autoFocus
@@ -114,7 +112,7 @@ const ProfileCard = ({ user }) => {
                     fullWidth
                     onChange={(e) => setHeader(e.target.value)}
                     variant="standard"
-                    value={profile_header}
+                    value={header}
                   />
                 </DialogContent>
                 <DialogActions>
@@ -125,16 +123,9 @@ const ProfileCard = ({ user }) => {
             </>
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            YOUR PROFILE DESCRIPTION: Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-            dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-            dolor sit amet.
+          {user.profile_description !== null
+              ? user.profile_description
+              : ' Please add a profile description.'}
             <Button>Edit</Button>
             {/* {user.profile_description} */}
           </Typography>

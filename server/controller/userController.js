@@ -136,14 +136,19 @@ const updateProfileHeader = async (req, res) => {
     // console.log("req.user", pid);
     const { profile_header } = req.body;
     const updateProfileTxt = await pool.query(
-      "UPDATE users SET profile_description= $1 WHERE pid = $2",
+      "UPDATE users SET profile_header= $1 WHERE pid = $2",
       [profile_header, pid]
     );
 
-    res.json("Profile header is updated");
+    // res.json("Profile header is updated");
     // res.json(updateProfileTxt.rows[0]);
+    res.status(200).json({success: true});
   } catch (error) {
     console.log(error.message);
+    res.status(500).json({
+      error: "Database error", //Database connection error
+      success: false,
+    });
   }
 };
 

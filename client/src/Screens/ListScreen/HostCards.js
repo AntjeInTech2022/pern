@@ -33,7 +33,7 @@ const HostCard = ({ item, index }) => {
             </Avatar>
           }
           title={item.host_name}
-          subheader="September 14, 2016"
+          subheader="Member since March 2020"
         />
         <CardMedia component="img" height="140" src={item.src} alt={item.alt} />
         <CardContent>

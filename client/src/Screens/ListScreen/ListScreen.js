@@ -7,98 +7,53 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { amber } from '@mui/material/colors';
+import Button from '@mui/material/Button';
 
 //COMPONENTS
 import HostCard from './HostCards';
 import UserCard from './UserCard';
 import UserDetails from './DetailsScreen';
-import beePic from '../../Images/bee_line.png';
+import BeeLogo from '../../Images/bee_line.png';
 
 //DUMMY DATA
 import dummyHostData from '../../dummyData/dummyHostData';
 //CONTEXT
 import { UsersContext } from '../../Context/userContext';
 
-//IMAGES
-import pic1 from '../../Images/pexels-anete-lusina-5247969.jpg';
-import pic2 from '../../Images/simon-wilkes-RbjSCrgH5to-unsplash.jpg';
-import pic3 from '../../Images/boba-jaglicic-TxA8cgFnfNQ-unsplash.jpg';
-
-const item = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  px: 5,
-};
-
-const number = {
-  fontSize: 24,
-  fontFamily: 'default',
-  color: amber[500],
-  fontWeight: 'medium',
-};
-
-const image = {
-  height: 225,
-  my: 4,
-  borderRadius: 2,
-};
 
 function ListScreen() {
   const { users } = useContext(UsersContext);
 
   return (
     <Container>
-      <div>
-        <Grid container spacing={5}>
-          <Grid item xs={12} md={4}>
-            <Box sx={item}>
-              <Box sx={number}>1.</Box>
-              <Box
-                component="img"
-                src={pic1}
-                alt="pexels-anete-lusina-5247969.jpg"
-                sx={image}
-              />
-              <Typography variant="h5" align="center">
-                Got bees but nowhere to be?
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={item}>
-              <Box sx={number}>2.</Box>
-              <Box
-                component="img"
-                src={pic2}
-                alt="Photo by Simon Wilkes on Unsplash"
-                // Photo by <a href="https://unsplash.com/@simonfromengland?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Simon Wilkes</a> on <a href="https://unsplash.com/s/photos/fields?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+   <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Typography color="inherit" align="center" variant="h2" marked="center">
+      Discover our community members
+      </Typography>
+      <Typography
+        color="inherit"
+        align="center"
+        variant="h5"
+        // sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+      >
+     Choose a member and sent them a message
+      </Typography>
+      <br></br>
+       <img 
+      //  width="100" 
+      //  height="auto" 
+       src={BeeLogo}/ >
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
 
-                sx={image}
-              />
-              <Typography variant="h5" align="center">
-                You have space for bees to thrive but no hive?
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={item}>
-              <Box sx={number}>3.</Box>
-              <Box
-                component="img"
-                src={pic3}
-                alt="Photo by Boba Jaglicic on Unsplash"
-                //<a href="https://unsplash.com/@bobajaglicic?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Boba Jaglicic</a> on <a href="https://unsplash.com/s/photos/honey-bee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
-
-                sx={image}
-              />
-              <Typography variant="h5" align="center">
-                {'BuZz brings bee keepers and hosts together.'}
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </div>
+         
 
       <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (

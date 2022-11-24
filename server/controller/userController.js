@@ -129,18 +129,18 @@ const getProfile = async (req, res) => {
 
 //create a profile_description
 
-const updateProfileDescription = async (req, res) => {
+const updateProfileHeader = async (req, res) => {
   try {
     // console.log("updateProfileDescription1 req.body", req.body);
     const { pid } = req.user;
     // console.log("req.user", pid);
-    const { profile_description } = req.body;
+    const { profile_header } = req.body;
     const updateProfileTxt = await pool.query(
       "UPDATE users SET profile_description= $1 WHERE pid = $2",
-      [profile_description, pid]
+      [profile_header, pid]
     );
 
-    res.json("Profile description is updated");
+    res.json("Profile header is updated");
     // res.json(updateProfileTxt.rows[0]);
   } catch (error) {
     console.log(error.message);
@@ -153,5 +153,5 @@ export {
   getAllUsers,
   getUserById,
   getProfile,
-  updateProfileDescription,
+  updateProfileHeader,
 };

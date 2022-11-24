@@ -137,7 +137,7 @@ export default function MenuAppBar() {
                   Profile
                 </MenuItem>
                 <MenuItem onClick={() => navigate('/profile')}>
-                  My account
+                  Messages
                 </MenuItem>
               </Menu>
             </div>

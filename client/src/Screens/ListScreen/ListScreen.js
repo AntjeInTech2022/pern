@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 //COMPONENTS
 import HostCard from './HostCards';
 import UserCard from './UserCard';
+import UserDetails from './DetailsScreen';
+import beePic from '../../Images/bee_line.png';
 
 //DUMMY DATA
 import dummyHostData from '../../dummyData/dummyHostData';
@@ -21,9 +23,16 @@ function ListScreen() {
 
   return (
     <Container>
-      <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>
-        Featured members
-      </Typography>
+      <br></br>
+      <br></br>
+      <img src={beePic} />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      {/* <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
+        Hosts
+      </Typography> */}
       <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (
           <Grid item key={index} xs={12} md={3} lg={4}>
@@ -31,13 +40,11 @@ function ListScreen() {
           </Grid>
         ))}
       </Grid>
-      <p>
-        <br></br>
-        <br></br>
-      </p>
-      <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>
-        Newest members
-      </Typography>
+      <br></br>
+      <br></br>
+      {/* <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
+        Bee keepers
+      </Typography> */}
       <Grid container spacing={4}>
         {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>

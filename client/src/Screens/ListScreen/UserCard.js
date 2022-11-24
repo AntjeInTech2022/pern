@@ -18,9 +18,7 @@ function UserCard({ user }) {
         <Typography gutterBottom variant="h5" component="div">
           {user.user_name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {user.profile_header}
-        </Typography>
+        <Typography variant="body2">{user.profile_header}</Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Add to favorites</Button>

@@ -8,8 +8,8 @@ import { AuthProvider, AuthContext } from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
-import ListScreen from './Screens/ListScreen';
-import DetailsScreen from './Screens/DetailsScreen';
+import ListScreen from './Screens/ListScreen/ListScreen.js';
+import DetailsScreen from './Screens/ListScreen/DetailsScreen';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';

@@ -49,7 +49,7 @@ export const AuthProvider = (props) => {
   // updateProfileHeader
   const updateProfileHeader = async ({ profile_header }) => {
     try {
-      const body = { profile_header };
+      // const body = { profile_header };
       const options = {
         method: 'PUT',
         headers: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -25,7 +25,7 @@ export default function EditProfileDescriptionModal({ user }) {
     event.preventDefault();
     setHeader(event.target.value);
 
-    const { success } = updateProfileHeader(profile_header);
+    const { success } = updateProfileHeader(user.profile_header);
     if (success) {
       toast.success('🐝 Your profile headline has been updated!');
       setOpen(false);

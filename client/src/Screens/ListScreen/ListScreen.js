@@ -8,13 +8,13 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 //COMPONENTS
-import HostCard from '../components/c_Users/HostCards';
-import UserCard from '../components/c_Users/UserCard';
+import HostCard from '../../components/c_Users/HostCards';
+import UserCard from '../../components/c_Users/UserCard';
 
 //DUMMY DATA
-import dummyHostData from '../dummyData/dummyHostData';
+import dummyHostData from '../../dummyData/dummyHostData';
 //CONTEXT
-import { UsersContext } from '../Context/userContext';
+import { UsersContext } from '../../Context/userContext';
 
 function ListScreen() {
   const { users } = useContext(UsersContext);
@@ -22,7 +22,7 @@ function ListScreen() {
   return (
     <Container>
       <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>
-        Featured Hosts
+        Featured members
       </Typography>
       <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (
@@ -35,6 +35,9 @@ function ListScreen() {
         <br></br>
         <br></br>
       </p>
+      <Typography variant="h2" gutterBottom marginTop={3} marginBottom={5}>
+        Newest members
+      </Typography>
       <Grid container spacing={4}>
         {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>

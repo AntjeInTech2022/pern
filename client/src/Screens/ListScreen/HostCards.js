@@ -14,7 +14,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import { amber } from '@mui/material/colors';
 // COMPONENTS
-import UserDetails from './DetailsScreen';
+
 import avatarPic from '../../Images/user.png';
 
 const HostCard = ({ item, index }) => {

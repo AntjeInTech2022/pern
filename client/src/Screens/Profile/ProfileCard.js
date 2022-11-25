@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-
+import React, {useState } from 'react';
 //MUI
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,22 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import avatarPic from '../../Images/pexels-anete-lusina-5247969.jpg';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 
 //SELF-MADE
-import EditProfileDescriptionModal from './EditProfileDescriptionModal';
-import userPic from '../../Images/user.png';
-import { AuthContext } from '../../Context/authContext.js';
+import EditHeadline from './EditProfileHeadline';
+import '../../App.css'
+
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,32 +25,9 @@ const ProfileCard = ({ user }) => {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  // UPDATE PROFILE
-  // const { updateProfileHeader } = useContext(AuthContext);
 
-  // const [header, setHeader] = useState(
-  //   user?.profile_header ? user?.profile_header : ''
-  // );
+ 
 
-  // const handleUpdate = (event) => {
-  //   event.preventDefault();
-  //   console.log(user);
-  //   const { success } = updateProfileHeader(header) ;
-  //   console.log('success', success)
-  //   if (success) {
-  //     toast.success('🐝 Your profile headline has been updated!');
-  //     setOpen(false);
-  //     setHeader(event.target.value);
-  //   } else {
-  //     toast.error(
-  //       'Something went wrong. Please contact the customer service' 
-  //     );
-  //   }
-  // };
-  // console.log(header);
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
@@ -75,6 +43,7 @@ const ProfileCard = ({ user }) => {
           }}
         >
           <CardMedia
+          className='ProfileImg'
             component="img"
             height="240"
             src={avatarPic}
@@ -94,40 +63,20 @@ const ProfileCard = ({ user }) => {
               : ' Please add a headline to your profile.'}
             <>
               <Button onClick={handleClickOpen}>Edit</Button>
-              {/* <EditProfileDescriptionModal user={user} /> */}
-              {/* <Dialog component="form" open={open} onClose={handleClose}>
-                <DialogTitle>Profile headline</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    {user.profile_header !== null
-                      ? user.profile_header
-                      : 'Please add a headline to your profile.'}
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Write new headline here"
-                    type="text"
-                    fullWidth
-                    onChange={(e) => setHeader(e.target.value)}
-                    variant="standard"
-                    value={header}
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleUpdate}>Update</Button>
-                </DialogActions>
-              </Dialog> */}
+              <EditHeadline user={user} open={open} setOpen={setOpen} />
+             
             </>
           </Typography>
           <Typography variant="body2" color="text.secondary">
           {user.profile_description !== null
               ? user.profile_description
               : ' Please add a profile description.'}
-            <Button>Edit</Button>
-            {/* {user.profile_description} */}
+                <>
+                <Button onClick={handleClickOpen}>Edit</Button>
+              {/* <EditDescription user={user} open={open} setOpen={setOpen} /> */}
+                </>
+          
+       
           </Typography>
         </CardContent>
         <CardActions>

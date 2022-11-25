@@ -1,11 +1,8 @@
 // SOURCE: TEMPLATE from:
 //github.com/mui/material-ui/blob/master/docs/src/pages/premium-themes/onepirate/SignUp.js
 import React from 'react';
-
 //MUI
-
 import Link from '@mui/material/Link';
-
 //COMPONENTS
 import Typography from '../../components/Typography';
 import AppForm from '../../components/c_form/AppForm';

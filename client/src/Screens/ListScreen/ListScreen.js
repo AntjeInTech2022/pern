@@ -1,18 +1,16 @@
 import React from 'react';
 import { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 // MUI
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { amber } from '@mui/material/colors';
-import Button from '@mui/material/Button';
+
 
 //COMPONENTS
 import HostCard from './HostCards';
 import UserCard from './UserCard';
-import UserDetails from './DetailsScreen';
+
 import BeeLogo from '../../Images/bee_line.png';
 
 //DUMMY DATA

@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+
+.ProfileImg{
+  border-radius: 8px;
+}
 .paper {
   overflow: hidden;
 }

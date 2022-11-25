@@ -68,15 +68,21 @@ export const AuthProvider = (props) => {
           options
         );
         console.log('response', response)
-      const res = await response.json();
-      console.log('res', res)
-    
-        setUser({ ...user, profile_header });
-        return { success: true };
+      const {success} = await response.json();
+     
+      console.log('success', success)
+    if (success){
+      setUser({ ...user, profile_header });
+      return { success }
+    }
+        
+       
       } catch (error) {
         console.error(error.message);
-        return { success: false};
+        // return { success }
+      
       }
+      // finally {return { success }};
     }
   };
 

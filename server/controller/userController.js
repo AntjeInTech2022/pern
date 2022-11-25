@@ -127,8 +127,7 @@ const getProfile = async (req, res) => {
   res.status(201).json(`authorized request for ${req.user.user_name}`);
 };
 
-//create a profile_description
-
+//create/edit a profile_header
 const updateProfileHeader = async (req, res) => {
   try {
     // console.log("updateProfileDescription1 req.body", req.body);
@@ -152,6 +151,27 @@ const updateProfileHeader = async (req, res) => {
   }
 };
 
+//create/edit a profile_description
+const updateProfileDescription = async (req, res) => {
+  try {
+    // console.log("updateProfileDescription1 req.body", req.body);
+    const { pid } = req.user;
+    const { profile_description } = req.body;
+    const updateProfileTxt = await pool.query(
+      "UPDATE users SET profile_header= $1 WHERE pid = $2",
+      [profile_description, pid]
+    );
+
+    res.status(200).json({success: true});
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      error: "Database error", //Database connection error
+      success: false,
+    });
+  }
+};
+
 export {
   Register,
   Login,
@@ -159,4 +179,5 @@ export {
   getUserById,
   getProfile,
   updateProfileHeader,
+  updateProfileDescription
 };

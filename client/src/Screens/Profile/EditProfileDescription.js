@@ -13,44 +13,44 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Context/authContext.js';
 
 
-export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {
+export default function EditDescription({ user, openDescription, setOpenDescription }) {
 
   const handleClose = () => {
-    setOpenHeadline(false);
+    setOpenDescription(false);
   };
   // UPDATE PROFILE
-  const { updateProfileHeader } = useContext(AuthContext);
+  const { updateProfileDescription } = useContext(AuthContext);
 
-  const [header, setHeader] = useState(
-    user?.profile_header ? user?.profile_header : ''
+  const [description, setDescription] = useState(
+    user?.profile_description ? user?.profile_description : ''
   );
 
   const handleUpdate = async (event) => {
     event.preventDefault();
     console.log(user);
-    const { success } = await updateProfileHeader(header) ;
+    const { success } = await updateProfileDescription(description) ;
     console.log('success', success)
     if (success) {
-      toast.success('🐝 Your profile headline has been updated!');
-      setOpenHeadline(false);
-      setHeader(event.target.value);
+      toast.success('🐝 Your profile description has been updated!');
+      setOpenDescription(false);
+      setDescription(event.target.value);
     } else {
       toast.error(
-        'Something went wrong. Please contact the customer service' 
+        'Something went wrong.' 
       );
     }
   };
-  console.log(header);
+
 
   return (
     <div>
-     <Dialog component="form" openHeadline={openHeadline} onClose={handleClose}>
-                <DialogTitle>Profile headline</DialogTitle>
+     <Dialog component="form" openDescription={openDescription} onClose={handleClose}>
+                <DialogTitle>Profile description</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    {user.profile_header !== null
-                      ? user.profile_header
-                      : 'Please add a headline to your profile.'}
+                    {user.profile_description !== null
+                      ? user.profile_description
+                      : 'Please add a description to your profile.'}
                   </DialogContentText>
                   <TextField
                     autoFocus
@@ -59,9 +59,9 @@ export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {
                     label="Write new headline here"
                     type="text"
                     fullWidth
-                    onChange={(e) => setHeader(e.target.value)}
+                    onChange={(e) => setDescription(e.target.value)}
                     variant="standard"
-                    value={header}
+                    value={description}
                   />
                 </DialogContent>
                 <DialogActions>

@@ -10,20 +10,25 @@ import avatarPic from '../../Images/pexels-anete-lusina-5247969.jpg';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import Badge from '@mui/material/Badge';
-
 //SELF-MADE
 import EditHeadline from './EditProfileHeadline';
+import EditDescription from './EditProfileDescription';
 import '../../App.css'
-
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCard = ({ user }) => {
-  //  DIALOG MODAL
-  const [open, setOpen] = useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
+//  EDIT HEADLINE POP_UP
+  const [openHeadline, setOpenHeadline] = useState(false);
+  const handleClickOpenHeadline = () => {
+    setOpenHeadline(true);
+  };
+
+//  EDIT DESCRIPTION POP_UP
+  const [openDescription, setOpenDescription] = useState(false);
+  const handleClickOpenDescription = () => {
+    setOpenDescription(true);
   };
 
  
@@ -61,22 +66,21 @@ const ProfileCard = ({ user }) => {
             {user.profile_header !== null
               ? user.profile_header
               : ' Please add a headline to your profile.'}
+{/* EDIT HEADLINE */}
             <>
-              <Button onClick={handleClickOpen}>Edit</Button>
-              <EditHeadline user={user} open={open} setOpen={setOpen} />
-             
+              <Button onClick={handleClickOpenHeadline}>Edit</Button>
+              <EditHeadline user={user} openHeadline={openHeadline} setOpenHeadline={setOpenHeadline} />
             </>
           </Typography>
           <Typography variant="body2" color="text.secondary">
           {user.profile_description !== null
               ? user.profile_description
               : ' Please add a profile description.'}
+{/* EDIT DESCRIPTION*/}
                 <>
-                <Button onClick={handleClickOpen}>Edit</Button>
-              {/* <EditDescription user={user} open={open} setOpen={setOpen} /> */}
+                <Button onClick={handleClickOpenDescription}>Edit</Button>
+              <EditDescription user={user} openDescription={openDescription} setOpenDescription={setOpenDescription} />
                 </>
-          
-       
           </Typography>
         </CardContent>
         <CardActions>

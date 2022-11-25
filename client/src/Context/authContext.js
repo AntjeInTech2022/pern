@@ -75,20 +75,50 @@ export const AuthProvider = (props) => {
       setUser({ ...user, profile_header });
       return { success }
     }
-        
-       
       } catch (error) {
         console.error(error.message);
-        // return { success }
-      
       }
-      // finally {return { success }};
     }
   };
 
+    // updateProfileHeader
+    const updateProfileDescription = async (profile_description) => {
+      const jwt = localStorage.getItem("jwt");
+      if (jwt === "") {
+        return { success: false, error: "login firsrt" };
+      } else {
+        const body = { profile_description };
+        console.log('body', body)
+        try {
+          const options = {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${jwt}`,
+            },
+            body: JSON.stringify(body),
+          };
+          const response = await fetch(
+            `${backendUrl}/api/users/updateProfileHeader`,
+            options
+          );
+          console.log('response', response)
+        const {success} = await response.json();
+       
+        console.log('success', success)
+      if (success){
+        setUser({ ...user, profile_description });
+        return { success }
+      }
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+    };
+
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader }}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription }}
     >
       {props.children}
     </AuthContext.Provider>

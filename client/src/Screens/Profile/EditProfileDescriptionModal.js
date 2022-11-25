@@ -19,48 +19,55 @@ export default function EditProfileDescriptionModal({ user }) {
   };
   // UPDATE PROFILE
   const { updateProfileHeader } = useContext(AuthContext);
-  const [profile_header, setHeader] = useState(user.profile_header);
 
-  const handleChange = (event) => {
+  const [header, setHeader] = useState(
+    user?.profile_header ? user?.profile_header : ''
+  );
+
+  const handleUpdate = (event) => {
     event.preventDefault();
-    setHeader(event.target.value);
-
-    const { success } = updateProfileHeader(user.profile_header);
+    console.log(user);
+    const { success } = updateProfileHeader(header) ;
+    console.log('success', success)
     if (success) {
       toast.success('🐝 Your profile headline has been updated!');
       setOpen(false);
+      setHeader(event.target.value);
     } else {
-      toast.error('Something went wrong. Please contact the customer service');
+      toast.error(
+        'Something went wrong. Please contact the customer service' 
+      );
     }
   };
+  console.log(header);
 
   return (
     <div>
-      <Dialog component="form" open={open} onClose={handleClose}>
-        <DialogTitle>Profile headline</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Your profile headline:
-            {user.profile_header !== null
-              ? user.profile_header
-              : ' Is empty. Please add a headline to your profile.'}
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Write new headline here"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={profile_header}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleChange}>Update</Button>
-        </DialogActions>
-      </Dialog>
+     <Dialog component="form" open={open} onClose={handleClose}>
+                <DialogTitle>Profile headline</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    {user.profile_header !== null
+                      ? user.profile_header
+                      : 'Please add a headline to your profile.'}
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Write new headline here"
+                    type="text"
+                    fullWidth
+                    onChange={(e) => setHeader(e.target.value)}
+                    variant="standard"
+                    value={header}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button onClick={handleUpdate}>Update</Button>
+                </DialogActions>
+              </Dialog>
     </div>
   );
 }

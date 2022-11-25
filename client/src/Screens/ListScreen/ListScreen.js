@@ -44,8 +44,7 @@ function ListScreen() {
       </Typography>
       <br></br>
        <img 
-      //  width="100" 
-      //  height="auto" 
+
        src={BeeLogo}/ >
       <br></br>
       <br></br>

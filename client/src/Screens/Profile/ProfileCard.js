@@ -38,28 +38,28 @@ const ProfileCard = ({ user }) => {
     setOpen(false);
   };
   // UPDATE PROFILE
-  const { updateProfileHeader } = useContext(AuthContext);
+  // const { updateProfileHeader } = useContext(AuthContext);
 
-  const [header, setHeader] = useState(
-    user?.profile_header ? user?.profile_header : ''
-  );
+  // const [header, setHeader] = useState(
+  //   user?.profile_header ? user?.profile_header : ''
+  // );
 
-  const handleUpdate = (event) => {
-    event.preventDefault();
-    console.log(user);
-    const { success } = updateProfileHeader(header) ;
-    console.log('success', success)
-    if (success) {
-      toast.success('🐝 Your profile headline has been updated!');
-      setOpen(false);
-      setHeader(event.target.value);
-    } else {
-      toast.error(
-        'Something went wrong. Please contact the customer service' 
-      );
-    }
-  };
-  console.log(header);
+  // const handleUpdate = (event) => {
+  //   event.preventDefault();
+  //   console.log(user);
+  //   const { success } = updateProfileHeader(header) ;
+  //   console.log('success', success)
+  //   if (success) {
+  //     toast.success('🐝 Your profile headline has been updated!');
+  //     setOpen(false);
+  //     setHeader(event.target.value);
+  //   } else {
+  //     toast.error(
+  //       'Something went wrong. Please contact the customer service' 
+  //     );
+  //   }
+  // };
+  // console.log(header);
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
@@ -95,7 +95,7 @@ const ProfileCard = ({ user }) => {
             <>
               <Button onClick={handleClickOpen}>Edit</Button>
               {/* <EditProfileDescriptionModal user={user} /> */}
-              <Dialog component="form" open={open} onClose={handleClose}>
+              {/* <Dialog component="form" open={open} onClose={handleClose}>
                 <DialogTitle>Profile headline</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
@@ -119,7 +119,7 @@ const ProfileCard = ({ user }) => {
                   <Button onClick={handleClose}>Cancel</Button>
                   <Button onClick={handleUpdate}>Update</Button>
                 </DialogActions>
-              </Dialog>
+              </Dialog> */}
             </>
           </Typography>
           <Typography variant="body2" color="text.secondary">

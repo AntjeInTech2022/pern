@@ -10,6 +10,11 @@ import avatarPic from '../../Images/pexels-anete-lusina-5247969.jpg';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import Badge from '@mui/material/Badge';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 //SELF-MADE
 import EditHeadline from './EditProfileHeadline';
 import EditDescription from './EditProfileDescription';
@@ -19,6 +24,16 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCard = ({ user }) => {
+
+//  EDIT IMAGE POP_UP
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 //  EDIT HEADLINE POP_UP
   const [openHeadline, setOpenHeadline] = useState(false);
   const handleClickOpenHeadline = () => {
@@ -31,15 +46,25 @@ const ProfileCard = ({ user }) => {
     setOpenDescription(true);
   };
 
+  //  EDIT DELETE POP_UP
+  const [open_delete, setOpenDelete] = useState(false);
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
+  };
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
+  };
+
  
 
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
+      <Button onClick={handleClickOpen}>
         <Badge
           badgeContent={
             <Fab size="small" color="primary" aria-label="edit">
-              <EditIcon />
+                 <EditIcon />
             </Fab>
           }
           anchorOrigin={{
@@ -55,6 +80,27 @@ const ProfileCard = ({ user }) => {
             alt="user profile picture"
           />
         </Badge>
+        </Button>
+        <Dialog
+        open={open}
+        onClose={handleClose}
+      
+      >
+        <DialogTitle id="alert-dialog-title">
+        {"Edit profile image"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+          This feature is not live yet. Feature coming soon (or never)...
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Button onClick={handleClose}>Disagree</Button> */}
+          <Button onClick={handleClose} autoFocus>
+          Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
 
         <CardContent>
           <Typography
@@ -84,9 +130,32 @@ const ProfileCard = ({ user }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button>Delete Account</Button>
+{/* DELETE ACCOUNT*/}
+          <Button onClick={handleClickOpenDelete}>Delete Account</Button>
         </CardActions>
       </Card>
+
+{/* DELETE ACCOUNT POP-UP*/}
+      <Dialog
+        open={open_delete}
+        onClose={handleCloseDelete}
+      
+      >
+        <DialogTitle id="alert-dialog-delete">
+        {"Delete your account"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="delete account">
+          This feature is not live yet. Feature coming soon (or never)...
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Button onClick={handleClose}>Disagree</Button> */}
+          <Button onClick={handleCloseDelete} autoFocus>
+          Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

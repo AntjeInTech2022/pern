@@ -56,7 +56,7 @@ function ProfileScreen() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          This feature is not live yet. Feature coming soon (or never)
+          This feature is not live yet. Feature coming soon (or never)...
           </DialogContentText>
         </DialogContent>
         <DialogActions>

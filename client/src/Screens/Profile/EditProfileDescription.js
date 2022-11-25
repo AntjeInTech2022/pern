@@ -44,7 +44,7 @@ export default function EditDescription({ user, openDescription, setOpenDescript
 
   return (
     <div>
-     <Dialog component="form" openDescription={openDescription} onClose={handleClose}>
+     <Dialog component="form" open={openDescription} onClose={handleClose}>
                 <DialogTitle>Profile description</DialogTitle>
                 <DialogContent>
                   <DialogContentText>

@@ -44,7 +44,7 @@ export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {
 
   return (
     <div>
-     <Dialog component="form" openHeadline={openHeadline} onClose={handleClose}>
+     <Dialog component="form" open={openHeadline} onClose={handleClose}>
                 <DialogTitle>Profile headline</DialogTitle>
                 <DialogContent>
                   <DialogContentText>

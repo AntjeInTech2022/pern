@@ -140,7 +140,7 @@ export default function MenuAppBar() {
                 <MenuItem onClick={() => navigate('/profile')}>
                   Profile
                 </MenuItem>
-                <MenuItem onClick={() => navigate('/profile')}>
+                <MenuItem onClick={() => navigate('/chat')}>
                   Messages
                 </MenuItem>
               </Menu>

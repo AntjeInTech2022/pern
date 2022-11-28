@@ -13,6 +13,7 @@ import DetailsScreen from './Screens/ListScreen/DetailsScreen';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';
+import ChatScreen from './Screens/Chat/ChatScreen'
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
@@ -48,27 +49,6 @@ const customTheme = createTheme({
 
 function App() {
 
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-//   const checkAuthenticated = async () => {
-//   const jwt = localStorage.getItem("jwt");
-//   try {
-//     if (jwt === "") {
-//    setIsAuthenticated: false 
-//     } else {setIsAuthenticated: true}
-//   } catch (error) {
-//     console.error(Error.message);
-//   }
- 
-//   }
-
-// useEffect(() => {
-// checkAuthenticated();
-//  }, []);
-
-
-
-
 
   return (
     <div className="App">
@@ -103,6 +83,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <ProfileScreen />
+                    </ProtectedRoute>
+                  }
+                ></Route>
+                 <Route
+                  path="/chat"
+                  element={
+                    <ProtectedRoute>
+                      <ChatScreen />
                     </ProtectedRoute>
                   }
                 ></Route>

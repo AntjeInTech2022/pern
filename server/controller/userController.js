@@ -1,6 +1,7 @@
 import pool from "../dbConfig.js";
 import bcrypt from "bcrypt";
 import jwtGenerator from "../utils/jwtGenerator.js";
+import {getCurrentDate} from '../utils/currentDate.js'
 
 // REGISTRATION table: users
 const Register = async (req, res) => {
@@ -26,9 +27,11 @@ const Register = async (req, res) => {
 
       const bcryptPassword = await bcrypt.hash(password, salt);
       // 4. add new user to database table 'users'
+const register_date = getCurrentDate()
+
       const newUser = await pool.query(
-        "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
-        [name, email, bcryptPassword]
+        "INSERT INTO users (user_name, user_email, user_password, registration_date) VALUES ($1, $2, $3, $4) RETURNING *",
+        [name, email, bcryptPassword, register_date]
       );
 
       // 5. generate jwt token
@@ -160,6 +163,27 @@ const updateProfileDescription = async (req, res) => {
     const updateProfileTxt = await pool.query(
       "UPDATE users SET profile_description= $1 WHERE pid = $2",
       [profile_description, pid]
+    );
+
+    res.status(200).json({success: true});
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      error: "Database error", //Database connection error
+      success: false,
+    });
+  }
+};
+
+//sent a message
+const sentMessage = async (req, res) => {
+  try {
+    // console.log("updateProfileDescription1 req.body", req.body);
+    const { pid } = req.user;
+    const { mssg_text } = req.body;
+    const sentMessage = await pool.query(
+      "UPDATE messages SET mssg_text= $1 WHERE pid = $2",
+      [mssg_text, pid]
     );
 
     res.status(200).json({success: true});

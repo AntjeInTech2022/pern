@@ -1,9 +1,7 @@
 import React, { useContext, useState } from 'react';
 import {
-
   Grid,
   TextField,
-
   Paper,
   Button,
 } from '@mui/material';
@@ -12,6 +10,11 @@ import { useNavigate } from 'react-router-dom';
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//SELF_MADE
+
+
+
+
 
 const RegisterForm2 = () => {
   const [values, setValues] = useState({
@@ -19,6 +22,8 @@ const RegisterForm2 = () => {
     email: '',
     password: '',
     error: '',
+
+  
   });
 
   const navigate = useNavigate();

@@ -38,7 +38,9 @@ function UserCard({ user }) {
      </Avatar>
       }
       title={user.user_name}
-      subheader="Member since March 2020"
+      subheader =  {user.registration_date !== null
+        ? user.registration_date
+        : 'Member since 2022'}
      
     />
      

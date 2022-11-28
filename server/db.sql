@@ -17,14 +17,24 @@ CREATE TABLE users(
     PRIMARY KEY(pid)
 );
 
+ALTER TABLE users
+ADD registration_date DATE;
+
 CREATE TABLE messages(
     mssg_id SERIAL,
     pid UUID,
     mssg_text VARCHAR(255) NOT NULL,
+    pid as receiver_id,
+    pid as sender_id
    PRIMARY KEY (mssg_id),
    FOREIGN KEY (pid)
+--    FOREIGN KEY (sender_id)
+--    FOREIGN KEY (receiver_id)
    REFERENCES users(pid)
 );
+
+
+
 
     
 -- insert fake users

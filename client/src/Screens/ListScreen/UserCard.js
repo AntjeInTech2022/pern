@@ -14,12 +14,18 @@ import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 
 // COMPONENTS
-
+import SentMessage from './Message'
 import avatarPic from '../../Images/user.png';
 
 
 function UserCard({ user }) {
-  // console.log('user', user);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
 
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -58,27 +64,16 @@ function UserCard({ user }) {
       <IconButton aria-label="add to favorites">
         <FavoriteIcon />
       </IconButton>
-      <IconButton aria-label="add to favorites">
+      <IconButton onClick={handleClickOpen} aria-label="email user">
         <MailIcon />
       </IconButton>
-      <Button size="small">Learn More</Button>
-      {/* <Button size="small">Contact</Button> */}
+       <SentMessage user={user} open={open} setOpen={setOpen}/>
+      <Button size="small">Learn More</Button>  
     </CardActions>
+  
   </Card>
 
 
-    // <Card sx={{ minWidth: 275 }}>
-    //   <CardContent>
-    //     <Typography gutterBottom variant="h5" component="div">
-    //       {user.user_name}
-    //     </Typography>
-    //     <Typography variant="body2">{user.profile_header}</Typography>
-    //   </CardContent>
-    //   <CardActions>
-    //     <Button size="small">Add to favorites</Button>
-    //     <Button size="small">Learn More</Button>
-    //   </CardActions>
-    // </Card>
   
   );
 }

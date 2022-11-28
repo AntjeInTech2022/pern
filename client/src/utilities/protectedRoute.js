@@ -5,8 +5,12 @@ import { AuthContext } from '../Context/authContext';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
+  // const jwt = localStorage.getItem("jwt")
+  // console.log('jwt',jwt)
 
   if (user === null) {
+    // if (jwt === null) {
+  // if (jwt === "") {
     // if (!user) {
     return <Navigate to="/login" />;
   }

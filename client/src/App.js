@@ -48,24 +48,23 @@ const customTheme = createTheme({
 
 function App() {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const checkAuthenticated = async () => {
-  const jwt = localStorage.getItem("jwt");
-  try {
-    if (jwt === "") {
-   setIsAuthenticated: false 
-    } else {setIsAuthenticated: true}
-    
-  } catch (error) {
-    console.error(Error.message);
-  }
+//   const checkAuthenticated = async () => {
+//   const jwt = localStorage.getItem("jwt");
+//   try {
+//     if (jwt === "") {
+//    setIsAuthenticated: false 
+//     } else {setIsAuthenticated: true}
+//   } catch (error) {
+//     console.error(Error.message);
+//   }
  
-  }
+//   }
 
-useEffect(() => {
-checkAuthenticated();
- }, []);
+// useEffect(() => {
+// checkAuthenticated();
+//  }, []);
 
 
 

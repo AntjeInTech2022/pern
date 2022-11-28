@@ -50,8 +50,6 @@ function ListScreen() {
       <br></br>
       <br></br>
 
-         
-
       <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (
           <Grid item key={index} xs={12} md={3} lg={4}>
@@ -71,7 +69,11 @@ function ListScreen() {
           </Grid>
         ))}
       </Grid>
+      <br></br>
+      <br></br>
+      <br></br>
     </Container>
+  
   );
 }
 

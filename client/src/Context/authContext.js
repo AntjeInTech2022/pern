@@ -73,6 +73,11 @@ export const AuthProvider = (props) => {
       console.log('success', success)
     if (success){
       setUser({ ...user, profile_header });
+
+      // useEffect(() => {
+      //   getUsers();
+      // }, []); 
+
       return { success }
     }
       } catch (error) {

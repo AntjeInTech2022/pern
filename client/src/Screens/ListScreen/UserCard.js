@@ -12,6 +12,7 @@ import CardHeader from '@mui/material/CardHeader';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
+// import Chip from '@mui/material/Chip';
 
 // COMPONENTS
 import SentMessage from './Message'
@@ -33,21 +34,22 @@ function UserCard({ user }) {
       avatar={
         <Avatar
           alt="User picture"
-          src={avatarPic}
-     
-        >
-     
-        </Avatar>
+          src={avatarPic}>
+     </Avatar>
       }
       title={user.user_name}
       subheader="Member since March 2020"
+     
     />
+     
     <CardMedia 
     component="img" 
     height="140" 
     src={avatarPic} 
     // alt={item.alt} 
+    
     />
+     
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">
       {user.profile_header !== null
@@ -69,6 +71,7 @@ function UserCard({ user }) {
       </IconButton>
        <SentMessage user={user} open={open} setOpen={setOpen}/>
       <Button size="small">Learn More</Button>  
+     
     </CardActions>
   
   </Card>

@@ -14,6 +14,18 @@ import { jwtAuth } from "../middleware/passport.js";
 // import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+// jwt Auth Check
+router.get("/verified", jwtAuth, async (req, res) =>
+{
+  try {
+    res.json(true);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server error")
+  }
+}
+);
+
 // GET ALL USERS
 router.get("/all", getAllUsers);
 // router.get("/all", jwtAuth, getAllUsers);

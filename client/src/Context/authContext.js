@@ -50,7 +50,7 @@ export const AuthProvider = (props) => {
   const updateProfileHeader = async (profile_header) => {
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
-      return { success: false, error: "login firsrt" };
+      return { success: false, error: "login first" };
     } else {
       const body = { profile_header };
       console.log('body', body)
@@ -68,8 +68,8 @@ export const AuthProvider = (props) => {
           options
         );
         console.log('response', response)
-      const {success} = await response.json();
-     
+      const {success, error} = await response.json();
+      console.log('err', error)
       console.log('success', success)
     if (success){
       setUser({ ...user, profile_header });
@@ -99,7 +99,7 @@ export const AuthProvider = (props) => {
             body: JSON.stringify(body),
           };
           const response = await fetch(
-            `${backendUrl}/api/users/updateProfileHeader`,
+            `${backendUrl}/api/users/updateProfileDescription`,
             options
           );
           console.log('response', response)

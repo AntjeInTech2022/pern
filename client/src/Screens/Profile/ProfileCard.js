@@ -60,10 +60,14 @@ const ProfileCard = ({ user }) => {
   return (
     <>
       <Card sx={{ minWidth: 345 }}>
-      <Button onClick={handleClickOpen}>
+   
         <Badge
           badgeContent={
-            <Fab size="small" color="primary" aria-label="edit">
+            <Fab
+            onClick={handleClickOpen} 
+            size="small" 
+            color="primary" 
+            aria-label="edit">
                  <EditIcon />
             </Fab>
           }
@@ -80,7 +84,7 @@ const ProfileCard = ({ user }) => {
             alt="user profile picture"
           />
         </Badge>
-        </Button>
+   
         <Dialog
         open={open}
         onClose={handleClose}

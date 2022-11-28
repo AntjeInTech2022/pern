@@ -43,7 +43,7 @@ export default function EditDescription({ user, openDescription, setOpenDescript
 
 
   return (
-    <div>
+    <>
      <Dialog component="form" open={openDescription} onClose={handleClose}>
                 <DialogTitle>Profile description</DialogTitle>
                 <DialogContent>
@@ -56,7 +56,7 @@ export default function EditDescription({ user, openDescription, setOpenDescript
                     autoFocus
                     margin="dense"
                     id="name"
-                    label="Write new headline here"
+                    label="Write new description here"
                     type="text"
                     fullWidth
                     onChange={(e) => setDescription(e.target.value)}
@@ -69,6 +69,6 @@ export default function EditDescription({ user, openDescription, setOpenDescript
                   <Button onClick={handleUpdate}>Update</Button>
                 </DialogActions>
               </Dialog>
-    </div>
+    </>
   );
 }

@@ -31,8 +31,8 @@ export default function MenuAppBar() {
     try {
       // frontend logout:
       setUser(null);
-      // backend logout:
-      // localStorage.removeItem('jwt token');
+      event.preventDefault();
+      localStorage.removeItem('token');
       localStorage.clear();
       // setAuth(false);
       toast.success('🐝 Sign out successfully');
@@ -42,16 +42,16 @@ export default function MenuAppBar() {
   };
 
   // GUEST LOGIN
-  const handleChange = (event) => {
-    setUser({
-      password: '123456',
-      email: 'guest@testing.com',
-      error: '',
-    });
-    toast.success('🐝 You are signed in as a guest!');
-    navigate('/list');
-    console.log('a guest user has signed in');
-  };
+  // const handleChange = (event) => {
+  //   setUser({
+  //     password: '123456',
+  //     email: 'guest@testing.com',
+  //     error: '',
+  //   });
+  //   toast.success('🐝 You are signed in as a guest!');
+  //   navigate('/list');
+  //   console.log('a guest user has signed in');
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);

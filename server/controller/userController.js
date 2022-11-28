@@ -158,7 +158,7 @@ const updateProfileDescription = async (req, res) => {
     const { pid } = req.user;
     const { profile_description } = req.body;
     const updateProfileTxt = await pool.query(
-      "UPDATE users SET profile_header= $1 WHERE pid = $2",
+      "UPDATE users SET profile_description= $1 WHERE pid = $2",
       [profile_description, pid]
     );
 

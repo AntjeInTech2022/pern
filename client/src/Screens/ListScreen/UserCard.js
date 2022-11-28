@@ -44,10 +44,14 @@ function UserCard({ user }) {
     />
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">
-        Profile headline
+      {user.profile_header !== null
+                      ? user.profile_header
+                      : 'Lorem ipsum dolor sit amet!'}
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricie
+      {user.profile_description !== null
+                      ? user.profile_description
+                      : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'}
       </Typography>
     </CardContent>
     <CardActions>

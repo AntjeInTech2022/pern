@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -47,7 +47,30 @@ const customTheme = createTheme({
 });
 
 function App() {
-  // const { user } = useContext(AuthContext);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const checkAuthenticated = async () => {
+  const jwt = localStorage.getItem("jwt");
+  try {
+    if (jwt === "") {
+   setIsAuthenticated: false 
+    } else {setIsAuthenticated: true}
+    
+  } catch (error) {
+    console.error(Error.message);
+  }
+ 
+  }
+
+useEffect(() => {
+checkAuthenticated();
+ }, []);
+
+
+
+
+
   return (
     <div className="App">
       <ToastContainer />

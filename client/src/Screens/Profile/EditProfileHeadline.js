@@ -36,7 +36,7 @@ export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {
       setHeader(event.target.value);
     } else {
       toast.error(
-        'Something went wrong. Please contact the customer service' 
+        'Something went wrong.' 
       );
     }
   };

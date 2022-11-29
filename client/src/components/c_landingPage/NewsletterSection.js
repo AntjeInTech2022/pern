@@ -53,13 +53,8 @@ function NewsletterSection() {
               />
               <Button
                 type="submit"
-                // color = {color_amber}
-                // color = 'color_amber'
-                color = "secondary"
-                // color= {color}
-                // bgcolor= 'secondary.light'
-                variant="contained"
-                // variant="outlined"
+                color = "success"
+                variant='contained'
                 sx={{ width: '100%' }}
               >
                 Keep me updated

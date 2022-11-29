@@ -33,8 +33,6 @@ export const AuthProvider = (props) => {
     return { success, error };
   };
 
-
-
   //LOGIN
   const login = async (email, password) => {
     // console.log('email', email);
@@ -49,8 +47,6 @@ export const AuthProvider = (props) => {
     const { success, token, error, user } = await res.json();
     localStorage.setItem("jwt", token);
     getUser()
-    // setUser(user);
-    // setIsAuthenticated(true);
     return { success, error };
   };
   console.log("loged in user", user);
@@ -149,18 +145,49 @@ export const AuthProvider = (props) => {
       console.log('success', success)
     if (success){
       setUser(user);
-      
-      // return { success }
+     
+    } else {console.log('invalid token')}
+      } catch (error) {
+        console.error(error.message);
+     
+      }
+    }
+  };
+
+  // delete User
+  const deleteUser = async (user) => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt === "") {
+      console.log('no token')
+    } else {
+      try {
+        const options = {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${jwt}`,
+          },
+        };
+        const response = await fetch(
+          `${backendUrl}/api/users/delete`,
+          options
+        );
+        console.log('response', response)
+      const {success, user} = await response.json();
+      console.log('success', success)
+    if (success){
+      setUser(user);
+      return { success }
     } else {console.log('invalid token')}
       } catch (error) {
         console.error(error.message);
       }
     }
-  };
+
+  }
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser }}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser }}
     >
       {props.children}
     </AuthContext.Provider>

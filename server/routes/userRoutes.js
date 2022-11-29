@@ -19,7 +19,7 @@ const router = express.Router();
 
 
 // GET ALL USERS
-router.get("/all", jwtAuth, getAllUsers);
+router.get("/all",getAllUsers);
 // router.get("/all", jwtAuth, getAllUsers);
 
 // PRIVATE ROUTE

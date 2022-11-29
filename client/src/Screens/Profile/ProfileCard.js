@@ -1,4 +1,5 @@
-import React, {useState } from 'react';
+import React, {useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 //MUI
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -19,11 +20,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import EditHeadline from './EditProfileHeadline';
 import EditDescription from './EditProfileDescription';
 import '../../App.css'
+import { AuthContext } from '../../Context/authContext.js'
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 const ProfileCard = ({ user }) => {
+
+  const navigate = useNavigate();
 
 //  EDIT IMAGE POP_UP
   const [open, setOpen] = useState(false);
@@ -51,9 +57,33 @@ const ProfileCard = ({ user }) => {
   const handleClickOpenDelete = () => {
     setOpenDelete(true);
   };
+
   const handleCloseDelete = () => {
     setOpenDelete(false);
   };
+
+// Delete Account
+const { deleteUser } = useContext(AuthContext);
+
+  const handleDelete = async (event) => {
+      event.preventDefault();
+      const { success } = await deleteUser(user) ;
+      console.log('success', success)
+      if (success) {
+        toast.success('Your account has been deleted!');
+        setOpenDelete(false);
+        navigate('/register');
+
+      } else {
+        toast.error(
+          'Something went wrong.' 
+        );
+      }
+    };
+  
+
+
+    
 
  
 
@@ -135,7 +165,7 @@ const ProfileCard = ({ user }) => {
         </CardContent>
         <CardActions>
 {/* DELETE ACCOUNT*/}
-          <Button onClick={handleClickOpenDelete}>Delete Account</Button>
+          <Button color='warning' onClick={handleClickOpenDelete}>Delete Account</Button>
         </CardActions>
       </Card>
 
@@ -146,17 +176,17 @@ const ProfileCard = ({ user }) => {
       
       >
         <DialogTitle id="alert-dialog-delete">
-        {"Delete your account"}
+        {"Are you sure you want to delete your BuZz account?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="delete account">
-          This feature is not live yet. Feature coming soon (or never)...
+          Deleting your account is an irreversable action. Do you still want to delete your account?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <Button onClick={handleClose}>Disagree</Button> */}
-          <Button onClick={handleCloseDelete} autoFocus>
-          Ok
+          <Button onClick={handleCloseDelete}>Cancel</Button>
+          <Button variant="contained" color="warning" onClick={handleDelete} autoFocus>
+          Delete permanently
           </Button>
         </DialogActions>
       </Dialog>

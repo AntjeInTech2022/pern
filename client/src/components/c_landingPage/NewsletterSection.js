@@ -4,10 +4,10 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '../Typography';
 import TextField from '@mui/material/TextField';
-import Snackbar from '@mui/material/Snackbar';
+
 import Button from '@mui/material/Button';
 import { amber } from '@mui/material/colors';
-import picture from '../../Images/meggyn-pomerleau-hAYy2mFLjS8-unsplash.jpg'
+import picture from '../../Images/hansjorg-keller-OJHxRwXWXBs-unsplash.jpg'
 
 const color_amber = amber[50];
 
@@ -35,6 +35,7 @@ function NewsletterSection() {
               bgcolor: 'primary.light',
               py: 8,
               px: 3,
+              borderRadius: 2,
             }}
           >
             <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400 }}>
@@ -42,10 +43,10 @@ function NewsletterSection() {
                 Subscribe to our newsletter
               </Typography>
               <Typography variant="h5">
-              Get inspiration, tips, beautifull photos, bee keeper stories, recipes and more.
+              Get inspiration, event updates, beautifull photos, bee keeper stories, recipes and more.
               </Typography>
               <TextField
-                noBorder
+            
                 placeholder="Your email"
                 variant="standard"
                 sx={{ width: '100%', mt: 3, mb: 2 }}
@@ -86,7 +87,9 @@ function NewsletterSection() {
           <Box
             component="img"
             src={picture}
-            alt="Photo by Meggyn Pomerleau on Unsplash"
+            alt="Busy activity in front of the beehive."
+            // Photo by <a href="https://unsplash.com/@kel_foto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hansjörg Keller</a> on <a href="https://unsplash.com/s/photos/bee-hive?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
             sx={{
               position: 'absolute',
               top: -28,
@@ -95,6 +98,7 @@ function NewsletterSection() {
               bottom: 0,
               width: '100%',
               maxWidth: 600,
+              borderRadius: 2,
             }}
           />
         </Grid>

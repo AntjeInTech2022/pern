@@ -70,6 +70,23 @@ function ProfileScreen() {
         {user &&
         <ProfileCard user={user} />}
       </Container>
+      <p>
+      <br></br>
+      <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+      </p>
     </>
   );
 }

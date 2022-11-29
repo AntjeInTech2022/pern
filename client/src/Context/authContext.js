@@ -11,6 +11,11 @@ export const AuthContext = createContext();
 export const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    getUser()
+  }, [])
+  
+
   //REGISTER
   const register = async (name, email, password) => {
     const options = {
@@ -23,9 +28,12 @@ export const AuthProvider = (props) => {
     const res = await fetch(`${backendUrl}/api/users/register`, options);
     const { success, error, token, user } = await res.json();
     localStorage.setItem("jwt", token);
-    setUser(user);
+    getUser()
+  
     return { success, error };
   };
+
+
 
   //LOGIN
   const login = async (email, password) => {
@@ -40,7 +48,8 @@ export const AuthProvider = (props) => {
     const res = await fetch(`${backendUrl}/api/users/login`, options);
     const { success, token, error, user } = await res.json();
     localStorage.setItem("jwt", token);
-    setUser(user);
+    getUser()
+    // setUser(user);
     // setIsAuthenticated(true);
     return { success, error };
   };
@@ -116,11 +125,11 @@ export const AuthProvider = (props) => {
       }
     };
 
-      // getUser
+  // getUser
   const getUser = async () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
-      return { success: false, error: "login first" };
+      console.log('no token')
     } else {
   
       try {
@@ -131,17 +140,18 @@ export const AuthProvider = (props) => {
           },
         };
         const response = await fetch(
-          `${backendUrl}/api/users/profile`,
+          `${backendUrl}/api/users/private`,
           options
         );
         console.log('response', response)
-      const {success, error} = await response.json();
+      const {success, error, user} = await response.json();
       console.log('err', error)
       console.log('success', success)
     if (success){
-      setUser({ ...user, profile_header });
-      return { success }
-    }
+      setUser(user);
+      
+      // return { success }
+    } else {console.log('invalid token')}
       } catch (error) {
         console.error(error.message);
       }
@@ -150,7 +160,7 @@ export const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription }}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser }}
     >
       {props.children}
     </AuthContext.Provider>

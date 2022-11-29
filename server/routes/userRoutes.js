@@ -4,7 +4,7 @@ import {
   Login,
   getAllUsers,
   // getUserById,
-  getProfile,
+  getUser,
   updateProfileHeader,
   updateProfileDescription,
   deleteAccount,
@@ -16,24 +16,14 @@ import { jwtAuth } from "../middleware/passport.js";
 // import { authMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
-// jwt Auth Check
-// router.get("/verified", jwtAuth, async (req, res) =>
-// {
-//   try {
-//     res.json(true);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send("Server error")
-//   }
-// }
-// );
+
 
 // GET ALL USERS
-router.get("/all", getAllUsers);
+router.get("/all", jwtAuth, getAllUsers);
 // router.get("/all", jwtAuth, getAllUsers);
 
 // PRIVATE ROUTE
-router.get("/profile", jwtAuth, getProfile);
+router.get("/private",jwtAuth, getUser);
 
 // EDIT PROFILE HEADLINE
 router.put("/updateProfileHeader", jwtAuth, updateProfileHeader);
@@ -46,7 +36,7 @@ router.put("/updateProfileDescription", jwtAuth, updateProfileDescription);
 
 // sent message
 // router.get("/:pid/message", sendMessage);
-router.put("/message",jwtAuth, sendMessage);
+// router.put("/message",jwtAuth, sendMessage);
 
 // REGISTRATION
 // router.post("/register", Register);

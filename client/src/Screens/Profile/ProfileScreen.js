@@ -67,7 +67,8 @@ function ProfileScreen() {
         </DialogActions>
       </Dialog>
         <br></br>
-        <ProfileCard user={user} />
+        {user &&
+        <ProfileCard user={user} />}
       </Container>
     </>
   );

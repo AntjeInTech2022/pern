@@ -20,7 +20,8 @@ import ResponsiveAppBar from './components/c_navigation/AppBar';
 import AppFooter from './components/c_footer/AppFooter';
 
 // UTILITIES
-import ProtectedRoute from './utilities/protectedRoute';
+import ProtectedRoute from './utilities/protectedRoute.js';
+import ProtectedRoute2 from './utilities/protectedRoute2.js';
 
 // MUI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -68,16 +69,32 @@ function App() {
                     </ProtectedRoute>
                   }
                 ></Route>
-                <Route
+                {/* <Route
                   path="/details/:id"
                   element={
                     <ProtectedRoute>
                       <DetailsScreen />
                     </ProtectedRoute>
                   }
-                ></Route>
-                <Route path="/login" element={<Login />}></Route>
-                <Route path="/register" element={<Register />}></Route>
+                ></Route> */}
+                <Route 
+                path="/login" 
+                element={
+                  <ProtectedRoute2>
+                <Login />
+                </ProtectedRoute2>
+                }>
+
+                </Route>
+                <Route 
+                path="/register" 
+                element={
+                  <ProtectedRoute2>
+                  <Register />
+                  </ProtectedRoute2>
+                }>
+                </Route>
+
                 <Route
                   path="/profile"
                   element={

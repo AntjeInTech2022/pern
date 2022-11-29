@@ -52,8 +52,8 @@ const Register = async (req, res) => {
 // GET ALL USERS
 const getAllUsers = async (req, res) => {
   try {
-    const users = await pool.query(`SELECT * FROM users`); //Checking if user already exists
-    console.log("users", users);
+    const users = await pool.query(`SELECT pid, user_name, profile_header, profile_description, registration_date FROM users`); 
+    // console.log("users", users);
     res.status(200).json(users.rows);
   } catch (error) {
     res.status(500).json({
@@ -64,6 +64,7 @@ const getAllUsers = async (req, res) => {
 };
 
 // GET USER BY ID
+
 // const getUserById = async (req, res) => {
 //   try {
 //     const { pid } = req.params;
@@ -126,10 +127,19 @@ const Login = async (req, res) => {
 };
 
 /// PRIVATE ROUTE
-const getProfile = async (req, res) => {
+const getUser = async (req, res) => {
+  const user = req.user
   // console.log("user >>>>", user);
   console.log("req>>>>", req.user);
-  res.status(201).json(`authorized request for ${req.user.user_name}`);
+  if (user) { 
+    res.status(201).json({user, success: true});
+  } else 
+{  
+res.json(503).json({
+  user: null,
+  error: "Database error occurred while signing in!", //Database connection error
+  success: false})
+;}
 };
 
 //create/edit a profile_header
@@ -241,7 +251,7 @@ export {
   Login,
   getAllUsers,
   // getUserById,
-  getProfile,
+  getUser,
   updateProfileHeader,
   updateProfileDescription,
   deleteAccount,

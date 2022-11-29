@@ -36,7 +36,7 @@ export default function SentMessage({ user, open, setOpen}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Sent</Button>
+          <Button onClick={handleClose}>Send</Button>
         </DialogActions>
       </Dialog>
     </div>

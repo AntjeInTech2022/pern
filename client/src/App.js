@@ -17,7 +17,7 @@ import ChatScreen from './Screens/Chat/ChatScreen'
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
-// import AppFooter from './components/c_footer/AppFooter';
+import AppFooter from './components/c_footer/AppFooter';
 
 // UTILITIES
 import ProtectedRoute from './utilities/protectedRoute';
@@ -95,7 +95,7 @@ function App() {
                   }
                 ></Route>
               </Routes>
-              {/* <AppFooter /> */}
+              <AppFooter />
             </UsersContextProvider>
           </AuthProvider>
         </Router>

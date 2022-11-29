@@ -3,10 +3,12 @@ import {
   Register,
   Login,
   getAllUsers,
-  getUserById,
+  // getUserById,
   getProfile,
   updateProfileHeader,
-  updateProfileDescription
+  updateProfileDescription,
+  deleteAccount,
+  sendMessage
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -15,16 +17,16 @@ import { jwtAuth } from "../middleware/passport.js";
 
 const router = express.Router();
 // jwt Auth Check
-router.get("/verified", jwtAuth, async (req, res) =>
-{
-  try {
-    res.json(true);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server error")
-  }
-}
-);
+// router.get("/verified", jwtAuth, async (req, res) =>
+// {
+//   try {
+//     res.json(true);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Server error")
+//   }
+// }
+// );
 
 // GET ALL USERS
 router.get("/all", getAllUsers);
@@ -40,7 +42,11 @@ router.put("/updateProfileHeader", jwtAuth, updateProfileHeader);
 router.put("/updateProfileDescription", jwtAuth, updateProfileDescription);
 
 // GET SPECIFIC USER
-router.get("/:pid", getUserById);
+// router.get("/:pid", getUserById);
+
+// sent message
+// router.get("/:pid/message", sendMessage);
+router.put("/message",jwtAuth, sendMessage);
 
 // REGISTRATION
 // router.post("/register", Register);
@@ -49,5 +55,8 @@ router.post("/register", validInfo, Register);
 // LOGIN
 // router.post("/login", Login);
 router.post("/login", validInfo, Login);
+
+// DELETE
+router.delete("/delete", jwtAuth, deleteAccount)
 
 export default router;

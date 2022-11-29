@@ -20,18 +20,34 @@ CREATE TABLE users(
 ALTER TABLE users
 ADD registration_date DATE;
 
-CREATE TABLE messages(
+-- CREATE TABLE messages(
+--     mssg_id SERIAL,
+--     pid UUID,
+--     mssg_text VARCHAR(255) NOT NULL,
+--     pid as receiver_id,
+--     pid as sender_id
+--    PRIMARY KEY (mssg_id),
+--    FOREIGN KEY (pid)
+-- --    FOREIGN KEY (sender_id)
+-- --    FOREIGN KEY (receiver_id)
+--    REFERENCES users(pid)
+-- );
+
+CREATE TABLE chat_x(
     mssg_id SERIAL,
-    pid UUID,
-    mssg_text VARCHAR(255) NOT NULL,
-    pid as receiver_id,
     pid as sender_id
+    pid as receiver_id,
+    mssg_text VARCHAR(255) NOT NULL,
    PRIMARY KEY (mssg_id),
-   FOREIGN KEY (pid)
+   FOREIGN KEY (sender_id)
+   FOREIGN KEY (receiver_id)
 --    FOREIGN KEY (sender_id)
 --    FOREIGN KEY (receiver_id)
    REFERENCES users(pid)
 );
+
+-- UPDATE messages SET mssg_text= 'test' WHERE pid = 'ba05e845-04a4-4590-8110-e5472b3ff9d9'
+INSERT INTO messages (pid, mssg_text) VALUES ('ba05e845-04a4-4590-8110-e5472b3ff9d9', 'helloHello')
 
 
 

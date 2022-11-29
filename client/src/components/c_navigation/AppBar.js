@@ -1,6 +1,6 @@
 import HiveIcon from '@mui/icons-material/Hive';
-import avatarPic from '../../Images/user.png';
-import BeeLogo from '../../Images/bee_line.png';
+// import avatarPic from '../../Images/user.png';
+// import BeeLogo from '../../Images/bee_line.png';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
@@ -10,11 +10,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
+// import Switch from '@mui/material/Switch';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { toast } from 'react-toastify';
@@ -75,15 +75,16 @@ export default function MenuAppBar() {
       )} */}
 
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Button color="inherit" onClick={() => navigate('/list')}>
             Find a host
           </Button>
           <Button color="inherit" onClick={() => navigate('/list')}>
             Bee keepers
           </Button>
-
+          {/* <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}> */}
           <Typography sx={{ flexGrow: 1 }}>
+          <HiveIcon/> 
             <Link
               variant="h6"
               underline="none"
@@ -93,9 +94,11 @@ export default function MenuAppBar() {
             >
               {/* <img width="100" height="auto" src={BeeLogo} />
               <br></br> */}
-              BuZz
+             {'BuZz'}
+             {/* BuZz */}
             </Link>
           </Typography>
+          {/* </Box> */}
           {!user ? (
             <Button color="inherit" onClick={() => navigate('/login')}>
               Login

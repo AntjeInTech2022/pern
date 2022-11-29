@@ -63,23 +63,23 @@ const getAllUsers = async (req, res) => {
 };
 
 // GET USER BY ID
-const getUserById = async (req, res) => {
-  try {
-    const { pid } = req.params;
+// const getUserById = async (req, res) => {
+//   try {
+//     const { pid } = req.params;
 
-    const user = await pool.query(`SELECT * FROM users WHERE pid = $1;`, [pid]); //Checking if user already exists
-    console.log("user", user);
-    res.status(200).json({
-      user: user.rows[0],
-      success: true,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: error,
-      success: false,
-    });
-  }
-};
+//     const user = await pool.query(`SELECT * FROM users WHERE pid = $1;`, [pid]); //Checking if user already exists
+//     console.log("user", user);
+//     res.status(200).json({
+//       user: user.rows[0],
+//       success: true,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       error: error,
+//       success: false,
+//     });
+//   }
+// };
 
 // LOGIN table: users
 const Login = async (req, res) => {
@@ -175,14 +175,50 @@ const updateProfileDescription = async (req, res) => {
   }
 };
 
-//sent a message
-const sentMessage = async (req, res) => {
+const deleteAccount = async (req, res) => {
   try {
-    // console.log("updateProfileDescription1 req.body", req.body);
     const { pid } = req.user;
+    const deleteUser = await pool.query(
+      "DELETE FROM users WHERE pid = $1",
+      [pid]
+    );
+    res.status(200).json({success: true});
+    
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      error: "Database error", //Database connection error
+      success: false,
+    });
+  }
+}
+
+// router.put("/chat",  createNewChat)
+// const createNewChat = async (req, res) => {
+//   try {
+//     const newChat = await pool.query(
+//       "UPDATE messages SET mssg_text= $1 WHERE pid = $2",
+//       [mssg_text, pid]
+//     );
+
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+
+//sent a message
+const sendMessage = async (req, res) => {
+
+  try {
+    // Cannot destructure property 'pid' of 'req.user' as it is undefined:
+    const { pid } = req.user;
+
+    // https://www.w3schools.com/sql/sql_update.asp
     const { mssg_text } = req.body;
-    const sentMessage = await pool.query(
+    const sendMessage = await pool.query(
       "UPDATE messages SET mssg_text= $1 WHERE pid = $2",
+      // INSERT INTO messages (pid, mssg_text) VALUES ('ba05e845-04a4-4590-8110-e5472b3ff9d9', 'helloHello')
+      // "INSERT INTO messages VALUES ($1, $2)"
       [mssg_text, pid]
     );
 
@@ -200,8 +236,10 @@ export {
   Register,
   Login,
   getAllUsers,
-  getUserById,
+  // getUserById,
   getProfile,
   updateProfileHeader,
-  updateProfileDescription
+  updateProfileDescription,
+  deleteAccount,
+  sendMessage
 };

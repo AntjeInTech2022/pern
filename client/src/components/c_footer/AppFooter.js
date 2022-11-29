@@ -73,11 +73,11 @@ export default function AppFooter() {
                 <LinkedInIcon fontSize="large"/>
                 </Box>
               </Grid>
-              <Grid item>
-              {/* <Copyright /> */}
-              </Grid>
-           
+          
             </Grid>
+            {/* <Grid item>
+              <Copyright />
+              </Grid> */}
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
             <Typography variant="h6" marked="left" gutterBottom>
@@ -85,13 +85,18 @@ export default function AppFooter() {
             </Typography>
             <Box component="ul" sx={{ m: 0, listStyle: 'none', p: 0 }}>
               <Box component="li" sx={{ py: 0.5 }}>
-                <Link underline="hover" color="inherit">
-                Contact
+                <Link 
+                underline="hover" 
+                color="inherit"
+                target="_blank" 
+              href="https://mui.com/store/items/onepirate/"
+                >
+                FAQ
                 </Link>
               </Box>
               <Box component="li" sx={{ py: 0.5 }}>
                 <Link underline="hover" color="inherit" >
-                About this project
+                Contact
                 </Link>
               </Box>
             </Box>
@@ -115,12 +120,33 @@ export default function AppFooter() {
                 </option>
               ))}
             </TextField>
-           
            </Grid>
+           <Grid item>
+            <Typography variant="caption">
+              {'Template created by the '}
+              <Link color="inherit" target="_blank"  href="https://mui.com/store/items/onepirate/">
+                MUI Community
+            </Link>
+              {/* {' from '}
+              <Link color="inherit" target="_blank" href="https://mui.com/store/items/onepirate/">
+              https://mui.com/store/items/onepirate/
+              </Link>  */}
+              {' under a '} 
+              <Link
+                href="https://opensource.org/licenses/MIT"
+                title="The MIT License"
+                target="_blank"
+                rel="noopener noreferrer"
+                color="inherit"
+              >
+               MIT license
+              </Link>
+            </Typography>
+          </Grid>
           
-         <Grid item>
-           <Copyright />
-          </Grid> 
+         {/* <Grid item> */}
+           {/* <Copyright /> */}
+          {/* </Grid>  */}
         </Grid> 
       
       </Container>

@@ -27,7 +27,7 @@ const Register = async (req, res) => {
 
       const bcryptPassword = await bcrypt.hash(password, salt);
       // 4. add new user to database table 'users'
-const register_date = getCurrentDate()
+      const register_date = getCurrentDate()
 
       const newUser = await pool.query(
         "INSERT INTO users (user_name, user_email, user_password, registration_date) VALUES ($1, $2, $3, $4) RETURNING *",
@@ -37,7 +37,8 @@ const register_date = getCurrentDate()
       // 5. generate jwt token
       // npm install dotenv
       const token = jwtGenerator(newUser.rows[0].pid);
-      res.status(200).json({ user: newUser.rows[0], token, success: true });
+      // res.status(200).json({ user: newUser.rows[0], token, success: true });
+      res.status(200).json({  token, success: true });
     }
   } catch (error) {
     console.error(error.message);
@@ -113,7 +114,8 @@ const Login = async (req, res) => {
 
     // 4. give them the jwt token
     const token = jwtGenerator(user.rows[0].pid);
-    res.json({ token, user: user.rows[0], success: true });
+    // res.json({ token, user: user.rows[0], success: true });
+    res.json({ token, success: true });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({
@@ -192,6 +194,8 @@ const deleteAccount = async (req, res) => {
     });
   }
 }
+
+// get user from token
 
 // router.put("/chat",  createNewChat)
 // const createNewChat = async (req, res) => {

@@ -20,14 +20,11 @@ export const UsersContextProvider = (props) => {
       console.error(error.message);
     }
   };
-  useEffect(() => {
-    getUsers();
-  }, []); //  '[]' makes sure there is only one request
 
   console.log(users);
 
   return (
-    <UsersContext.Provider value={{ users }}>
+    <UsersContext.Provider value={{ users, getUsers }}>
       {props.children}
     </UsersContext.Provider>
   );

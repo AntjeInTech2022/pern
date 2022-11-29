@@ -17,10 +17,15 @@ import BeeLogo from '../../Images/bee_line.png';
 import dummyHostData from '../../dummyData/dummyHostData';
 //CONTEXT
 import { UsersContext } from '../../Context/userContext';
+import {AuthContext} from '../../Context/authContext'
 
 
 function ListScreen() {
-  const { users } = useContext(UsersContext);
+  const { users,getUsers } = useContext(UsersContext);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    getUsers();
+  }, [user]); 
 
   return (
     <Container>

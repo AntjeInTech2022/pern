@@ -73,11 +73,6 @@ export const AuthProvider = (props) => {
       console.log('success', success)
     if (success){
       setUser({ ...user, profile_header });
-
-      // useEffect(() => {
-      //   getUsers();
-      // }, []); 
-
       return { success }
     }
       } catch (error) {
@@ -120,6 +115,38 @@ export const AuthProvider = (props) => {
         }
       }
     };
+
+      // getUser
+  const getUser = async () => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt === "") {
+      return { success: false, error: "login first" };
+    } else {
+  
+      try {
+        const options = {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${jwt}`,
+          },
+        };
+        const response = await fetch(
+          `${backendUrl}/api/users/profile`,
+          options
+        );
+        console.log('response', response)
+      const {success, error} = await response.json();
+      console.log('err', error)
+      console.log('success', success)
+    if (success){
+      setUser({ ...user, profile_header });
+      return { success }
+    }
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  };
 
   return (
     <AuthContext.Provider

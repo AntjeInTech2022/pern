@@ -6,9 +6,12 @@ import cors from "cors";
 import passport from "passport";
 import * as dotenv from "dotenv";
 import { passportConfig } from "./middleware/passport.js";
+import { Server } from "socket.io";
+
 
 // create express  app
 const app = express();
+const http = 
 // instantiate router feature and add it to the express app
 // app.use(router);
 app.use(express.json()); //req.body

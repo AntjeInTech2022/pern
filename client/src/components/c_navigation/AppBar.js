@@ -75,13 +75,15 @@ export default function MenuAppBar() {
       )} */}
 
       <AppBar position="static">
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar 
+        sx={{ justifyContent: 'space-between' }}
+        >
           <Button color="inherit" onClick={() => navigate('/list')}>
-            Find a host
+            Browse community
           </Button>
-          <Button color="inherit" onClick={() => navigate('/list')}>
+          {/* <Button color="inherit" onClick={() => navigate('/list')}>
             Bee keepers
-          </Button>
+          </Button> */}
           {/* <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}> */}
           <Typography sx={{ flexGrow: 1 }}>
           <HiveIcon/> 

@@ -23,6 +23,7 @@ import {AuthContext} from '../../Context/authContext'
 function ListScreen() {
   const { users,getUsers } = useContext(UsersContext);
   const { user } = useContext(AuthContext);
+  
   useEffect(() => {
     getUsers();
   }, [user]); 

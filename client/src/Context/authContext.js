@@ -14,6 +14,8 @@ export const AuthProvider = (props) => {
   useEffect(() => {
     getUser()
   }, [])
+
+
   
 
   //REGISTER
@@ -58,7 +60,7 @@ export const AuthProvider = (props) => {
       return { success: false, error: "login first" };
     } else {
       const body = { profile_header };
-      console.log('body', body)
+      // console.log('body', body)
       try {
         const options = {
           method: "PUT",
@@ -72,10 +74,10 @@ export const AuthProvider = (props) => {
           `${backendUrl}/api/users/updateProfileHeader`,
           options
         );
-        console.log('response', response)
+        // console.log('response', response)
       const {success, error} = await response.json();
-      console.log('err', error)
-      console.log('success', success)
+      // console.log('err', error)
+      // console.log('success', success)
     if (success){
       setUser({ ...user, profile_header });
       return { success }
@@ -93,7 +95,7 @@ export const AuthProvider = (props) => {
         return { success: false, error: "login firsrt" };
       } else {
         const body = { profile_description };
-        console.log('body', body)
+        // console.log('body', body)
         try {
           const options = {
             method: "PUT",
@@ -107,10 +109,10 @@ export const AuthProvider = (props) => {
             `${backendUrl}/api/users/updateProfileDescription`,
             options
           );
-          console.log('response', response)
+          // console.log('response', response)
         const {success} = await response.json();
        
-        console.log('success', success)
+        // console.log('success', success)
       if (success){
         setUser({ ...user, profile_description });
         return { success }
@@ -139,7 +141,7 @@ export const AuthProvider = (props) => {
           `${backendUrl}/api/users/private`,
           options
         );
-        console.log('response', response)
+        // console.log('response', response)
       const {success, error, user} = await response.json();
       console.log('err', error)
       console.log('success', success)
@@ -188,6 +190,44 @@ export const AuthProvider = (props) => {
     }
   };
 
+  // read sent messages
+  const [messages, setMessages] = useState();
+  const readSentMessages = async () => {
+    
+    const jwt = localStorage.getItem("jwt");
+    if (jwt === "") {
+      return { success: false, error: "login firsrt" };
+    } else {
+      
+      try {
+        const options = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`,
+          },
+         
+        };
+        const response = await fetch(
+          `${backendUrl}/api/users/inboxSent`,
+          options
+        );
+        const jsonData = await response.json();
+       console.log('readSentMessages',jsonData); //ok
+        setMessages(jsonData);
+      
+       
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  };
+
+   useEffect(() => {
+    readSentMessages()
+  }, []) // trigger action on load
+  console.log('messages',messages); //ok
+
   // delete User
   const deleteUser = async (user) => {
     const jwt = localStorage.getItem("jwt");
@@ -221,7 +261,7 @@ export const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage }}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages}}
     >
       {props.children}
     </AuthContext.Provider>

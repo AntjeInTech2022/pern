@@ -21,7 +21,7 @@ export const UsersContextProvider = (props) => {
     }
   };
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <UsersContext.Provider value={{ users, getUsers }}>

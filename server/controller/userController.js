@@ -112,7 +112,7 @@ const Login = async (req, res) => {
 const getUser = async (req, res) => {
   const user = req.user
   // console.log("user >>>>", user);
-  console.log("req>>>>", req.user);
+  // console.log("req>>>>", req.user);
   if (user) { 
     res.status(201).json({user, success: true});
   } else 
@@ -212,12 +212,11 @@ const sendMessage = async (req, res) => {
 //sent a message
 const getMessages = async (req, res) => {
   try {
-
-    const messages = await pool.query("SELECT created_at, sender_name, mssg_title, mssg_text, receiver_name FROM messages where sender_id=$1"
+    const messages = await pool.query("SELECT mssg_id, created_at, sender_name, mssg_title, mssg_text, receiver_name FROM messages where sender_id=$1"
     ,[req.user.pid])
-    res.status(200).json(messages.rows);
+    // res.status(200).json(messages.rows);
     // res.status(200).json({success: true, messages});
-    // res.status(200).json({ messages: messages.rows[0], success: true });
+    res.status(200).json({ messages: messages.rows[0], success: true });
   } catch (error) {
     console.log('error send message', error.message);
     res.status(500).json({

@@ -210,13 +210,15 @@ const sendMessage = async (req, res) => {
 
   try {
   const sender_id = req.user.pid;
+  const sender_name = req.user.user_name;
   console.log('sender_id', sender_id)
   // const { pid } = req.user;
-  const { receiver_id,sender_name, mssg_title, mssg_text, } = req.body
+  const { receiver_id, mssg_title, mssg_text, } = req.body
   const newMessage = await pool.query(`INSERT INTO messages (sender_id, receiver_id, sender_name, mssg_title, mssg_text)
                                         VALUES ($1,$2,$3,$4,$5) RETURNING *`,
                                         [sender_id, receiver_id, sender_name,  mssg_title, mssg_text]);
-    res.status(200).json({success: true, newMessage});
+    // res.status(200).json({success: true, newMessage});
+    res.status(200).json({success: true});
   } catch (error) {
     console.log('error send message', error.message);
     res.status(500).json({

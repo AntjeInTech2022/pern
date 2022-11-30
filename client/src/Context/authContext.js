@@ -155,13 +155,13 @@ export const AuthProvider = (props) => {
   };
 
 // send message to another user
-   const sendMessage = async (receiver_id, sender_name, mssg_title, mssg_text) => {
+   const sendMessage = async (receiver_id, mssg_title, mssg_text) => {
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
       return { success: false, error: "login firsrt" };
     } else {
       /* create the req.body for the backend */
-      const body = { receiver_id ,sender_name, mssg_title, mssg_text};
+      const body = { receiver_id , mssg_title, mssg_text};
       try {
         const options = {
           method: "POST",

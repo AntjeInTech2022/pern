@@ -43,7 +43,7 @@ function ListScreen() {
         variant="h5"
         // sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
       >
-     Choose a member and sent them a message
+     Choose a member and send them a message
       </Typography>
       <br></br>
        <img 
@@ -55,13 +55,13 @@ function ListScreen() {
       <br></br>
       <br></br>
 
-      <Grid container spacing={4}>
+      {/* <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (
           <Grid item key={index} xs={12} md={3} lg={4}>
             <HostCard item={item} />
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
       <br></br>
       <br></br>
       {/* <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>

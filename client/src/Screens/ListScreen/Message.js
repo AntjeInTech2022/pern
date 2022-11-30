@@ -22,6 +22,7 @@ export default function SentMessage({ user, open, setOpen}) {
     const { sendMessage } = useContext(AuthContext);
     const [values, setValues] = useState({
       receiver_id: user.pid,
+      receiver_name: user.user_name,
       mssg_title: '',
       mssg_text: '',
       error: ''
@@ -34,7 +35,7 @@ export default function SentMessage({ user, open, setOpen}) {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      const { success, error } = await sendMessage (values.receiver_id, values.mssg_title, values.mssg_text) ;
+      const { success, error } = await sendMessage (values.receiver_id, values.mssg_title, values.mssg_text, values.receiver_name) ;
     
       console.log('success', success)
 

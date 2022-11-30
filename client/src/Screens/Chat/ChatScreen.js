@@ -12,7 +12,11 @@ const ChatScreen = () => {
   return (
 
     <Container maxWidth="sm">
+          <br></br>
          <br></br>
+         <Typography color="inherit" align="center" variant="h2" marked="center">
+     Inbox
+      </Typography>
     <br></br>
 <List sx={{ width: '100%', 
 // maxWidth: 360, 

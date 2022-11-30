@@ -18,7 +18,11 @@ CREATE TABLE users(
 );
 
 ALTER TABLE users
-ADD registration_date DATE;
+DROP COLUMN registration_date;
+
+ALTER TABLE users
+ADD registration_date TIMESTAMPTZ NOT NULL DEFAULT NOW();
+
 
 
 CREATE OR REPLACE FUNCTION trigger_set_timestamp()
@@ -42,6 +46,9 @@ CREATE TABLE IF NOT EXISTS messages (
    FOREIGN KEY (sender_id) REFERENCES users(pid),
    FOREIGN KEY (receiver_id) REFERENCES users(pid)
 );
+
+ALTER TABLE messages
+ADD receiver_name VARCHAR(255);
 
 -- UPDATE messages SET mssg_text= 'test' WHERE pid = 'ba05e845-04a4-4590-8110-e5472b3ff9d9'
 INSERT INTO messages (pid, mssg_text) VALUES ('ba05e845-04a4-4590-8110-e5472b3ff9d9', 'helloHello')

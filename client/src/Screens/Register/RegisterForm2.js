@@ -10,9 +10,6 @@ import { useNavigate } from 'react-router-dom';
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//SELF_MADE
-
-
 
 
 

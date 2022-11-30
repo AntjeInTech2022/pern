@@ -27,11 +27,11 @@ const Register = async (req, res) => {
 
       const bcryptPassword = await bcrypt.hash(password, salt);
       // 4. add new user to database table 'users'
-      const register_date = getCurrentDate()
+      // const register_date = getCurrentDate()
 
       const newUser = await pool.query(
-        "INSERT INTO users (user_name, user_email, user_password, registration_date) VALUES ($1, $2, $3, $4) RETURNING *",
-        [name, email, bcryptPassword, register_date]
+        "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
+        [name, email, bcryptPassword]
       );
 
       // 5. generate jwt token
@@ -63,25 +63,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// GET USER BY ID
 
-// const getUserById = async (req, res) => {
-//   try {
-//     const { pid } = req.params;
-
-//     const user = await pool.query(`SELECT * FROM users WHERE pid = $1;`, [pid]); //Checking if user already exists
-//     console.log("user", user);
-//     res.status(200).json({
-//       user: user.rows[0],
-//       success: true,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       error: error,
-//       success: false,
-//     });
-//   }
-// };
 
 // LOGIN table: users
 const Login = async (req, res) => {
@@ -211,14 +193,30 @@ const sendMessage = async (req, res) => {
   try {
   const sender_id = req.user.pid;
   const sender_name = req.user.user_name;
-  console.log('sender_id', sender_id)
-  // const { pid } = req.user;
-  const { receiver_id, mssg_title, mssg_text, } = req.body
-  const newMessage = await pool.query(`INSERT INTO messages (sender_id, receiver_id, sender_name, mssg_title, mssg_text)
-                                        VALUES ($1,$2,$3,$4,$5) RETURNING *`,
-                                        [sender_id, receiver_id, sender_name,  mssg_title, mssg_text]);
+
+  const { receiver_id, mssg_title, mssg_text,receiver_name } = req.body
+  const newMessage = await pool.query(`INSERT INTO messages (sender_id, receiver_id, sender_name, mssg_title, mssg_text, receiver_name)
+                                        VALUES ($1,$2,$3,$4,$5, $6) RETURNING *`,
+                                        [sender_id, receiver_id, sender_name,  mssg_title, mssg_text, receiver_name,]);
     // res.status(200).json({success: true, newMessage});
     res.status(200).json({success: true});
+  } catch (error) {
+    console.log('error send message', error.message);
+    res.status(500).json({
+      error: "Database error", 
+      success: false,
+    });
+  }
+};
+
+//sent a message
+const getMessages = async (req, res) => {
+  try {
+    const sender_id = req.user.pid;
+    const messages = await pool.query(`SELECT created_at, sender_name, mssg_title, mssg_text FROM messages where sender_id={req.user.pid}`); 
+    
+    res.status(200).json({success: true, messages});
+    // res.status(200).json({success: true});
   } catch (error) {
     console.log('error send message', error.message);
     res.status(500).json({
@@ -237,5 +235,6 @@ export {
   updateProfileHeader,
   updateProfileDescription,
   deleteAccount,
-  sendMessage
+  sendMessage,
+  getMessages
 };

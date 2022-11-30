@@ -43,6 +43,10 @@ function ProfileScreen() {
         <br></br>
       </p>
       <Container>
+      <Typography color="inherit" align="center" variant="h2" marked="center">
+     Your Account
+      </Typography>
+      <br></br>
         <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
           👋 Hello '{user ? user.user_name : 'stranger'}'
           <Button onClick={handleClickOpen}>Edit</Button>

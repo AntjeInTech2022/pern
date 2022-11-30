@@ -23,6 +23,9 @@ DROP COLUMN registration_date;
 ALTER TABLE users
 ADD registration_date TIMESTAMPTZ NOT NULL DEFAULT NOW();
 
+ALTER TABLE users
+ADD profile_picture_url VARCHAR(2083);
+
 
 
 CREATE OR REPLACE FUNCTION trigger_set_timestamp()

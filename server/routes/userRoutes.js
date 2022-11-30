@@ -8,7 +8,8 @@ import {
   updateProfileHeader,
   updateProfileDescription,
   deleteAccount,
-  sendMessage
+  sendMessage,
+  getMessages
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -24,6 +25,8 @@ router.get("/all",getAllUsers);
 
 // PRIVATE ROUTE
 router.get("/private",jwtAuth, getUser);
+
+router.get("/inboxSent",jwtAuth, getMessages);
 
 // EDIT PROFILE HEADLINE
 router.put("/updateProfileHeader", jwtAuth, updateProfileHeader);

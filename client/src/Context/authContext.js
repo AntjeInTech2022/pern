@@ -26,7 +26,7 @@ export const AuthProvider = (props) => {
       body: JSON.stringify({ name, email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/register`, options);
-    const { success, error, token, user } = await res.json();
+    const { success, error, token } = await res.json();
     localStorage.setItem("jwt", token);
     getUser()
   
@@ -44,12 +44,12 @@ export const AuthProvider = (props) => {
       body: JSON.stringify({ email, password }),
     };
     const res = await fetch(`${backendUrl}/api/users/login`, options);
-    const { success, token, error, user } = await res.json();
+    const { success, token, error } = await res.json();
     localStorage.setItem("jwt", token);
     getUser()
     return { success, error };
   };
-  console.log("loged in user", user);
+  // console.log("loged in user", user);
 
   // updateProfileHeader
   const updateProfileHeader = async (profile_header) => {
@@ -154,6 +154,40 @@ export const AuthProvider = (props) => {
     }
   };
 
+// send message to another user
+   const sendMessage = async (receiver_id, sender_name, mssg_title, mssg_text) => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt === "") {
+      return { success: false, error: "login firsrt" };
+    } else {
+      /* create the req.body for the backend */
+      const body = { receiver_id ,sender_name, mssg_title, mssg_text};
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`,
+          },
+          body: JSON.stringify(body),
+        };
+        const response = await fetch(
+          `${backendUrl}/api/users/message`,
+          options
+        );
+        console.log('response', response)
+      const {success} = await response.json();
+     
+      console.log('success', success)
+    if (success){
+      return { success }
+    }
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  };
+
   // delete User
   const deleteUser = async (user) => {
     const jwt = localStorage.getItem("jwt");
@@ -187,7 +221,7 @@ export const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser }}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage }}
     >
       {props.children}
     </AuthContext.Provider>

@@ -20,30 +20,27 @@ CREATE TABLE users(
 ALTER TABLE users
 ADD registration_date DATE;
 
--- CREATE TABLE messages(
---     mssg_id SERIAL,
---     pid UUID,
---     mssg_text VARCHAR(255) NOT NULL,
---     pid as receiver_id,
---     pid as sender_id
---    PRIMARY KEY (mssg_id),
---    FOREIGN KEY (pid)
--- --    FOREIGN KEY (sender_id)
--- --    FOREIGN KEY (receiver_id)
---    REFERENCES users(pid)
--- );
 
-CREATE TABLE chat_x(
-    mssg_id SERIAL,
-    pid as sender_id
-    pid as receiver_id,
+CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE TABLE IF NOT EXISTS messages (
+    mssg_id SERIAL PRIMARY KEY NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    sender_id UUID NOT NULL,
+    receiver_id UUID NOT NULL,
+    sender_name VARCHAR(255) NOT NULL,
+    mssg_title VARCHAR(255) NOT NULL,
     mssg_text VARCHAR(255) NOT NULL,
-   PRIMARY KEY (mssg_id),
-   FOREIGN KEY (sender_id)
-   FOREIGN KEY (receiver_id)
---    FOREIGN KEY (sender_id)
---    FOREIGN KEY (receiver_id)
-   REFERENCES users(pid)
+   FOREIGN KEY (sender_id) REFERENCES users(pid),
+   FOREIGN KEY (receiver_id) REFERENCES users(pid)
 );
 
 -- UPDATE messages SET mssg_text= 'test' WHERE pid = 'ba05e845-04a4-4590-8110-e5472b3ff9d9'

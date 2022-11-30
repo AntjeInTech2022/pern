@@ -34,9 +34,8 @@ router.put("/updateProfileDescription", jwtAuth, updateProfileDescription);
 // GET SPECIFIC USER
 // router.get("/:pid", getUserById);
 
-// sent message
-// router.get("/:pid/message", sendMessage);
-// router.put("/message",jwtAuth, sendMessage);
+// send message
+router.post("/message",jwtAuth, sendMessage);
 
 // REGISTRATION
 // router.post("/register", Register);

@@ -205,42 +205,22 @@ const deleteAccount = async (req, res) => {
   }
 }
 
-// get user from token
-
-// router.put("/chat",  createNewChat)
-// const createNewChat = async (req, res) => {
-//   try {
-//     const newChat = await pool.query(
-//       "UPDATE messages SET mssg_text= $1 WHERE pid = $2",
-//       [mssg_text, pid]
-//     );
-
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
-
 //sent a message
 const sendMessage = async (req, res) => {
 
   try {
-    // Cannot destructure property 'pid' of 'req.user' as it is undefined:
-    const { pid } = req.user;
-
-    // https://www.w3schools.com/sql/sql_update.asp
-    const { mssg_text } = req.body;
-    const sendMessage = await pool.query(
-      "UPDATE messages SET mssg_text= $1 WHERE pid = $2",
-      // INSERT INTO messages (pid, mssg_text) VALUES ('ba05e845-04a4-4590-8110-e5472b3ff9d9', 'helloHello')
-      // "INSERT INTO messages VALUES ($1, $2)"
-      [mssg_text, pid]
-    );
-
-    res.status(200).json({success: true});
+  const sender_id = req.user.pid;
+  console.log('sender_id', sender_id)
+  // const { pid } = req.user;
+  const { receiver_id,sender_name, mssg_title, mssg_text, } = req.body
+  const newMessage = await pool.query(`INSERT INTO messages (sender_id, receiver_id, sender_name, mssg_title, mssg_text)
+                                        VALUES ($1,$2,$3,$4,$5) RETURNING *`,
+                                        [sender_id, receiver_id, sender_name,  mssg_title, mssg_text]);
+    res.status(200).json({success: true, newMessage});
   } catch (error) {
-    console.log(error.message);
+    console.log('error send message', error.message);
     res.status(500).json({
-      error: "Database error", //Database connection error
+      error: "Database error", 
       success: false,
     });
   }

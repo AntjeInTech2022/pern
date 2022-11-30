@@ -165,7 +165,7 @@ const { deleteUser } = useContext(AuthContext);
         </CardContent>
         <CardActions>
 {/* DELETE ACCOUNT*/}
-          <Button color='warning' onClick={handleClickOpenDelete}>Delete Account</Button>
+          <Button disabled color='warning' onClick={handleClickOpenDelete}>Delete Account</Button>
         </CardActions>
       </Card>
 

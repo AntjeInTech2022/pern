@@ -32,17 +32,40 @@ const ChatScreen = () => {
      Inbox
       </Typography>
     <br></br>
-<List sx={{ width: '100%', 
-// maxWidth: 360, 
-bgcolor: 'background.paper' }}>
-    <Grid container spacing={4}>
-        {messages?.map((message, mssg_id) => (
-           <Grid item key={mssg_id} xs={12} md={3} lg={4}>
-            <SentItem message={message} />
-          </Grid>
-        ))}
-      </Grid>
-  </List>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {messages?.map((message, mssg_id) => {
+        
+        return (
+          <>
+          <ListItem 
+          key={mssg_id}
+          alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary=  {message.mssg_title}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  {message.receiver_name}
+                </Typography>
+               {message.created_at}  {message.mssg_text}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+   
+        <Divider variant="inset" component="li" />
+        </>
+         );
+        })}
+    </List>
     </Container>
     
 );

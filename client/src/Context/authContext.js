@@ -191,7 +191,7 @@ export const AuthProvider = (props) => {
   };
 
   // read sent messages
-  const [messages, setMessages] = useState();
+  const [messages, setMessages] = useState(null);
   const readSentMessages = async () => {
     
     const jwt = localStorage.getItem("jwt");
@@ -226,7 +226,8 @@ export const AuthProvider = (props) => {
    useEffect(() => {
     readSentMessages()
   }, []) // trigger action on load
-  console.log('messages',messages); //ok
+  console.log('messages',messages); 
+ 
 
   // delete User
   const deleteUser = async (user) => {

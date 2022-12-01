@@ -224,7 +224,7 @@ const getMessagesSent = async (req, res) => {
     );
     // res.status(200).json(messages.rows);
     // res.status(200).json({success: true, messages});
-    res.status(200).json({ messages: messages.rows[0], success: true });
+    res.status(200).json({ messages: messages.rows, success: true });
     // res.status(200).json({ success: true });
   } catch (error) {
     console.log("error send message", error.message);

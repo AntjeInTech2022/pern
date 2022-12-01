@@ -154,7 +154,6 @@ export const AuthProvider = (props) => {
       }
     };
 
- 
 
 // send message to another user
    const sendMessage = async (receiver_id, mssg_title, mssg_text, receiver_name) => {
@@ -215,8 +214,9 @@ export const AuthProvider = (props) => {
           options
         );
         const jsonData = await response.json();
-       console.log('readSentMessages',jsonData); //ok
+      
         setMessages(jsonData);
+        console.log('readSentMessages',jsonData); //ok
       
        
       } catch (error) {
@@ -233,7 +233,7 @@ export const AuthProvider = (props) => {
 // save users to favorites
 const [favorites, setFavorites] = useState(null);
 
-const post2Favorites = async (user_id) => {
+const newFavorite = async (user_id) => {
   const jwt = localStorage.getItem("jwt");
   if (jwt === "") {
     return { success: false, error: "login firsrt" };
@@ -258,7 +258,7 @@ const post2Favorites = async (user_id) => {
    
     console.log('success', success)
   if (success){
-      setFavorites({...favorites});
+      // setFavorites({...favorites});
     return { success }
   }
     } catch (error) {
@@ -304,7 +304,7 @@ const post2Favorites = async (user_id) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages, post2Favorites}}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages, newFavorite}}
     >
       {props.children}
     </AuthContext.Provider>

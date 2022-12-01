@@ -6,35 +6,36 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-const SentItem = ({ message }) => {
+const SentMessages = ({ message, mssg_id }) => {
   return (
     <>
-   
-    <ListItem alignItems="flex-start">
-    <ListItemAvatar>
-      <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
-    </ListItemAvatar>
-    <ListItemText
-      primary=  {message.mssg_title}
-      secondary={
-        <React.Fragment>
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="body2"
-            color="text.primary"
-          >
-            {message.receiver_name}
-          </Typography>
-         {message.created_at}  {message.mssg_text}
-        </React.Fragment>
-      }
-    />
-  </ListItem>
-  <Divider variant="inset" component="li" />
-  </>
+   <ListItem 
+          key={mssg_id}
+          alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary=  {message.mssg_title}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                to  {message.receiver_name}
+                </Typography>
+               {message.mssg_text}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        </>
   )
-}
+};
 
-export default SentItem
+export default SentMessages;
 

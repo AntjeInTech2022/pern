@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/system';
 import {AuthContext} from '../../Context/authContext'
-import SentItem from './sentItems';
+import SentMessages from './sentItems';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -86,39 +86,13 @@ const handleChange = (event, newValue) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-     {/* <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {messages?.map((message, mssg_id) => {
-        
+     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {messages.messages?.map((message, mssg_id) => {
         return (
-          <>
-          <ListItem 
-          key={mssg_id}
-          alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary=  {message.mssg_title}
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  {message.receiver_name}
-                </Typography>
-               {message.mssg_text}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        </>
+          <SentMessages message={message}/>
          );
         })}
-    </List> */}
+    </List>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <ListItem alignItems="flex-start">
@@ -168,7 +142,9 @@ const handleChange = (event, newValue) => {
       </ListItem>
       </TabPanel>
     </Box>
- 
+    <br></br>
+      <br></br>
+      <br></br>
 
           
     </Container>

@@ -227,9 +227,50 @@ export const AuthProvider = (props) => {
 
    useEffect(() => {
     readSentMessages()
-  }, []) // trigger action on load
+  }, [user]) // trigger action on load
+// }, [messages]) // trigger action on load
   console.log('messages',messages); 
  
+// read sent messages
+const [messagesReceived, setMessagesReceived] = useState();
+const getReceivedMessages = async () => {
+  
+  const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    return { success: false, error: "login firsrt" };
+  } else {
+    
+    try {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
+       
+      };
+      const response = await fetch(
+        `${backendUrl}/api/users/inboxReceived`,
+        options
+      );
+      const jsonData = await response.json();
+    
+      setMessagesReceived(jsonData);
+      // console.log('readSentMessages',jsonData); //ok
+    
+     
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+};
+
+ useEffect(() => {
+  getReceivedMessages ()
+}, [user]) // trigger action on load
+console.log('messagesReceived',messagesReceived); 
+
+
 // save users to favorites
 const [favorites, setFavorites] = useState(null);
 
@@ -304,7 +345,17 @@ const newFavorite = async (user_id) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages, newFavorite}}
+      value={{ setUser, 
+        user, 
+        register, login, 
+        updateProfileHeader, updateProfileDescription, 
+        getUser, 
+        deleteUser, 
+        sendMessage,
+        messages, 
+        readSentMessages, 
+        messagesReceived, 
+        newFavorite}}
     >
       {props.children}
     </AuthContext.Provider>

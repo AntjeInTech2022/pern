@@ -6,17 +6,17 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-const ReceivedMessages = ({ message, mssg_id }) => {
+const ReceivedMessages = ({ messageReceived, mssg_id }) => {
   return (
     <>
    <ListItem 
           key={mssg_id}
           alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={messageReceived.sender_name} src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary=  {message.mssg_title}   
+            primary=  {messageReceived.mssg_title}   
             secondary={
               <React.Fragment>
                 <Typography
@@ -24,15 +24,15 @@ const ReceivedMessages = ({ message, mssg_id }) => {
                   component="span"
                   variant="body2"
                   color="text.primary"
-                >  {message.created_at} <br/>
-                        {message.receiver_name !== null
-                      ? message.receiver_name
+                >  {messageReceived.created_at} <br/>
+                        {messageReceived.sender_name !== null
+                      ? messageReceived.sender_name
                       : 'Unknown user '} 
                       <br/>
 
                 </Typography>
              
-               {message.mssg_text}
+               {messageReceived.mssg_text}
               </React.Fragment>
             }
           />

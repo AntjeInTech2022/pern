@@ -238,13 +238,13 @@ const getMessagesSent = async (req, res) => {
 //get messages received
 const getMessagesReceived = async (req, res) => {
   try {
-    const messages = await pool.query(
+    const messagesReceived = await pool.query(
       "SELECT mssg_id, created_at, sender_name, mssg_title, mssg_text  FROM messages where receiver_id=$1",
       [req.user.pid]
     );
     // res.status(200).json(messages.rows);
     // res.status(200).json({success: true, messages});
-    res.status(200).json({ messages: messages.rows, success: true });
+    res.status(200).json({ messagesReceived : messagesReceived.rows, success: true });
   } catch (error) {
     console.log("error send message", error.message);
     res.status(500).json({

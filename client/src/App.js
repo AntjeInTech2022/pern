@@ -13,6 +13,7 @@ import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';
 import ChatScreen from './Screens/Chat/ChatScreen'
+import { SavedUsersScreen } from './Screens/Profile/SavedUsersScreen.js';
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
@@ -108,6 +109,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <ChatScreen />
+                    </ProtectedRoute>
+                  }
+                ></Route>
+                 <Route
+                  path="/favorites"
+                  element={
+                    <ProtectedRoute>
+                      <SavedUsersScreen />
                     </ProtectedRoute>
                   }
                 ></Route>

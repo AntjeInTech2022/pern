@@ -148,6 +148,9 @@ export default function MenuAppBar() {
                 <MenuItem onClick={() => navigate('/chat')}>
                   Messages
                 </MenuItem>
+                <MenuItem onClick={() => navigate('/chat')}>
+                  Contacts
+                </MenuItem>
               </Menu>
             </div>
           )}

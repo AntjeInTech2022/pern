@@ -8,13 +8,15 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { Container } from '@mui/system';
-import {AuthContext} from '../../Context/authContext'
-import SentMessages from './sentMssgs';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
+// SELF-MADE
+import { Container } from '@mui/system';
+import {AuthContext} from '../../Context/authContext'
+import SentMessages from './sentMssgs.js';
+import ReceivedMessages from './receivedMssgs.js';
 
 const ChatScreen = () => {
 
@@ -52,7 +54,7 @@ const ChatScreen = () => {
   }
   
 
-  const {messages, readSentMessages} = useContext(AuthContext);
+  const {messages, messagesReceived} = useContext(AuthContext);
   // const { user } = useContext(AuthContext);
   // const [messages, setMessages] = useState(null);
 //  console.log('messages in chat screen', messages)
@@ -85,11 +87,12 @@ const handleChange = (event, newValue) => {
           <Tab label="Other" {...a11yProps(2)} />
         </Tabs>
       </Box>
+      {/* TAB: SENT MESSAGES */}
       <TabPanel value={value} index={0}>
       {messages.messages !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {messages.messages?.map((message, mssg_id) => {
+      {messages.messages?.map((message) => {
         return (
           <SentMessages message={message}/>
          );
@@ -97,20 +100,20 @@ const handleChange = (event, newValue) => {
     </List>
        : 'No messages sent yet.'}
       </TabPanel>
-
+     {/* TAB: RECEIVED MESSAGES */}
       <TabPanel value={value} index={1}>
-      {messages.messages !== null
+      {messagesReceived.messagesReceived !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {messages.messages?.map((message, mssg_id) => {
+      {messagesReceived.messagesReceived?.map((messageReceived) => {
         return (
-          <SentMessages message={message}/>
+          <ReceivedMessages messageReceived={messageReceived}/>
          );
         })}
     </List>
-       : 'No messages sent yet.'}
+       : 'No received message yet.'}
       </TabPanel>
-      
+
       <TabPanel value={value} index={2}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>

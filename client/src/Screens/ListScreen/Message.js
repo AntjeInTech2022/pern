@@ -32,12 +32,13 @@ export default function SentMessage({ user, open, setOpen}) {
       setValues({ ...values, [property]: event.target.value });
     };
   
+  
     const handleSubmit = async (event) => {
       event.preventDefault();
 
       const { success, error } = await sendMessage (values.receiver_id, values.mssg_title, values.mssg_text, values.receiver_name) ;
     
-      console.log('success', success)
+      // console.log('success', success)
 
       if (success) {
         toast.success('🐝 Your message has been sent!');

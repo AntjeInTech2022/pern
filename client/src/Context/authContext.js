@@ -15,7 +15,38 @@ export const AuthProvider = (props) => {
     getUser()
   }, [])
 
+ // getUser
+ const getUser = async () => {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    console.log('no token')
+  } else {
 
+    try {
+      const options = {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${jwt}`,
+        },
+      };
+      const response = await fetch(
+        `${backendUrl}/api/users/private`,
+        options
+      );
+      // console.log('response', response)
+    const {success, error, user} = await response.json();
+    console.log('err', error)
+    console.log('success', success)
+  if (success){
+    setUser(user);
+   
+  } else {console.log('invalid token')}
+    } catch (error) {
+      console.error(error.message);
+   
+    }
+  }
+};
   
 
   //REGISTER
@@ -123,47 +154,16 @@ export const AuthProvider = (props) => {
       }
     };
 
-  // getUser
-  const getUser = async () => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt === "") {
-      console.log('no token')
-    } else {
-  
-      try {
-        const options = {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${jwt}`,
-          },
-        };
-        const response = await fetch(
-          `${backendUrl}/api/users/private`,
-          options
-        );
-        // console.log('response', response)
-      const {success, error, user} = await response.json();
-      console.log('err', error)
-      console.log('success', success)
-    if (success){
-      setUser(user);
-     
-    } else {console.log('invalid token')}
-      } catch (error) {
-        console.error(error.message);
-     
-      }
-    }
-  };
+ 
 
 // send message to another user
-   const sendMessage = async (receiver_id, mssg_title, mssg_text) => {
+   const sendMessage = async (receiver_id, mssg_title, mssg_text, receiver_name) => {
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
       return { success: false, error: "login firsrt" };
     } else {
       /* create the req.body for the backend */
-      const body = { receiver_id , mssg_title, mssg_text};
+      const body = { receiver_id , mssg_title, mssg_text, receiver_name};
       try {
         const options = {
           method: "POST",
@@ -182,6 +182,8 @@ export const AuthProvider = (props) => {
      
       console.log('success', success)
     if (success){
+      // setMessages({...messages});
+      // console.log('set Messages', messages)
       return { success }
     }
       } catch (error) {
@@ -191,7 +193,7 @@ export const AuthProvider = (props) => {
   };
 
   // read sent messages
-  const [messages, setMessages] = useState(null);
+  const [messages, setMessages] = useState();
   const readSentMessages = async () => {
     
     const jwt = localStorage.getItem("jwt");
@@ -229,13 +231,15 @@ export const AuthProvider = (props) => {
   console.log('messages',messages); 
  
 // save users to favorites
-const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
+const [favorites, setFavorites] = useState(null);
+
+const post2Favorites = async (user_id) => {
   const jwt = localStorage.getItem("jwt");
   if (jwt === "") {
     return { success: false, error: "login firsrt" };
   } else {
     /* create the req.body for the backend */
-    const body = { receiver_id , mssg_title, mssg_text};
+    const body = {user_id};
     try {
       const options = {
         method: "POST",
@@ -246,7 +250,7 @@ const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
         body: JSON.stringify(body),
       };
       const response = await fetch(
-        `${backendUrl}/api/users/message`,
+        `${backendUrl}/api/users/postFavorites`,
         options
       );
       console.log('response', response)
@@ -254,6 +258,7 @@ const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
    
     console.log('success', success)
   if (success){
+      setFavorites({...favorites});
     return { success }
   }
     } catch (error) {
@@ -261,6 +266,8 @@ const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
     }
   }
 };
+
+
 
 
 
@@ -297,7 +304,7 @@ const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages}}
+      value={{ setUser, user, register, login, updateProfileHeader, updateProfileDescription, getUser, deleteUser,sendMessage,messages, readSentMessages, post2Favorites}}
     >
       {props.children}
     </AuthContext.Provider>

@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/system';
 import {AuthContext} from '../../Context/authContext'
-import SentMessages from './sentItems';
+import SentMessages from './sentMssgs';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -55,7 +55,7 @@ const ChatScreen = () => {
   const {messages, readSentMessages} = useContext(AuthContext);
   // const { user } = useContext(AuthContext);
   // const [messages, setMessages] = useState(null);
- console.log('messages in chat screen', messages)
+//  console.log('messages in chat screen', messages)
   
   
 //  useEffect(() => {
@@ -86,6 +86,8 @@ const handleChange = (event, newValue) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
+      {messages.messages !== null
+        ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {messages.messages?.map((message, mssg_id) => {
         return (
@@ -93,31 +95,22 @@ const handleChange = (event, newValue) => {
          );
         })}
     </List>
+       : 'No messages sent yet.'}
       </TabPanel>
+
       <TabPanel value={value} index={1}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
+      {messages.messages !== null
+        ? 
+     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {messages.messages?.map((message, mssg_id) => {
+        return (
+          <SentMessages message={message}/>
+         );
+        })}
+    </List>
+       : 'No messages sent yet.'}
       </TabPanel>
+      
       <TabPanel value={value} index={2}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>

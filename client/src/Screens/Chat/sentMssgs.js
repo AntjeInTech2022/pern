@@ -16,7 +16,7 @@ const SentMessages = ({ message, mssg_id }) => {
             <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary=  {message.mssg_title}
+            primary=  {message.mssg_title}   
             secondary={
               <React.Fragment>
                 <Typography
@@ -24,9 +24,14 @@ const SentMessages = ({ message, mssg_id }) => {
                   component="span"
                   variant="body2"
                   color="text.primary"
-                >
-                to  {message.receiver_name}
+                >  {message.created_at} <br/>
+                        {message.receiver_name !== null
+                      ? message.receiver_name
+                      : 'Unknown user '} 
+                      <br/>
+
                 </Typography>
+             
                {message.mssg_text}
               </React.Fragment>
             }

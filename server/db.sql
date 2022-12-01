@@ -53,6 +53,15 @@ CREATE TABLE IF NOT EXISTS messages (
 ALTER TABLE messages
 ADD receiver_name VARCHAR(255);
 
+CREATE TABLE IF NOT EXISTS favorites (
+    favorites_id SERIAL PRIMARY KEY NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    sender_id UUID NOT NULL,
+    user_id UUID NOT NULL,
+   FOREIGN KEY (sender_id) REFERENCES users(pid),
+   FOREIGN KEY (user_id) REFERENCES users(pid)
+);
+
 -- UPDATE messages SET mssg_text= 'test' WHERE pid = 'ba05e845-04a4-4590-8110-e5472b3ff9d9'
 INSERT INTO messages (pid, mssg_text) VALUES ('ba05e845-04a4-4590-8110-e5472b3ff9d9', 'helloHello')
 

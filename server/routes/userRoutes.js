@@ -9,7 +9,9 @@ import {
   updateProfileDescription,
   deleteAccount,
   sendMessage,
-  getMessages
+  getMessagesSent,
+  getMessagesReceived,
+  post2Favorites
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -26,7 +28,9 @@ router.get("/all",getAllUsers);
 // PRIVATE ROUTE
 router.get("/private",jwtAuth, getUser);
 
-router.get("/inboxSent",jwtAuth, getMessages);
+router.get("/inboxSent",jwtAuth, getMessagesSent);
+
+router.get("/inboxReceived",jwtAuth, getMessagesReceived);
 
 // EDIT PROFILE HEADLINE
 router.put("/updateProfileHeader", jwtAuth, updateProfileHeader);
@@ -36,6 +40,9 @@ router.put("/updateProfileDescription", jwtAuth, updateProfileDescription);
 
 // GET SPECIFIC USER
 // router.get("/:pid", getUserById);
+
+// ADD USER TO FAVORITES
+router.post("/postFavorites",jwtAuth,  post2Favorites);
 
 // send message
 router.post("/message",jwtAuth, sendMessage);

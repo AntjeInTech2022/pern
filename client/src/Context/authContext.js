@@ -228,6 +228,41 @@ export const AuthProvider = (props) => {
   }, []) // trigger action on load
   console.log('messages',messages); 
  
+// save users to favorites
+const postSavedUsers = async (receiver_id, mssg_title, mssg_text) => {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    return { success: false, error: "login firsrt" };
+  } else {
+    /* create the req.body for the backend */
+    const body = { receiver_id , mssg_title, mssg_text};
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
+        body: JSON.stringify(body),
+      };
+      const response = await fetch(
+        `${backendUrl}/api/users/message`,
+        options
+      );
+      console.log('response', response)
+    const {success} = await response.json();
+   
+    console.log('success', success)
+  if (success){
+    return { success }
+  }
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+};
+
+
 
   // delete User
   const deleteUser = async (user) => {

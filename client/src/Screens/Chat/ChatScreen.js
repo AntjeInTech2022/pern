@@ -17,6 +17,7 @@ import { Container } from '@mui/system';
 import {AuthContext} from '../../Context/authContext'
 import SentMessages from './sentMssgs.js';
 import ReceivedMessages from './receivedMssgs.js';
+import ContactsTable from './ContactsTable';
 
 const ChatScreen = () => {
 
@@ -84,7 +85,7 @@ const handleChange = (event, newValue) => {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Sent messages" {...a11yProps(0)} />
           <Tab label="Received messages" {...a11yProps(1)} />
-          <Tab label="Drafts" {...a11yProps(2)} />
+          <Tab label="Saved contacts" {...a11yProps(2)} />
         </Tabs>
       </Box>
       {/* TAB: SENT MESSAGES */}
@@ -115,27 +116,9 @@ const handleChange = (event, newValue) => {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+      <br></br>
+         <br></br>
+      <ContactsTable/>
       <br></br>
          <br></br>
          <br></br>

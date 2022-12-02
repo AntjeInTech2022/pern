@@ -177,16 +177,18 @@ export const AuthProvider = (props) => {
           options
         );
         console.log('response', response)
-      const {success} = await response.json();
+      const {success, error} = await response.json();
      
       console.log('success', success)
     if (success){
       // setMessages({...messages});
       // console.log('set Messages', messages)
+      readSentMessages()
       return { success }
     }
       } catch (error) {
-        console.error(error.message);
+        return {error }
+        // console.error(error.message);
       }
     }
   };

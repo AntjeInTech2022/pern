@@ -43,10 +43,10 @@ export default function SentMessage({ user, open, setOpen}) {
       if (success) {
         toast.success('🐝 Your message has been sent!');
         setOpen(false);
-        setValues(event.target.value);
+        // setValues(event.target.value);
       } else {
-        error && setValues({ ...values, error: error });
-        toast.error(values.error);
+        error && setValues({ ...values, error: error.message });
+        toast.error(error.message);
       }
     };
   

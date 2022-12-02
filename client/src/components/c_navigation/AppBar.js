@@ -1,5 +1,6 @@
 import HiveIcon from '@mui/icons-material/Hive';
 // import avatarPic from '../../Images/user.png';
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
@@ -87,6 +88,9 @@ export default function MenuAppBar() {
             Bee keepers
           </Button> */}
           {/* <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}> */}
+         
+
+          
           <Typography sx={{ flexGrow: 1 }}>
           <HiveIcon/> 
             <Link
@@ -102,6 +106,7 @@ export default function MenuAppBar() {
              {/* BuZz */}
             </Link>
           </Typography>
+         
           {/* </Box> */}
           {!user ? (
             <Button color="inherit" onClick={() => navigate('/login')}>

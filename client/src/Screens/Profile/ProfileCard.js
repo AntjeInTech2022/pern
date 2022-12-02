@@ -16,6 +16,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 //SELF-MADE
 import EditHeadline from './EditProfileHeadline';
 import EditDescription from './EditProfileDescription';
@@ -165,7 +167,7 @@ const { deleteUser } = useContext(AuthContext);
         </CardContent>
         <CardActions>
 {/* DELETE ACCOUNT*/}
-          <Button disabled color='warning' onClick={handleClickOpenDelete}>Delete Account</Button>
+          <Button  startIcon={<DeleteIcon />} disabled color='warning' onClick={handleClickOpenDelete}>Delete Account</Button>
         </CardActions>
       </Card>
 

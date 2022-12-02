@@ -6,6 +6,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 const ReceivedMessages = ({ messageReceived, mssg_id }) => {
   return (
@@ -38,8 +39,16 @@ const ReceivedMessages = ({ messageReceived, mssg_id }) => {
             }
           />
         </ListItem>
-        <Button>Reply</Button>
+        <Button variant="contained" endIcon={<SendIcon />}>
+        Reply
+      </Button>
+      <br></br>
+         <br></br>
         <Divider variant="inset" component="li" />
+        <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
         </>
   )
 };

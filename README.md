@@ -5,13 +5,14 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 - CSS framework used: MUI
 
 ## Demo:
+View the demo at 
 
 ## Learning goals:
 
 - Learn you how to use Node.js, Express and PostgresSQL
 - Learn how APIs are served to the client-side
 - Learn how to implement server-side logic
-- Learn how structure your database
+- Learn how structure a relational database
 - In each Sprint working on both client and server side at the same time.
 - In addition keep improving your React skills.
 - Learn JWT (JSON Web Token) by building a Registration/Login system
@@ -30,9 +31,10 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 
 - Lading Screen: Screen showing title and logo of your App
 - List Screen: Screen showing result of your API list endpoint, logged in users can create new Items
-- Details Screen: Screen showing details according to the the id of the element, showing comments, having a 'Like/Unlike' button, logged in users can edit or delete their own comments (optional)
 - Log in / Register Screen: having a registration / login feature by email and password
 - Profile Screen: Display user informations, user can edit his own information (optional)
+- Details Screen: Screen showing details according to the the id of the element, showing comments, having a 'Like/Unlike' button, logged in users can edit or delete their own content (optional)
+
 
 ## Additional features implemented:
 

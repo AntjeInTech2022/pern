@@ -17,7 +17,7 @@ import { Container } from '@mui/system';
 import {AuthContext} from '../../Context/authContext'
 import SentMessages from './sentMssgs.js';
 import ReceivedMessages from './receivedMssgs.js';
-import ContactsTable from './ContactsTable';
+// import SavedContacts  from './SavedContacts';
 
 const ChatScreen = () => {
 
@@ -118,7 +118,7 @@ const handleChange = (event, newValue) => {
       <TabPanel value={value} index={2}>
       <br></br>
          <br></br>
-      <ContactsTable/>
+         {/* <SavedContacts/> */}
       <br></br>
          <br></br>
          <br></br>

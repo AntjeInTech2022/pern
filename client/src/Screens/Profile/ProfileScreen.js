@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 //MUI
-import Typography from '@mui/material/Typography';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Container from '@mui/material/Container';
+
 import { AuthContext } from '../../Context/authContext';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -15,6 +15,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 //COMPONENTS
 import ProfileCard from './ProfileCard';
+import {AccountProfile} from './AccountProfile.js';
+import { AccountDetails } from './AccountDetails.js';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -43,9 +45,7 @@ function ProfileScreen() {
         <br></br>
       </p>
       <Container>
-      <Typography color="inherit" align="center" variant="h2" marked="center">
-     Your Account
-      </Typography>
+   
       <br></br>
         <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
           👋 Hello '{user ? user.user_name : 'stranger'}'
@@ -73,24 +73,46 @@ function ProfileScreen() {
         <br></br>
         {user &&
         <ProfileCard user={user} />}
+          <br></br>
+        <br></br>
+        <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        py: 8
+      }}
+    >
+      <Container maxWidth="lg">
+        <Typography
+          sx={{ mb: 3 }}
+          variant="h4"
+        >
+          Account
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            item
+            lg={4}
+            md={6}
+            xs={12}
+          >
+            <AccountProfile />
+          </Grid>
+          <Grid
+            item
+            lg={8}
+            md={6}
+            xs={12}
+          >
+            <AccountDetails />
+          </Grid>
+        </Grid>
       </Container>
-      <p>
-      <br></br>
-      <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-      </p>
+    </Box>
+      </Container>      
     </>
   );
 }

@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import AdbIcon from '@mui/icons-material/Adb';
 // import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 // import Switch from '@mui/material/Switch';
@@ -81,6 +82,25 @@ export default function MenuAppBar() {
         <Toolbar 
         sx={{ justifyContent: 'space-between' }}
         >
+           {/* <HiveIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+              <img height="40"  src={BeeLogo} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+          BuZz
+          </Typography>
           <Button color="inherit" onClick={() => navigate('/list')}>
             Browse community
           </Button>
@@ -92,7 +112,7 @@ export default function MenuAppBar() {
 
           
           <Typography sx={{ flexGrow: 1 }}>
-          <HiveIcon/> 
+     
             <Link
               variant="h6"
               underline="none"
@@ -100,9 +120,9 @@ export default function MenuAppBar() {
               onClick={() => navigate('/')}
               sx={{ fontSize: 24 }}
             >
-              {/* <img width="100" height="auto" src={BeeLogo} />
-              <br></br> */}
-             {'BuZz'}
+              {/* <img  src={BeeLogo} /> */}
+            
+             {/* {'BuZz'} */}
              {/* BuZz */}
             </Link>
           </Typography>
@@ -155,9 +175,9 @@ export default function MenuAppBar() {
                 <MenuItem onClick={() => navigate('/chat')}>
                   Messages
                 </MenuItem>
-                <MenuItem onClick={() => navigate('/contacts')}>
+                {/* <MenuItem onClick={() => navigate('/contacts')}>
                   Contacts
-                </MenuItem>
+                </MenuItem> */}
               </Menu>
             </div>
           )}

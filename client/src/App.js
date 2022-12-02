@@ -17,8 +17,8 @@ import { SavedUsersScreen } from './Screens/Profile/SavedUsersScreen.js';
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
-
 import BottomAppBar from './components/c_footer/BottomAppBar.js';
+import Footer from './components/c_footer/Footer.js';
 
 // UTILITIES
 import ProtectedRoute from './utilities/protectedRoute.js';
@@ -113,7 +113,7 @@ function App() {
                   }
                 ></Route>
                  <Route
-                  path="/favorites"
+                  path="/contacts"
                   element={
                     <ProtectedRoute>
                       <SavedUsersScreen />
@@ -121,7 +121,7 @@ function App() {
                   }
                 ></Route>
               </Routes>
-              <BottomAppBar/>
+              <Footer/>
               {/* <AppFooter /> */}
             </UsersContextProvider>
           </AuthProvider>

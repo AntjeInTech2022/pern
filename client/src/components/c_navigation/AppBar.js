@@ -1,6 +1,5 @@
 import HiveIcon from '@mui/icons-material/Hive';
 // import avatarPic from '../../Images/user.png';
-// import BeeLogo from '../../Images/bee_line.png';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
@@ -21,6 +20,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //CONTEXT
 import { AuthContext } from '../../Context/authContext';
+//SELF-MADE
+import BeeLogo from '../../Images/logo_small.png';
+
 
 export default function MenuAppBar() {
   const { user, setUser } = useContext(AuthContext);
@@ -148,7 +150,7 @@ export default function MenuAppBar() {
                 <MenuItem onClick={() => navigate('/chat')}>
                   Messages
                 </MenuItem>
-                <MenuItem onClick={() => navigate('/chat')}>
+                <MenuItem onClick={() => navigate('/contacts')}>
                   Contacts
                 </MenuItem>
               </Menu>

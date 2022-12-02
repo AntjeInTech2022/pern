@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 const ReceivedMessages = ({ messageReceived, mssg_id }) => {
   return (
@@ -37,6 +38,7 @@ const ReceivedMessages = ({ messageReceived, mssg_id }) => {
             }
           />
         </ListItem>
+        <Button>Reply</Button>
         <Divider variant="inset" component="li" />
         </>
   )

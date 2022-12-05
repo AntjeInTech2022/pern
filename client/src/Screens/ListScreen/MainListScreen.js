@@ -8,18 +8,15 @@ import Typography from '@mui/material/Typography';
 
 
 //COMPONENTS
-import HostCard from './HostCards';
 import UserCard from './UserCard';
 
-import beeLogo from '../../Images/bee_line.png';
+import BeeLogo from '../../Images/bee_line.png';
 
-//DUMMY DATA
-import dummyHostData from '../../dummyData/dummyHostData';
+
 //CONTEXT
-// import { UsersContext } from '../../Context/userContext.js';
-import { UsersContext } from '../../Context/userContextTSX';
+import { UsersContext } from '../../Context/userContext.js';
+// import { UsersContext } from '../../Context/userContextTSX';
 import {AuthContext} from '../../Context/authContext'
-import { formControlClasses } from '@mui/material';
 
 
 function ListScreen() {
@@ -37,10 +34,7 @@ function ListScreen() {
       <br></br>
       <br></br>
       <br></br>
-      <Typography color="inherit" align="center" variant="h2" 
-      sx={{textAlign: 'center'}}
-      // marked="center"
-      >
+      <Typography color="inherit" align="center" variant="h2" marked="center">
       Discover our community members
       </Typography>
       <Typography
@@ -54,7 +48,7 @@ function ListScreen() {
       <br></br>
        <img 
 
-       src={beeLogo}/ >
+       src={BeeLogo}/ >
       <br></br>
       <br></br>
       <br></br>
@@ -74,7 +68,7 @@ function ListScreen() {
         Bee keepers
       </Typography> */}
       <Grid container spacing={4}>
-        {users && users.map((user, pid) => (
+        {users.map((user, pid) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>
             <UserCard user={user} />
           </Grid>

@@ -15,6 +15,7 @@ export type AuthContextValue = {
   readSentMessages: () => Promise<{ success: boolean, error: string}> 
   messagesReceived: MessagesReceived | null
   getReceivedMessages: () => Promise<{ success: boolean, error: string}> 
+  newFavorite: (user_id: string) => Promise<{ success: boolean}>
 }
 
 const initialAuth: AuthContextValue = {
@@ -39,6 +40,9 @@ const initialAuth: AuthContextValue = {
     throw new Error('Function not implemented.');
   },
   getReceivedMessages: function (): Promise<{ success: boolean; error: string; }> {
+    throw new Error('Function not implemented.');
+  },
+  newFavorite: function (user_id: string): Promise<{ success: boolean; error: string; }> {
     throw new Error('Function not implemented.');
   }
 }
@@ -316,6 +320,41 @@ const getReceivedMessages = async () => {
 console.log('messagesReceived',messagesReceived); 
 
 
+// ADD USER TO SAVED CONTACTS
+const newFavorite = async (user_id: string) => {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    return { success: false, error: "login firsrt" };
+  } else {
+    /* create the req.body for the backend */
+    const body = {user_id};
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
+        body: JSON.stringify(body),
+      };
+      const response = await fetch(
+        `${backendUrl}/api/users/postFavorites`,
+        options
+      );
+      console.log('response', response)
+    const {success} = await response.json();
+   
+    console.log('success', success)
+  if (success){
+      // setFavorites({...favorites});
+    return { success }
+  }
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+};
+
 
   
 
@@ -332,7 +371,8 @@ console.log('messagesReceived',messagesReceived);
         sendMessage,
         messages, 
         readSentMessages, 
-        messagesReceived}}
+        messagesReceived,
+        newFavorite }}
     >
       {children}
     </AuthContext.Provider>

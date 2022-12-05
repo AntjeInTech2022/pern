@@ -274,8 +274,6 @@ console.log('messagesReceived',messagesReceived);
 
 
 // save users to favorites
-const [favorites, setFavorites] = useState(null);
-
 const newFavorite = async (user_id) => {
   const jwt = localStorage.getItem("jwt");
   if (jwt === "") {

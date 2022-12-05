@@ -8,7 +8,7 @@ import { AuthProvider, AuthContext } from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
-import ListScreen from './Screens/ListScreen/ListScreen.js';
+import ListScreen from './Screens/ListScreen/MainListScreen.js';
 // import ListScreen from './Screens/ListScreen/ListScreenTSX';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';

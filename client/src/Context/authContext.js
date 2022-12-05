@@ -308,6 +308,44 @@ const newFavorite = async (user_id) => {
   }
 };
 
+//GET SAVED CONTACTS
+const [savedContacts, setSavedContacts] = useState();
+const getSavedContacts = async () => {
+  
+  const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    return { success: false, error: "login firsrt" };
+  } else {
+    
+    try {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
+        },
+       
+      };
+      const response = await fetch(
+        `${backendUrl}/api/users/savedContacts`,
+        options
+      );
+      const jsonData = await response.json();
+    
+      setSavedContacts(jsonData);
+      // console.log('readSentMessages',jsonData); //ok
+    
+     
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+};
+
+ useEffect(() => {
+  getSavedContacts ()
+}, [user])
+
 
 
 
@@ -355,7 +393,10 @@ const newFavorite = async (user_id) => {
         messages, 
         readSentMessages, 
         messagesReceived, 
-        newFavorite}}
+        newFavorite,
+        getSavedContacts,
+        savedContacts
+      }}
     >
       {props.children}
     </AuthContext.Provider>

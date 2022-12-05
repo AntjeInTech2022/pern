@@ -278,6 +278,23 @@ const post2Favorites = async (req, res) => {
   }
 };
 
+//READ saved Contacts
+const getSavedContacts = async (req, res) => {
+  try {
+    const getContacts = await pool.query(
+      "SELECT user_id  FROM favorites where sender_id=$1",
+      [req.user.pid]
+    );
+    res.status(200).json({ getContacts : getContacts.rows, success: true });
+  } catch (error) {
+    console.log("error send message", error.message);
+    res.status(500).json({
+      error: "Database error",
+      success: false,
+    });
+  }
+};
+
 export {
   Register,
   Login,
@@ -290,5 +307,6 @@ export {
   sendMessage,
   getMessagesSent,
   getMessagesReceived,
-  post2Favorites
+  post2Favorites,
+  getSavedContacts
 };

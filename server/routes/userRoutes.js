@@ -11,7 +11,8 @@ import {
   sendMessage,
   getMessagesSent,
   getMessagesReceived,
-  post2Favorites
+  post2Favorites,
+  getSavedContacts
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -41,8 +42,11 @@ router.put("/updateProfileDescription", jwtAuth, updateProfileDescription);
 // GET SPECIFIC USER
 // router.get("/:pid", getUserById);
 
-// ADD USER TO FAVORITES
-router.post("/postFavorites",jwtAuth,  post2Favorites);
+// ADD USER TO SAVED CONTACTS
+router.post("/postFavorites",jwtAuth, post2Favorites);
+
+// GET SAVED CONTACTS
+router.get("/savedContacts",jwtAuth, getSavedContacts);
 
 // send message
 router.post("/message",jwtAuth, sendMessage);

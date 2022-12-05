@@ -1,6 +1,6 @@
 declare module '*.png';
 
-type User = { 
+export type User = { 
     pid: string
     user_name: string
     name: string
@@ -11,23 +11,29 @@ type User = {
     profile_picture_url?: string
     
   }
-  type Users = User[]
+ export type Users = User[]
 
-  type Message = {
+ export type Message = {
     receiver_id: string
     mssg_title: string
     mssg_text: string
     receiver_name: string
   }
-  type Messages= Message[]
+export type Messages= Message[]
 
 
-  type MessageReceived = {
+export type MessageReceived = {
     mssg_id: number
     created_at: string
     sender_name: string
     mssg_title: string
     mssg_text: string
   }
-  type MessagesReceived= MessageReceived[]
-  
+
+export type MessagesReceived= MessageReceived[]
+
+export type SavedContact = {
+  user_id: string
+}
+
+export type SavedContacts= SavedContact[]

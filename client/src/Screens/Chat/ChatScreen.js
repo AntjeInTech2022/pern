@@ -17,6 +17,7 @@ import { Container } from '@mui/system';
 import {AuthContext} from '../../Context/authContext'
 import SentMessages from './sentMssgs.js';
 import ReceivedMessages from './receivedMssgs.js';
+import SavedContacts from './SavedContacts';
 // import SavedContacts  from './SavedContacts';
 
 const ChatScreen = () => {
@@ -55,7 +56,7 @@ const ChatScreen = () => {
   }
   
 
-  const {messages, messagesReceived} = useContext(AuthContext);
+  const {messages, messagesReceived,  savedContacts} = useContext(AuthContext);
   // const { user } = useContext(AuthContext);
   // const [messages, setMessages] = useState(null);
 //  console.log('messages in chat screen', messages)
@@ -114,11 +115,18 @@ const handleChange = (event, newValue) => {
     </List>
        : 'No received message yet.'}
       </TabPanel>
-
+{/* SAVED CONTACTS PANEL */}
       <TabPanel value={value} index={2}>
-      <br></br>
-         <br></br>
-         {/* <SavedContacts/> */}
+      {savedContacts.savedContacts !== null
+        ? 
+     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {savedContacts.savedContacts?.map((savedContacts) => {
+        return (
+          <SavedContacts savedContacts={savedContacts}/>
+         );
+        })}
+    </List>
+       : 'No received message yet.'}
       <br></br>
          <br></br>
          <br></br>

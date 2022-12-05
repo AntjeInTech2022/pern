@@ -9,6 +9,7 @@ import { AuthProvider, AuthContext } from './Context/authContext';
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
 import ListScreen from './Screens/ListScreen/ListScreen.js';
+// import ListScreen from './Screens/ListScreen/ListScreenTSX';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';
@@ -17,7 +18,7 @@ import ChatScreen from './Screens/Chat/ChatScreen'
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
-import BottomAppBar from './components/c_footer/BottomAppBar.js';
+// import BottomAppBar from './components/c_footer/BottomAppBar.js';
 import Footer from './components/c_footer/Footer.js';
 
 // UTILITIES

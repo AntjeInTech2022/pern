@@ -19,6 +19,7 @@ import SentMessage from './Message'
 import avatarPic from '../../Images/user.png';
 
 
+// function UserCard({ user }: {user: User})
 function UserCard({ user }) {
 
   const [open, setOpen] = useState(false);

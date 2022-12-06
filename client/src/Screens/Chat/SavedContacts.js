@@ -8,6 +8,8 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
 
 
 const SavedContacts = ({ getContact}) => {
@@ -18,10 +20,10 @@ const SavedContacts = ({ getContact}) => {
     <ListItem 
           alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={getContact.user_id} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={getContact.user_name} src={getContact.profile_picture_url}/>
           </ListItemAvatar>
           <ListItemText
-            primary=  {getContact.user_id}   
+            primary=  {getContact.user_name}   
             secondary={
               <React.Fragment>
                 <Typography
@@ -29,21 +31,24 @@ const SavedContacts = ({ getContact}) => {
                   component="span"
                   variant="body2"
                   color="text.primary"
-                >  {getContact.user_id} <br/>
-                        {getContact.user_id!== null
-                      ? getContact.user_id
+                > 
+                        {getContact.profile_header!== null
+                      ? getContact.profile_header
                       : 'empty profile headline'} 
                       <br/>
-
                 </Typography>
-                {getContact.user_id}
+        
               </React.Fragment>
             }
           />
         </ListItem>
-        <Button variant="contained" endIcon={<SendIcon />}>
-        Send message
-      </Button>
+        <IconButton aria-label="email user">
+        <MailIcon />
+      </IconButton>
+      <Button size="small" variant="outlined" startIcon={<SendIcon />}>
+      Go to profile
+</Button>
+    
       <br></br>
          <br></br>
         <Divider variant="inset" component="li" />

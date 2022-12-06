@@ -7,6 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
 
 const ReceivedMessages = ({ messageReceived}) => {
   return (
@@ -39,9 +41,12 @@ const ReceivedMessages = ({ messageReceived}) => {
             }
           />
         </ListItem>
-        <Button variant="contained" endIcon={<SendIcon />}>
-        Reply
-      </Button>
+        <IconButton aria-label="email user">
+        <MailIcon />
+      </IconButton>
+      <Button size="small" variant="outlined" startIcon={<SendIcon />}>
+      Go to profile
+</Button>
       <br></br>
          <br></br>
         <Divider variant="inset" component="li" />

@@ -4,7 +4,7 @@ import './App.css';
 
 //CONTEXT
 import { UsersContextProvider } from './Context/userContext';
-import { AuthProvider, AuthContext } from './Context/authContext';
+import { AuthProvider} from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
@@ -123,7 +123,6 @@ function App() {
                 ></Route> */}
               </Routes>
               <Footer/>
-              {/* <AppFooter /> */}
             </UsersContextProvider>
           </AuthProvider>
         </Router>

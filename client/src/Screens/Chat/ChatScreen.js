@@ -36,7 +36,6 @@ const ChatScreen = () => {
         {value === index && (
           <Box sx={{ p: 3 }}>
            {children}
-            {/* <Typography>{children}</Typography> */}
           </Box>
         )}
       </div>

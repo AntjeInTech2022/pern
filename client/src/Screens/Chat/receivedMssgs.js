@@ -8,11 +8,11 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const ReceivedMessages = ({ messageReceived, mssg_id }) => {
+const ReceivedMessages = ({ messageReceived}) => {
   return (
     <>
    <ListItem 
-          key={mssg_id}
+          // key={mssg_id}
           alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt={messageReceived.sender_name} src="/static/images/avatar/1.jpg" />

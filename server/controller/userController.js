@@ -53,7 +53,7 @@ const Register = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const users = await pool.query(
-      `SELECT pid, user_name, profile_header, profile_description, registration_date FROM users`
+      `SELECT pid, user_name, profile_header, profile_description, registration_date, profile_picture_url  FROM users`
     );
     // console.log("users", users);
     res.status(200).json(users.rows);

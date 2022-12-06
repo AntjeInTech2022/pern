@@ -11,36 +11,20 @@ import SendIcon from '@mui/icons-material/Send';
 import { UsersContext } from '../../Context/userContext.js';
 import {AuthContext} from '../../Context/authContext'
 
-const SavedContacts = ({ getContact, user_id }) => {
+const SavedContacts = ({ getContact}) => {
 
-  const { users, getUsers} = useContext(UsersContext);
-  const { savedContacts } = useContext(AuthContext);
- 
-  useEffect(() => {
-    getUsers();
-  }, [savedContacts]); 
 
-  console.log('users', users)
 
-  const getContactById = (user_id) => {
-    const contact= users.find(user => {
-    return user.pid === user_id})
-    console.log('contact', contact)
-    return contact
-};
-
-const contact = getContactById(user_id)
 
   return (
     <>
     <ListItem 
-          key={user_id}
           alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={contact.user_name} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={getContact.user_id} src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary=  {contact.user_name}   
+            primary=  {getContact.user_id}   
             secondary={
               <React.Fragment>
                 <Typography
@@ -48,14 +32,14 @@ const contact = getContactById(user_id)
                   component="span"
                   variant="body2"
                   color="text.primary"
-                >  {contact.profile_header} <br/>
-                        {contact.profile_header!== null
-                      ? contact.profile_header
+                >  {getContact.user_id} <br/>
+                        {getContact.user_id!== null
+                      ? getContact.user_id
                       : 'empty profile headline'} 
                       <br/>
 
                 </Typography>
-                {contact.profile_description}
+                {getContact.user_id}
               </React.Fragment>
             }
           />

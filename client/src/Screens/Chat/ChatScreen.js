@@ -95,7 +95,7 @@ const handleChange = (event, newValue) => {
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {messages.messages?.map((message) => {
         return (
-          <SentMessages message={message}/>
+          <SentMessages key={message.mssg_id} message={message}/>
          );
         })}
     </List>
@@ -108,7 +108,7 @@ const handleChange = (event, newValue) => {
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {messagesReceived.messagesReceived?.map((messageReceived) => {
         return (
-          <ReceivedMessages messageReceived={messageReceived}/>
+          <ReceivedMessages key={messageReceived.mssg_id} messageReceived={messageReceived}/>
          );
         })}
     </List>
@@ -121,7 +121,7 @@ const handleChange = (event, newValue) => {
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {savedContacts.getContacts?.map((getContact) => {
         return (
-          <SavedContacts getContact={getContact}/>
+          <SavedContacts key={getContact.user_id} getContact={getContact}/>
          );
         })}
     </List>

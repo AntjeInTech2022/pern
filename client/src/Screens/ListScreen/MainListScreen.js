@@ -27,7 +27,7 @@ function ListScreen() {
     getUsers();
   }, [user]); 
 
-
+console.log('users in list screen', users)
 
   return (
     <Container>

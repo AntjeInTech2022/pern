@@ -112,7 +112,7 @@ const { deleteUser } = useContext(AuthContext);
           className='ProfileImg'
             component="img"
             height="240"
-            src={avatarPic}
+            src={user.profile_picture_url}
             alt="user profile picture"
           />
         </Badge>

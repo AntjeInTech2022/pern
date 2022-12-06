@@ -56,8 +56,8 @@ const { newFavorite} = useContext(AuthContext);
     <CardHeader
       avatar={
         <Avatar
-          alt="User picture"
-          src={avatarPic}>
+          alt=''
+          src={user.profile_picture_url}>
      </Avatar>
       }
       title={user.user_name}

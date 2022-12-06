@@ -6,11 +6,11 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-const SentMessages = ({ message, mssg_id }) => {
+const SentMessages = ({ message}) => {
   return (
     <>
    <ListItem 
-          key={mssg_id}
+          // key={mssg_id}
           alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />

@@ -45,10 +45,6 @@ const ReceivedMessages = ({ messageReceived, mssg_id }) => {
       <br></br>
          <br></br>
         <Divider variant="inset" component="li" />
-        <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
         </>
   )
 };

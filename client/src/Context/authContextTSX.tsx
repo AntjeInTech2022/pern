@@ -304,14 +304,15 @@ const getReceivedMessages = async () => {
         `${backendUrl}/api/users/inboxReceived`,
         options
       );
-      const jsonData = await response.json();
-    
+      const {jsonData, success, error} = await response.json();
+      if (success){
       setMessagesReceived(jsonData);
-      // console.log('readSentMessages',jsonData); //ok
-    
-     
-    } catch (error) {
+      return { success: true, error: "" };
+    }   else {
+      return { success: false, error: "db error" };
+    }} catch (error) {
       console.error(error.message);
+      return { success: false, error: error.message }
     }
   }
 };
@@ -413,10 +414,11 @@ const getSavedContacts = async () => {
         messages, 
         readSentMessages, 
         messagesReceived,
+        getReceivedMessages,
         newFavorite,
         getSavedContacts,
         savedContacts}}
-    >
+  >
       {children}
     </AuthContext.Provider>
   );

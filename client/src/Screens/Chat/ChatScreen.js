@@ -56,10 +56,9 @@ const ChatScreen = () => {
   }
   
 
-  const {messages, messagesReceived,  savedContacts} = useContext(AuthContext);
-  // const { user } = useContext(AuthContext);
-  // const [messages, setMessages] = useState(null);
-//  console.log('messages in chat screen', messages)
+  const {messages, messagesReceived, savedContacts} = useContext(AuthContext);
+
+ console.log('savedContacts', savedContacts) // ok
   
   
 //  useEffect(() => {
@@ -102,7 +101,7 @@ const handleChange = (event, newValue) => {
     </List>
        : 'No messages sent yet.'}
       </TabPanel>
-     {/* TAB: RECEIVED MESSAGES */}
+{/* TAB: RECEIVED MESSAGES */}
       <TabPanel value={value} index={1}>
       {messagesReceived.messagesReceived !== null
         ? 
@@ -120,13 +119,13 @@ const handleChange = (event, newValue) => {
       {savedContacts.savedContacts !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {savedContacts.savedContacts?.map((savedContacts) => {
+      {savedContacts.getContacts?.map((getContact) => {
         return (
-          <SavedContacts savedContacts={savedContacts}/>
+          <SavedContacts getContact={getContact}/>
          );
         })}
     </List>
-       : 'No received message yet.'}
+       : 'No contacts saved yet.'}
       <br></br>
          <br></br>
          <br></br>
@@ -140,18 +139,7 @@ const handleChange = (event, newValue) => {
          <br></br>
          <br></br>
     </Box>
-    <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
-         <br></br>
+
 
           
     </Container>

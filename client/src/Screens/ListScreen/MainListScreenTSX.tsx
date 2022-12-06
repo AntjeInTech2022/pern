@@ -11,17 +11,17 @@ import Typography from '@mui/material/Typography';
 
 import UserCard from './UserCard';
 import beeLogo from '../../Images/bee_line.png';
+// import {beeLogo} from '../../Images/bee_line.png'
 
 
 //CONTEXT
-// import { UsersContext } from '../../Context/userContext.js';
 import { UsersContext } from '../../Context/userContextTSX';
 import {AuthContext} from '../../Context/authContext'
 
 
 
 function ListScreen() {
-  const { users,getUsers } = useContext(UsersContext);
+  const { users, getUsers } = useContext(UsersContext);
   const { user } = useContext(AuthContext);
   
   useEffect(() => {
@@ -51,7 +51,6 @@ function ListScreen() {
       </Typography>
       <br></br>
        <img 
-
        src={beeLogo}/ >
       <br></br>
       <br></br>

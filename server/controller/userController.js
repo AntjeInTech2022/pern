@@ -239,7 +239,7 @@ const getMessagesSent = async (req, res) => {
 const getMessagesReceived = async (req, res) => {
   try {
     const messagesReceived = await pool.query(
-      "SELECT mssg_id, created_at, sender_name, mssg_title, mssg_text  FROM messages where receiver_id=$1",
+      "SELECT mssg_id, created_at, sender_name, mssg_title, mssg_text, profile_picture_url  FROM messages LEFT JOIN users ON messages.sender_id=users.pid where receiver_id=$1",
       [req.user.pid]
     );
     // res.status(200).json(messages.rows);

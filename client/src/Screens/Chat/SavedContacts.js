@@ -6,10 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 const SavedContacts = ({ getContact}) => {
@@ -42,14 +44,18 @@ const SavedContacts = ({ getContact}) => {
             }
           />
         </ListItem>
-        <IconButton aria-label="email user">
+      <br></br>
+        <Stack justifyContent="center" direction="row" spacing={2}>
+        <IconButton >
         <MailIcon />
       </IconButton>
-      <Button size="small" variant="outlined" startIcon={<SendIcon />}>
-      Go to profile
-</Button>
-    
-      <br></br>
+      <IconButton >
+        <AccountCircleIcon />
+      </IconButton>
+      <IconButton >
+        <DeleteIcon/>
+      </IconButton>
+      </Stack>
          <br></br>
         <Divider variant="inset" component="li" />
         </>

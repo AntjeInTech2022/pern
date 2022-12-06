@@ -1,19 +1,28 @@
-import React from 'react'
-import List from '@mui/material/List';
+import React, { useContext, useState } from 'react';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import { AuthContext } from '../../Context/authContext';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 
 const SentMessages = ({ message}) => {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
     <ListItem 
            alignItems="flex-start">
            <ListItemAvatar>
-             <Avatar alt={message.sender_name} src="/static/images/avatar/1.jpg" />
+             <Avatar alt={message.sender_name} src={user.profile_picture_url} />
            </ListItemAvatar>
            <ListItemText
              primary=  {message.mssg_title}   
@@ -25,8 +34,8 @@ const SentMessages = ({ message}) => {
                    variant="body2"
                    color="text.primary"
                  >  {message.created_at} <br/>
-                         {message.sender_name !== null
-                       ? message.sender_name
+                         {message.receiver_name !== null
+                       ? message.receiver_name
                        : 'Unknown user '} 
                        <br/>
  
@@ -37,6 +46,19 @@ const SentMessages = ({ message}) => {
              }
            />
          </ListItem>
+         <br></br>
+        <Stack justifyContent="center" direction="row" spacing={2}>
+        <IconButton >
+        <MailIcon />
+      </IconButton>
+      <IconButton >
+        <AccountCircleIcon />
+      </IconButton>
+      <IconButton >
+        <DeleteIcon/>
+      </IconButton>
+      </Stack>
+         <br></br>
          <Divider variant="inset" component="li" />
          </>
   )

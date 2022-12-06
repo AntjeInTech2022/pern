@@ -70,9 +70,8 @@ const { newFavorite} = useContext(AuthContext);
     <CardMedia 
     component="img" 
     height="140" 
-    src={avatarPic} 
-    // alt={item.alt} 
-    
+    src={user.cover_picture_url} 
+    alt={user.cover_picture_source} 
     />
      
     <CardContent>
@@ -81,7 +80,7 @@ const { newFavorite} = useContext(AuthContext);
                       ? user.profile_header
                       : 'Lorem ipsum dolor sit amet!'}
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+      <Typography noWrap sx={{ mb: 1.5 }} color="text.secondary">
       {user.profile_description !== null
                       ? user.profile_description
                       : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'}

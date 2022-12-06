@@ -58,7 +58,7 @@ const ChatScreen = () => {
 
   const {messages, messagesReceived, savedContacts} = useContext(AuthContext);
 
- console.log('savedContacts', savedContacts) // ok
+//  console.log('savedContacts', savedContacts) // ok
   
   
 //  useEffect(() => {

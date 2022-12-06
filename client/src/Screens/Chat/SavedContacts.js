@@ -8,12 +8,9 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { UsersContext } from '../../Context/userContext.js';
-import {AuthContext} from '../../Context/authContext'
+
 
 const SavedContacts = ({ getContact}) => {
-
-
 
 
   return (

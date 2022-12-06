@@ -35,7 +35,8 @@ const ChatScreen = () => {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+           {children}
+            {/* <Typography>{children}</Typography> */}
           </Box>
         )}
       </div>
@@ -95,7 +96,10 @@ const handleChange = (event, newValue) => {
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {messages.messages?.map((message) => {
         return (
-          <SentMessages key={message.mssg_id} message={message}/>
+          // <List>
+            <SentMessages key={message.mssg_id} message={message}/>
+          // </List>
+          
          );
         })}
     </List>

@@ -282,7 +282,7 @@ const post2Favorites = async (req, res) => {
 const getSavedContacts = async (req, res) => {
   try {
     const getContacts = await pool.query(
-      "SELECT user_id  FROM favorites where sender_id=$1",
+      "SELECT DISTINCT favorites.user_id, users.user_name, users.profile_header, users.profile_description, users.profile_picture_url  FROM favorites LEFT JOIN users ON favorites.user_id=users.pid where favorites.sender_id=$1",
       [req.user.pid]
     );
     res.status(200).json({ getContacts : getContacts.rows, success: true });

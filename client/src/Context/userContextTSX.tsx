@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import { Users } from '../@types/index';
 
-//TYPES
 
-
-// does the order of types matter?
 export type UsersContextValue = {
   users: Users | null
   getUsers: () => void   

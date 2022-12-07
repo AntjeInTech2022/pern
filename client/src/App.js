@@ -3,33 +3,32 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 //CONTEXT
+// import { UsersContextProvider } from './Context/userContextTSX';
+// import { AuthProvider} from './Context/authContextTSX';
 import { UsersContextProvider } from './Context/userContext';
 import { AuthProvider} from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
 import ListScreen from './Screens/ListScreen/MainListScreen.js';
-// import ListScreen from './Screens/ListScreen/ListScreenTSX';
+// import ListScreen from './Screens/ListScreen/MainListScreenTSX';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';
 import ChatScreen from './Screens/Chat/ChatScreen'
-// import { SavedUsersScreen } from './Screens/Profile/SavedUsersScreen.js';
+
 
 // COMPONENTS
 import ResponsiveAppBar from './components/c_navigation/AppBar';
 // import BottomAppBar from './components/c_footer/BottomAppBar.js';
 import Footer from './components/c_footer/Footer.js';
-
 // UTILITIES
 import ProtectedRoute from './utilities/protectedRoute.js';
 import ProtectedRoute2 from './utilities/protectedRoute2.js';
-
 // MUI
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 // TOAST
-// https://fkhadra.github.io/react-toastify/installation
+// https://fkhadra.github.io/react-toastify/installation:
 import { ToastContainer } from 'react-toastify';
 
 // THEME

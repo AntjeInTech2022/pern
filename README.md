@@ -7,6 +7,12 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 ## Demo:
 View the demo at 
 
+## Photos Copyright
+All photos are from [Unsplash] (https://unsplash.com/). Unsplash is NOT associated with this website.
+
+## Fake Users Copyright
+All fake users are from the [Random Users Generator] (https://uiuxjobsboard.com/random-users-generator). The Random Users Generator is NOT associated with this website.
+
 ## Learning goals:
 
 - Learn you how to use Node.js, Express and PostgresSQL
@@ -30,7 +36,7 @@ View the demo at
 ## MVP
 
 - Lading Screen: Screen showing title and logo of your App
-- List Screen: Screen showing result of your API list endpoint, logged in users can create new Items
+- List Screen: Screen showing result of your API list endpoint, logged in users can create new items
 - Log in / Register Screen: having a registration / login feature by email and password
 - Profile Screen: Display user informations, user can edit his own information (optional)
 - Details Screen: Screen showing details according to the the id of the element, showing comments, having a 'Like/Unlike' button, logged in users can edit or delete their own content (optional)
@@ -39,3 +45,8 @@ View the demo at
 ## Additional features implemented:
 
 - uuid-ossp extension for PostgresSQL: applying universally unique identifiers (UUIDs) for the user id's
+Logged in users can: 
+- edit their profile
+- save other users to their contacts
+- send messages to other users
+- see their sent messages and messages received

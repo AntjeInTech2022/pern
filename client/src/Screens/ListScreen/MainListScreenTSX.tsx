@@ -11,8 +11,9 @@ import beeLogo from '../../Images/bee_line.png';
 // import {beeLogo} from '../../Images/bee_line.png'
 //CONTEXT
 import { UsersContext } from '../../Context/userContextTSX';
-import {AuthContext} from '../../Context/authContext'
+import {AuthContext} from '../../Context/authContextTSX'
 import { User } from '../../@types';
+import { Users } from '../../@types';
 
 
 function ListScreen() {

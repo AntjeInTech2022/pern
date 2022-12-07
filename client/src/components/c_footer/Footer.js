@@ -9,7 +9,7 @@ import {
   TextField
 } from "@mui/material";
 import { Box } from "@mui/system";
-
+import Link from '@mui/material/Link';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -49,7 +49,7 @@ export default function Footer() {
           <List>
             <ListItemText>
               <Typography lineHeight={2} variant="caption2">
-                About BuZz
+              <Link href="#" underline="none"> About BuZz </Link>
               </Typography>
             </ListItemText>
             <ListItemText>

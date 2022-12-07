@@ -16,7 +16,8 @@ import { AuthContext } from '../../Context/authContextTSX';
 
 
 //COMPONENTS
-import ProfileCard from './ProfileCard';
+import ProfileCard from './ProfileCardTSX';
+// import ProfileCard from './ProfileCard';
 import {AccountProfile} from './AccountProfile.js';
 import { AccountDetails } from './AccountDetails.js';
 

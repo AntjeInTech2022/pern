@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import avatarPic from '../../Images/pexels-anete-lusina-5247969.jpg';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import Badge from '@mui/material/Badge';
@@ -56,33 +55,33 @@ const ProfileCard = ({ user }) => {
   };
 
   //  EDIT DELETE POP_UP
-  const [open_delete, setOpenDelete] = useState(false);
-  const handleClickOpenDelete = () => {
-    setOpenDelete(true);
-  };
+  // const [open_delete, setOpenDelete] = useState(false);
+  // const handleClickOpenDelete = () => {
+  //   setOpenDelete(true);
+  // };
 
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
-  };
+  // const handleCloseDelete = () => {
+  //   setOpenDelete(false);
+  // };
 
 // Delete Account
-const { deleteUser } = useContext(AuthContext);
+// const { deleteUser } = useContext(AuthContext);
 
-  const handleDelete = async (event) => {
-      event.preventDefault();
-      const { success } = await deleteUser(user) ;
-      console.log('success', success)
-      if (success) {
-        toast.success('Your account has been deleted!');
-        setOpenDelete(false);
-        navigate('/register');
+  // const handleDelete = async (event) => {
+  //     event.preventDefault();
+  //     const { success } = await deleteUser(user) ;
+  //     console.log('success', success)
+  //     if (success) {
+  //       toast.success('Your account has been deleted!');
+  //       setOpenDelete(false);
+  //       navigate('/register');
 
-      } else {
-        toast.error(
-          'Something went wrong.' 
-        );
-      }
-    };
+  //     } else {
+  //       toast.error(
+  //         'Something went wrong.' 
+  //       );
+  //     }
+  //   };
   
 
 
@@ -165,9 +164,10 @@ const { deleteUser } = useContext(AuthContext);
                 </>
           </Typography>
         </CardContent>
-        <CardActions>
+        {/* <CardActions> */}
+
 {/* DELETE ACCOUNT*/}
-          <Button  
+          {/* <Button  
           startIcon={<DeleteIcon />} 
           disabled 
           color='warning' 
@@ -175,11 +175,11 @@ const { deleteUser } = useContext(AuthContext);
           >
             Delete Account
             </Button>
-        </CardActions>
-      </Card>
+        </CardActions> */}
+      </Card> 
 
 {/* DELETE ACCOUNT POP-UP*/}
-      <Dialog
+      {/* <Dialog
         open={open_delete}
         onClose={handleCloseDelete}
       
@@ -198,9 +198,9 @@ const { deleteUser } = useContext(AuthContext);
           Delete permanently
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
     </>
   );
-};
+ };
 
 export default ProfileCard;

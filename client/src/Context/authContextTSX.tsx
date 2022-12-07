@@ -329,7 +329,7 @@ const getReceivedMessages = async () => {
 
  useEffect(() => {
   getReceivedMessages ()
-}, [user]) // trigger action on load
+}, [user]) 
 console.log('messagesReceived',messagesReceived); 
 
 

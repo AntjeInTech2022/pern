@@ -7,6 +7,7 @@ const backendUrl = "http://localhost:5000";
 
 export type AuthContextValue = {
   user: User | null
+  setUser: (user: User | null ) => void
   register: (email: string, password: string, name: string) => Promise<{ success: boolean, error: string }>
   login: (email: string, password: string) => Promise<{ success: boolean, error: string }>
   getUser: () => Promise<{ success: boolean, error: string} | void> 
@@ -19,11 +20,13 @@ export type AuthContextValue = {
   getReceivedMessages: () => Promise<{ success: boolean, error: string}> 
   newFavorite: (user_id: string) => Promise<{ success: boolean, error: string}>
   getSavedContacts: () => Promise<{ success: boolean, error: string}> 
-  savedContacts: SavedContacts | null
+  getContacts: GetContacts | null
+  // deleteUser: () => Promise<{ success: boolean, error: string}> 
 }
 
 const initialAuth: AuthContextValue = {
   user: null,
+  setUser: () => { throw new Error('setUser not implemented.'); },
   register: () => { throw new Error('register not implemented.'); },
   login: () => { throw new Error('login not implemented.'); },
   getUser: () => { throw new Error('get user not implemented'); },
@@ -36,7 +39,8 @@ const initialAuth: AuthContextValue = {
   getReceivedMessages: () => { throw new Error('getReiveddMessage not implemented'); },
   newFavorite: () => { throw new Error('newFaroite not implemented'); },
   getSavedContacts: () => { throw new Error('getSavedContacts not implemented'); },
-  savedContacts: null,
+  getContacts: null,
+  // deleteUser:() => { throw new Error('deleteUser not implemented'); },
 }
 
 // 2. Create Context / Global Store
@@ -244,7 +248,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<Messages | null>(initialAuth.messages)
 
   const readSentMessages = async () => {
-    
+    // console.log('user', user)
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
       return { success: false, error: "login firsrt" };
@@ -260,12 +264,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           `${backendUrl}/api/users/inboxSent`,
           options
         );
-        const {jsonData, success, error} = await response.json();
+        const {messages, success, error} = await response.json();
         if (success){
-        setMessages(jsonData);
-        console.log('readSentMessages',jsonData); //ok
+        setMessages(messages);
+        console.log('readSentMessages',messages); //ok
         return { success: true, error: "" };
       } else {
+        console.log('error', error)
         return { success: false, error: "db error" };
       }}
        catch (error) {
@@ -276,10 +281,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
    useEffect(() => {
+    user &&
     readSentMessages()
   }, [user]) // trigger action on load
 // }, [messages]) // trigger action on load
   console.log('messages',messages); 
+
  
 // read sent messages
 const [messagesReceived, setMessagesReceived] = useState<MessagesReceived | null>(initialAuth.messagesReceived)
@@ -304,9 +311,9 @@ const getReceivedMessages = async () => {
         `${backendUrl}/api/users/inboxReceived`,
         options
       );
-      const {jsonData, success, error} = await response.json();
+      const {messagesReceived, success, error} = await response.json();
       if (success){
-      setMessagesReceived(jsonData);
+      setMessagesReceived(messagesReceived);
       return { success: true, error: "" };
     }   else {
       return { success: false, error: "db error" };
@@ -362,7 +369,7 @@ const newFavorite = async (user_id: string) => {
 };
 
 //GET SAVED CONTACTS
-const [savedContacts, setSavedContacts] =  useState<SavedContacts | null>(initialAuth.savedContacts)
+const [getContacts, setSavedContacts] =  useState<SavedContacts | null>(initialAuth.savedContacts)
 const getSavedContacts = async () => {
   
   const jwt = localStorage.getItem("jwt");
@@ -383,9 +390,9 @@ const getSavedContacts = async () => {
         `${backendUrl}/api/users/savedContacts`,
         options
       );
-      const {jsonData, success, error} = await response.json();
+      const {getContacts, success, error} = await response.json();
       if (success){
-      setSavedContacts(jsonData);
+      setSavedContacts(getContacts);
       return { success: true, error: "" };
     } else {
       return { success: false, error: "db error" };
@@ -399,12 +406,46 @@ const getSavedContacts = async () => {
  useEffect(() => {
   getSavedContacts ()
 }, [user])
+
+
+  // delete User
+  // const deleteUser = async () => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt === "") {
+  //     console.log('no token')
+  //   } else {
+  //     try {
+  //       const options = {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Authorization": `Bearer ${jwt}`,
+  //         },
+  //       };
+  //       const response = await fetch(
+  //         `${backendUrl}/api/users/deleteAccount`,
+  //         options
+  //       );
+  //       console.log('response', response)
+  //     const {success, error} = await response.json();
+  //     console.log('success', success)
+  //   if (success){
+  //     setUser(null);
+  //     return { success: true, error: "" };
+  //   } else {   
+  //     return { success: false, error: "db error" };}
+  //     } catch (error) {
+  //       console.error(error.message);
+  //       return { success: false, error: error.message }
+  //     }
+  //   }
+  // }
   
 
   return (
     <AuthContext.Provider
       value={{ 
         user, 
+        setUser,
         register, 
         login, 
         updateProfileHeader, 
@@ -417,7 +458,9 @@ const getSavedContacts = async () => {
         getReceivedMessages,
         newFavorite,
         getSavedContacts,
-        savedContacts}}
+        getContacts
+        // deleteUser
+      }}
   >
       {children}
     </AuthContext.Provider>

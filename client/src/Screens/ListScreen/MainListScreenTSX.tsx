@@ -16,6 +16,8 @@ import { User } from '../../@types';
 import { Users } from '../../@types';
 
 
+
+
 function ListScreen() {
   const { users, getUsers } = useContext(UsersContext);
   const { user } = useContext(AuthContext);
@@ -54,8 +56,8 @@ function ListScreen() {
       <br></br>
       <br></br>
       <Grid container spacing={4}>
-        {users && users.map((user: User, pid: string) => (
-          <Grid item key={pid} xs={12} md={3} lg={4}>
+        {users && users.map((user: User) => (
+          <Grid item key={user.pid} xs={12} md={3} lg={4}>
             <UserCard user={user} />
           </Grid>
         ))}

@@ -169,11 +169,11 @@ const updateProfileDescription = async (req, res) => {
   }
 };
 
-const deleteAccount = async (req, res) => {
+const deleteAccountSimple = async (req, res) => {
   try {
     const { pid } = req.user;
-    const deleteUser = await pool.query("DELETE FROM users WHERE pid = $1", [
-      pid,
+    const deleteUser = await pool.query("DELETE FROM users  WHERE pid = $1", [
+      pid
     ]);
     res.status(200).json({ success: true });
   } catch (error) {
@@ -184,6 +184,23 @@ const deleteAccount = async (req, res) => {
     });
   }
 };
+
+  const deleteAccount = async (req, res) => {
+    try {
+      const { pid } = req.user;
+      const sender_id = req.user.pid;
+      const deleteUser = await pool.query("DELETE FROM users, messages, favorites JOIN messages ON messages.sender_id=users.pid JOIN favorites ON favorites.sender_id=users.pid WHERE pid = $1 AND sender_id = $2 ", [
+        pid, sender_id 
+      ]);
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({
+        error: "Database error",
+        success: false,
+      });
+    }
+  };
 
 //sent a message
 const sendMessage = async (req, res) => {
@@ -367,5 +384,6 @@ export {
   deleteMessageReceived,
   post2Favorites,
   getSavedContacts,
-  deleteSavedContact
+  deleteSavedContact,
+  deleteAccountSimple 
 };

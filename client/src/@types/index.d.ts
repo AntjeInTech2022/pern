@@ -38,8 +38,8 @@ export type MessageReceived = {
 
 export type MessagesReceived= MessageReceived[]
 
-export type SavedContact = {
+export type GetContact = {
   user_id: string
 }
 
-export type SavedContacts= SavedContact[]
+export type GetContacts= GetContact[]

@@ -51,7 +51,7 @@ const ChatScreen = () => {
   }
   
 
-  const {messages, messagesReceived, savedContacts} = useContext(AuthContext);
+  const {messages, messagesReceived, getContacts} = useContext(AuthContext);
 
 
 
@@ -80,10 +80,10 @@ const handleChange = (event, newValue) => {
       </Box>
       {/* TAB: SENT MESSAGES */}
       <TabPanel value={value} index={0}>
-      {messages.messages !== null
+      {messages?.messages !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {messages.messages?.map((message) => {
+      {messages?.map((message) => {
         return (
           // <List>
             <SentMessages key={message.mssg_id} message={message}/>
@@ -96,10 +96,10 @@ const handleChange = (event, newValue) => {
       </TabPanel>
 {/* TAB: RECEIVED MESSAGES */}
       <TabPanel value={value} index={1}>
-      {messagesReceived.messagesReceived !== null
+      {messagesReceived?.messagesReceived !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {messagesReceived.messagesReceived?.map((messageReceived) => {
+      {messagesReceived?.map((messageReceived) => {
         return (
           <ReceivedMessages key={messageReceived.mssg_id} messageReceived={messageReceived}/>
          );
@@ -109,10 +109,10 @@ const handleChange = (event, newValue) => {
       </TabPanel>
 {/* SAVED CONTACTS PANEL */}
       <TabPanel value={value} index={2}>
-      {savedContacts.savedContacts !== null
+      {getContacts?.getContacts !== null
         ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {savedContacts.getContacts?.map((getContact) => {
+      {getContacts?.map((getContact) => {
         return (
           <SavedContacts key={getContact.user_id} getContact={getContact}/>
          );

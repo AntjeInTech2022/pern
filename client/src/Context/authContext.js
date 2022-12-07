@@ -351,7 +351,7 @@ const getSavedContacts = async () => {
 
 
   // delete User
-  const deleteUser = async (user) => {
+  const deleteUser = async () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt === "") {
       console.log('no token')
@@ -364,7 +364,7 @@ const getSavedContacts = async () => {
           },
         };
         const response = await fetch(
-          `${backendUrl}/api/users/delete`,
+          `${backendUrl}/api/users/deleteAccount`,
           options
         );
         console.log('response', response)
@@ -378,7 +378,6 @@ const getSavedContacts = async () => {
         console.error(error.message);
       }
     }
-
   }
 
   return (

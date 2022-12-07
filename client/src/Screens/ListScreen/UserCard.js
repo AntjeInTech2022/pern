@@ -17,7 +17,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // CONTEXT
-import {AuthContext} from '../../Context/authContext'
+import { AuthContext } from '../../Context/authContextTSX';
+// import {AuthContext} from '../../Context/authContext'
 // COMPONENTS
 import SentMessage from './Message'
 import avatarPic from '../../Images/user.png';

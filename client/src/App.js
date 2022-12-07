@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 //CONTEXT
-// import { UsersContextProvider } from './Context/userContextTSX';
-// import { AuthProvider} from './Context/authContextTSX';
-import { UsersContextProvider } from './Context/userContext';
-import { AuthProvider} from './Context/authContext';
+import { UsersContextProvider } from './Context/userContextTSX';
+import { AuthProvider} from './Context/authContextTSX';
+// import { UsersContextProvider } from './Context/userContext';
+// import { AuthProvider} from './Context/authContext';
 
 // SCREENS
 import LandingScreen from './Screens/LandingScreen';
-import ListScreen from './Screens/ListScreen/MainListScreen.js';
-// import ListScreen from './Screens/ListScreen/MainListScreenTSX';
+// import ListScreen from './Screens/ListScreen/MainListScreen.js';
+import ListScreen from './Screens/ListScreen/MainListScreenTSX';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import Login from './Screens/Login/LoginScreen';
 import Register from './Screens/Register/RegisterScreen';

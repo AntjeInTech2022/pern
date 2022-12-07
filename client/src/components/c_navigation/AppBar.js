@@ -23,7 +23,8 @@ import Avatar from '@mui/material/Avatar';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //CONTEXT
-import { AuthContext } from '../../Context/authContext';
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext';
 //SELF-MADE
 import BeeLogo from '../../Images/logo_small.png';
 

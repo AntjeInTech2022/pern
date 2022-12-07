@@ -17,12 +17,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 //SELF-MADE
 import EditHeadline from './EditProfileHeadline';
 import EditDescription from './EditProfileDescription';
 import '../../App.css'
-import { AuthContext } from '../../Context/authContext.js'
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext.js'
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

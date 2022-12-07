@@ -3,8 +3,6 @@ import React, { useContext, useState } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-
-import { AuthContext } from '../../Context/authContext';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -12,6 +10,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext';
+
 
 //COMPONENTS
 import ProfileCard from './ProfileCard';

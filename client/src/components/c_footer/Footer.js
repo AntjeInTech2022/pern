@@ -1,4 +1,4 @@
-
+import * as React from 'react';
 import {
   Grid,
   List,
@@ -14,13 +14,30 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SendIcon from "@mui/icons-material/Send";
+import Popover from '@mui/material/Popover';
 
 export default function Footer() {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+
+
   return (
     <Box
       sx={{
         backgroundColor: 'primary.main',
-        // color: 'primary.dark', // text color
         p: { xs: 4, md: 10 },
         pt: 12,
         pb: 12,
@@ -49,7 +66,9 @@ export default function Footer() {
           <List>
             <ListItemText>
               <Typography lineHeight={2} variant="caption2">
-              <Link href="#" underline="none"> About BuZz </Link>
+              <Link rel="noreferrer" color="#000000" target="_blank" href="https://github.com/AntjeInTech2022/pern" underline="none">
+                ABOUT BUZZ
+                </Link>
               </Typography>
             </ListItemText>
             <ListItemText>
@@ -58,23 +77,42 @@ export default function Footer() {
               </Typography> */}
             </ListItemText>
             <ListItemText>
-              <Typography lineHeight={2} variant="caption2">
-                Privacy &amp; Policy
+            <Button aria-describedby={id} onClick={handleClick}>
+              <Typography lineHeight={2} variant="caption2" color="#000000">
+              Photos Copyright
               </Typography>
+              </Button>
+              <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>All photos are from Unsplash. Unsplash is NOT associated with this website.</Typography>
+      </Popover>
             </ListItemText>
             <ListItemText>
-              <Typography lineHeight={2} variant="caption2">
-                Terms &amp; Conditions
+              <Typography lineHeight={2} variant="caption2" color="#000000">
+              {/* FAKE USERS COPYRIGHT */}
               </Typography>
             </ListItemText>
           </List>
         </Grid>
+
+
+
         <Grid item md={6} lg={2}>
-          <Typography variant="body1">MY ACCOUNT</Typography>
+          <Typography variant="body1">
+            MY ACCOUNT
+            </Typography>
           <List>
             <ListItemText>
               <Typography lineHeight={2} variant="caption2">
-                Login
+                LOGIN
               </Typography>
             </ListItemText>
             <ListItemText>
@@ -84,7 +122,7 @@ export default function Footer() {
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant="caption2">
-                My Account
+                REGISTER
               </Typography>
             </ListItemText>
             {/* <ListItemText>

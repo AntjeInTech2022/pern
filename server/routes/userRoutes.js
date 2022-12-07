@@ -12,7 +12,8 @@ import {
   getMessagesSent,
   getMessagesReceived,
   post2Favorites,
-  getSavedContacts
+  getSavedContacts,
+  deleteMessageSent
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -60,6 +61,7 @@ router.post("/register", validInfo, Register);
 router.post("/login", validInfo, Login);
 
 // DELETE
-router.delete("/delete", jwtAuth, deleteAccount)
+router.delete("/deleteMessageSent", jwtAuth, deleteMessageSent)
+router.delete("/deleteAccount", jwtAuth, deleteAccount)
 
 export default router;

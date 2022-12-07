@@ -5,13 +5,14 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { AuthContext } from '../../Context/authContext';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext';
 
 
 const SentMessages = ({ message}) => {

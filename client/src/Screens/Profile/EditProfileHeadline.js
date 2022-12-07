@@ -9,8 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// SELF-MADE
-import { AuthContext } from '../../Context/authContext.js';
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext.js';
 
 
 export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {

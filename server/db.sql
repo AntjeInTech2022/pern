@@ -83,3 +83,10 @@ INSERT INTO messages(pid, mssg_text) VALUES ('d0502ebb-5c47-4758-8489-72efca5d04
 INSERT INTO users_hosts(user_name) VALUES ('Antje'); -- will automatically generate a new pid
 SELECT * FROM users_hosts;
 UPDATE users_hosts SET user_name = ('Chris')  WHERE pid = ('3'); 
+
+--  SHELL TERMINAL:
+DELETE FROM messages WHERE sender_id = 'e43c29d2-996a-4e73-983c-d2b766bd3efb' AND mssg_id = 21
+DELETE FROM messages WHERE sender_id = ('e43c29d2-996a-4e73-983c-d2b766bd3efb') AND mssg_id = 21
+DELETE FROM messages WHERE sender_id = ('e43c29d2-996a-4e73-983c-d2b766bd3efb') AND mssg_id = (21)
+-- IN PgAdmin:
+DELETE FROM messages WHERE sender_id = 'b44bd4e7-8c2a-4010-aab8-25bd652da84b' AND mssg_id = 21

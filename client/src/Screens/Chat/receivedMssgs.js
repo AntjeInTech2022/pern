@@ -5,8 +5,6 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';

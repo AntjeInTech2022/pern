@@ -1,24 +1,19 @@
 import React from 'react'
 import { useEffect, useState, useContext } from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
-// SELF-MADE
 import { Container } from '@mui/system';
-import {AuthContext} from '../../Context/authContext'
+// SELF-MADE
 import SentMessages from './sentMssgs.js';
 import ReceivedMessages from './receivedMssgs.js';
 import SavedContacts from './SavedContacts';
-// import SavedContacts  from './SavedContacts';
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import {AuthContext} from '../../Context/authContext'
 
 const ChatScreen = () => {
 

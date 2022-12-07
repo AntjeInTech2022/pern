@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { Messages, MessagesReceived, SavedContacts, User } from '../@types';
+import { GetContacts, Messages, MessagesReceived, User } from '../@types';
 
 
 const backendUrl = "http://localhost:5000";
@@ -21,6 +21,7 @@ export type AuthContextValue = {
   newFavorite: (user_id: string) => Promise<{ success: boolean, error: string}>
   getSavedContacts: () => Promise<{ success: boolean, error: string}> 
   getContacts: GetContacts | null
+  deleteMessageSent: (mssg_id: number) => Promise<{ success: boolean, error: string}> 
   // deleteUser: () => Promise<{ success: boolean, error: string}> 
 }
 
@@ -40,8 +41,10 @@ const initialAuth: AuthContextValue = {
   newFavorite: () => { throw new Error('newFaroite not implemented'); },
   getSavedContacts: () => { throw new Error('getSavedContacts not implemented'); },
   getContacts: null,
-  // deleteUser:() => { throw new Error('deleteUser not implemented'); },
+  deleteMessageSent: () => { throw new Error('deleteMessageSent not implemented'); },
 }
+  // deleteUser:() => { throw new Error('deleteUser not implemented'); },
+
 
 // 2. Create Context / Global Store
 export const AuthContext = createContext<AuthContextValue>(initialAuth)
@@ -369,7 +372,7 @@ const newFavorite = async (user_id: string) => {
 };
 
 //GET SAVED CONTACTS
-const [getContacts, setSavedContacts] =  useState<SavedContacts | null>(initialAuth.savedContacts)
+const [getContacts, setSavedContacts] =  useState<GetContacts | null>(initialAuth.getContacts)
 const getSavedContacts = async () => {
   
   const jwt = localStorage.getItem("jwt");
@@ -409,36 +412,40 @@ const getSavedContacts = async () => {
 
 
   // delete User
-  // const deleteUser = async () => {
-  //   const jwt = localStorage.getItem("jwt");
-  //   if (jwt === "") {
-  //     console.log('no token')
-  //   } else {
-  //     try {
-  //       const options = {
-  //         method: "DELETE",
-  //         headers: {
-  //           "Authorization": `Bearer ${jwt}`,
-  //         },
-  //       };
-  //       const response = await fetch(
-  //         `${backendUrl}/api/users/deleteAccount`,
-  //         options
-  //       );
-  //       console.log('response', response)
-  //     const {success, error} = await response.json();
-  //     console.log('success', success)
-  //   if (success){
-  //     setUser(null);
-  //     return { success: true, error: "" };
-  //   } else {   
-  //     return { success: false, error: "db error" };}
-  //     } catch (error) {
-  //       console.error(error.message);
-  //       return { success: false, error: error.message }
-  //     }
-  //   }
-  // }
+  const deleteMessageSent = async (mssg_id: number) => {
+    const jwt = localStorage.getItem("jwt");
+  if (jwt === "") {
+    return { success: false, error: "login first" };
+  } else {
+    /* create the req.body for the backend */
+    const body = {mssg_id};
+      try {
+        const options = {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${jwt}`,
+          },
+          body: JSON.stringify(body),
+        };
+        const response = await fetch(
+          `${backendUrl}/api/users/deleteMessageSent`,
+          options
+        );
+        console.log('response', response)
+      const {success} = await response.json();
+     
+      console.log('success', success)
+    if (success){
+        return { success: true, error: "" };
+    } else {
+      return { success: false, error: "db error" };
+    }
+      } catch (error) {
+        console.error(error.message);
+        return { success: false, error: error.message }
+      }
+    }
+  };
   
 
   return (
@@ -458,7 +465,8 @@ const getSavedContacts = async () => {
         getReceivedMessages,
         newFavorite,
         getSavedContacts,
-        getContacts
+        getContacts,
+        deleteMessageSent
         // deleteUser
       }}
   >

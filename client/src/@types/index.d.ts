@@ -1,5 +1,11 @@
 declare module '*.png';
 
+// https://stackoverflow.com/questions/51100401/typescript-image-import:
+// declare module "*.png" {
+//   const value: any;
+//   export = value;
+// }
+
 export type User = { 
     pid: string
     user_name: string

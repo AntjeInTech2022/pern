@@ -1,23 +1,18 @@
 import React from 'react';
 import { useEffect, useState, useContext } from 'react';
-
 // MUI
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-
-
 //COMPONENTS
-
 import UserCard from './UserCard';
 import beeLogo from '../../Images/bee_line.png';
+// import {BeeLogo }from '../../Images/bee_line.png';
 // import {beeLogo} from '../../Images/bee_line.png'
-
-
 //CONTEXT
 import { UsersContext } from '../../Context/userContextTSX';
 import {AuthContext} from '../../Context/authContext'
-
+import { User } from '../../@types';
 
 
 function ListScreen() {
@@ -37,7 +32,6 @@ function ListScreen() {
       <br></br>
       <Typography color="inherit" align="center" variant="h2" 
       sx={{textAlign: 'center'}}
-      // marked="center"
       >
       Discover our community members
       </Typography>
@@ -45,7 +39,6 @@ function ListScreen() {
         color="inherit"
         align="center"
         variant="h5"
-        // sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
       >
      Choose a member and send them a message
       </Typography>
@@ -57,21 +50,10 @@ function ListScreen() {
       <br></br>
       <br></br>
       <br></br>
-
-      {/* <Grid container spacing={4}>
-        {dummyHostData.map((item, index) => (
-          <Grid item key={index} xs={12} md={3} lg={4}>
-            <HostCard item={item} />
-          </Grid>
-        ))}
-      </Grid> */}
       <br></br>
       <br></br>
-      {/* <Typography variant="h4" gutterBottom marginTop={3} marginBottom={5}>
-        Bee keepers
-      </Typography> */}
       <Grid container spacing={4}>
-        {users && users.map((user, pid) => (
+        {users && users.map((user: User, pid: string) => (
           <Grid item key={pid} xs={12} md={3} lg={4}>
             <UserCard user={user} />
           </Grid>
@@ -81,7 +63,6 @@ function ListScreen() {
       <br></br>
       <br></br>
     </Container>
-  
   );
 }
 

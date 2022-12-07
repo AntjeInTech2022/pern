@@ -18,6 +18,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 // import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Avatar from '@mui/material/Avatar';
+// TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //CONTEXT
@@ -152,7 +154,12 @@ export default function MenuAppBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                {/* <AccountCircle /> */}
+                <Avatar 
+                  sx={{ width: 34, height: 34 }}
+                alt={user.user_name} 
+                src={user.profile_picture_url} 
+                />
               </IconButton>
               <Menu
                 id="menu-appbar"

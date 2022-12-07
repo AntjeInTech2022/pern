@@ -1,18 +1,12 @@
 import React from 'react';
 import { useEffect, useState, useContext } from 'react';
-
 // MUI
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-
-
 //COMPONENTS
 import UserCard from './UserCard';
-
 import BeeLogo from '../../Images/bee_line.png';
-
-
 //CONTEXT
 import { UsersContext } from '../../Context/userContext.js';
 // import { UsersContext } from '../../Context/userContextTSX';
@@ -49,14 +43,12 @@ console.log('users in list screen', users)
       </Typography>
       <br></br>
        <img 
-
        src={BeeLogo}/ >
       <br></br>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
-
       {/* <Grid container spacing={4}>
         {dummyHostData.map((item, index) => (
           <Grid item key={index} xs={12} md={3} lg={4}>

@@ -44,11 +44,13 @@ All fake users are from the [Random Users Generator](https://uiuxjobsboard.com/r
 
 ## Additional features implemented:
 
-- uuid-ossp extension for PostgresSQL: applying universally unique identifiers (UUIDs) for the user id's
-- Logged in users can: 
+<ul>
+<li>uuid-ossp extension for PostgresSQL: applying universally unique identifiers (UUIDs) for the user id's</li>
+<li>Logged in users can: </li>
 <ul>
  <li> edit their profile</li>
  <li> save other users to their contacts</li>
  <li> send messages to other users</li>
  <li>  see their sent messages and messages received</li>
  </ul>
+  </ul>

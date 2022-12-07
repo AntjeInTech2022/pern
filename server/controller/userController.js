@@ -332,6 +332,25 @@ const getSavedContacts = async (req, res) => {
   }
 };
 
+const deleteSavedContact= async (req, res) => {
+  //  2 do: add error handling
+    try {
+      const sender_id = req.user.pid;
+      const {favorites_id} = req.body;
+      // console.log('deleteMessageSent', sender_id, mssg_id)
+      const deleteMessageReceived = await pool.query("DELETE FROM favorites WHERE sender_id = $1 AND favorites_id = $2", [
+        sender_id, favorites_id
+      ]);
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({
+        error: "Database error",
+        success: false,
+      });
+    }
+  };
+
 export {
   Register,
   Login,
@@ -347,5 +366,6 @@ export {
   getMessagesReceived,
   deleteMessageReceived,
   post2Favorites,
-  getSavedContacts
+  getSavedContacts,
+  deleteSavedContact
 };

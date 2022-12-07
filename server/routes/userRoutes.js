@@ -14,7 +14,8 @@ import {
   post2Favorites,
   getSavedContacts,
   deleteMessageSent,
-  deleteMessageReceived
+  deleteMessageReceived,
+  deleteSavedContact
 } from "../controller/userController.js";
 
 import validInfo from "../middleware/validInfo.js";
@@ -54,16 +55,15 @@ router.get("/savedContacts",jwtAuth, getSavedContacts);
 router.post("/message",jwtAuth, sendMessage);
 
 // REGISTRATION
-// router.post("/register", Register);
 router.post("/register", validInfo, Register);
 
 // LOGIN
-// router.post("/login", Login);
 router.post("/login", validInfo, Login);
 
 // DELETE
 router.delete("/deleteMessageSent", jwtAuth, deleteMessageSent)
 router.delete("/deleteMessagereceived", jwtAuth, deleteMessageReceived)
+router.delete("/deleteSavedContact", jwtAuth, deleteSavedContact)
 router.delete("/deleteAccount", jwtAuth, deleteAccount)
 
 export default router;

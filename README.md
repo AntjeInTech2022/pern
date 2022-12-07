@@ -8,10 +8,10 @@ This project was part of the Code Academy Berlin Full-Stack Web Developer Bootca
 View the demo at 
 
 ## Photos Copyright
-All photos are from [Unsplash] (https://unsplash.com/). Unsplash is NOT associated with this website.
+All photos are from [Unsplash](https://unsplash.com/). Unsplash is NOT associated with this website.
 
 ## Fake Users Copyright
-All fake users are from the [Random Users Generator] (https://uiuxjobsboard.com/random-users-generator). The Random Users Generator is NOT associated with this website.
+All fake users are from the [Random Users Generator](https://uiuxjobsboard.com/random-users-generator). The Random Users Generator is NOT associated with this website.
 
 ## Learning goals:
 
@@ -45,8 +45,10 @@ All fake users are from the [Random Users Generator] (https://uiuxjobsboard.com/
 ## Additional features implemented:
 
 - uuid-ossp extension for PostgresSQL: applying universally unique identifiers (UUIDs) for the user id's
-Logged in users can: 
-- edit their profile
-- save other users to their contacts
-- send messages to other users
-- see their sent messages and messages received
+- Logged in users can: 
+<ul>
+ <li> edit their profile</li>
+ <li> save other users to their contacts</li>
+ <li> send messages to other users</li>
+ <li>  see their sent messages and messages received</li>
+ </ul>

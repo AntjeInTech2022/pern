@@ -12,7 +12,7 @@ import CardHeader from '@mui/material/CardHeader';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
-// import Chip from '@mui/material/Chip';
+import Tooltip from '@mui/material/Tooltip';
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,25 +54,31 @@ const { newFavorite} = useContext(AuthContext);
   return (
     <Card sx={{ minWidth: 275 }}>
     <CardHeader
+   
       avatar={
+        <Tooltip title="All fake users are from the Random Users Generator (https://uiuxjobsboard.com/random-users-generator). The Random Users Generator is NOT associated with this website.">
         <Avatar
           alt=''
           src={user.profile_picture_url}>
-     </Avatar>
+    
+    </Avatar>
+    </Tooltip> 
       }
+          
       title={user.user_name}
       subheader =  {user.registration_date !== null
         ? user.registration_date
         : 'Member since 2022'}
      
     />
-     
+     <Tooltip title="All photos are from Unsplash(https://unsplash.com/). Unsplash is NOT associated with this website.">
     <CardMedia 
     component="img" 
     height="140" 
     src={user.cover_picture_url} 
     alt={user.cover_picture_source} 
     />
+    </Tooltip>
      
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">
@@ -87,15 +93,20 @@ const { newFavorite} = useContext(AuthContext);
       </Typography>
     </CardContent>
     <CardActions>
+    <Tooltip title="Add user to your saved contacts">
       <IconButton onClick={add2SavedContacts} aria-label="add to favorites">
         <FavoriteIcon />
       </IconButton>
+      </Tooltip>
+      <Tooltip title="Send message to user">
       <IconButton onClick={handleClickOpen} aria-label="email user">
         <MailIcon />
       </IconButton>
+      </Tooltip>
        <SentMessage user={user} open={open} setOpen={setOpen}/>
-      <Button size="small">Learn More</Button>  
-     
+       <Tooltip title="Feature not yet implemented">
+       <Button size="small">Learn More</Button>  
+       </Tooltip>
     </CardActions>
   
   </Card>

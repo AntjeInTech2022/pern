@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 import LoginForm2 from './LoginForm2';
 import { Container } from '@mui/system';
 import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined';
+import BeeIcon from '../../Images/bee.png';
 import '../../App.css'
 
 const Login = () => {
@@ -14,9 +15,12 @@ const Login = () => {
          <br></br>
     <br></br>
     <br></br>
-    <EmojiNatureOutlinedIcon 
+    <img 
+    className='Animation'
+       src={BeeIcon}/>
+    {/* <EmojiNatureOutlinedIcon 
     fontSize='large' 
-    className='Animation'/>
+    className='Animation'/> */}
     <br></br>
     <br></br>
     <AppForm>

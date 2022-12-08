@@ -52,8 +52,7 @@ export default function Footer() {
           </Typography>
           <Box
             sx={{
-              mt: 4,
-            //   color: Colors.dove_gray,
+              mt: 4
             }}
           >
             <GitHubIcon sx={{ mr: 1 }} />

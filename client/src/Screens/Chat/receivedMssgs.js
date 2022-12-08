@@ -10,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Container } from '@mui/system';
 
 const ReceivedMessages = ({ messageReceived}) => {
   return (
@@ -58,6 +59,7 @@ const ReceivedMessages = ({ messageReceived}) => {
          <br></br>
         <Divider variant="inset" component="li" />
         </>
+          
   )
 };
 

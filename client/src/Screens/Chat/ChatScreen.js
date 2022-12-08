@@ -85,10 +85,7 @@ const handleChange = (event, newValue) => {
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {messages?.map((message) => {
         return (
-          // <List>
             <SentMessages key={message.mssg_id} message={message}/>
-          // </List>
-          
          );
         })}
     </List>

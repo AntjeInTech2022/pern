@@ -16,7 +16,7 @@ import { AuthContext } from '../../Context/authContextTSX';
 
 
 const SentMessages = ({ message}) => {
-  const { user } = useContext(AuthContext);
+  const { user, deleteMessageSent } = useContext(AuthContext);
 
   return (
     <>

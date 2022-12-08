@@ -22,6 +22,7 @@ function ListScreen() {
   const { users, getUsers } = useContext(UsersContext);
   const { user } = useContext(AuthContext);
   
+// The effect should run each time a dependency (here: user) changes: 
   useEffect(() => {
     getUsers();
   }, [user]); 

@@ -35,7 +35,7 @@ export default function Footer() {
 
 
   return (
-    <Box
+    <Box mt={21}
       sx={{
         backgroundColor: 'primary.main',
         p: { xs: 4, md: 10 },

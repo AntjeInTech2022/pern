@@ -5,9 +5,16 @@ import Typography from '../../components/Typography';
 import Link from '@mui/material/Link';
 
 import LoginForm2 from './LoginForm2';
+import { Container } from '@mui/system';
 
 const Login = () => {
   return (
+    <Container> 
+         <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
     <AppForm>
       <React.Fragment>
         <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -19,12 +26,18 @@ const Login = () => {
           </Link>
         </Typography>
       </React.Fragment>
-      <p>
-        <br></br>
-      </p>
-      {/* <LoginForm /> */}
+      <br></br>
       <LoginForm2 />
+      <>
+     <br></br>
+     <br></br>
+    </>
     </AppForm>
+    <br></br>
+     <br></br>
+     <br></br>
+     <br></br>
+    </Container>
   );
 };
 

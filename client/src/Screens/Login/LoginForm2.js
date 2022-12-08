@@ -46,7 +46,7 @@ const LoginForm2 = () => {
       navigate('/profile');
     } else {
       error && setValues({ ...values, error: error });
-      toast.error(values.error);
+      toast.error(error);
     }
   };
   console.log('values', values);

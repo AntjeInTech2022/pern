@@ -6,11 +6,17 @@ import Link from '@mui/material/Link';
 //COMPONENTS
 import Typography from '../../components/Typography';
 import AppForm from '../../components/c_form/AppForm';
-// import RegisterForm from './RegisterForm.js';
+import { Container } from '@mui/system';
 import RegisterForm2 from './RegisterForm2.js';
 
 const Register = () => {
   return (
+    <Container>
+       <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
     <AppForm>
       <React.Fragment>
         <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -22,12 +28,15 @@ const Register = () => {
           </Link>
         </Typography>
       </React.Fragment>
-      <p>
         <br></br>
-      </p>
-      {/* <RegisterForm /> */}
       <RegisterForm2 />
     </AppForm>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    </Container>
   );
 };
 

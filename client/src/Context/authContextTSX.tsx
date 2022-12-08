@@ -286,9 +286,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
    useEffect(() => {
     user &&
     readSentMessages()
-  }, [user]) // trigger action on load
-// }, [messages]) // trigger action on load
-  console.log('messages',messages); 
+  }, [user])
+  // console.log('messages',messages); 
 
  
 // read sent messages
@@ -330,7 +329,7 @@ const getReceivedMessages = async () => {
  useEffect(() => {
   getReceivedMessages ()
 }, [user]) 
-console.log('messagesReceived',messagesReceived); 
+// console.log('messagesReceived',messagesReceived); 
 
 
 // ADD USER TO SAVED CONTACTS
@@ -359,7 +358,6 @@ const newFavorite = async (user_id: string) => {
    
     console.log('success', success)
   if (success){
-      // setFavorites({...favorites});
       return { success: true, error: "" };
   } else {
     return { success: false, error: "db error" };

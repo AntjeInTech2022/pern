@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Grid,
   TextField,
   Paper,
   Button,
 } from '@mui/material';
-import { AuthContext } from '../../Context/authContext.js';
-import { useNavigate } from 'react-router-dom';
+// CONTEXT
+import { AuthContext } from '../../Context/authContextTSX';
+// import { AuthContext } from '../../Context/authContext.js';
 // TOASTIFY
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,8 +47,8 @@ const RegisterForm2 = () => {
         navigate('/profile');
       } else {
         error && setValues({ ...values, error: error });
-
-        toast.error(' 🪲   Registration failed');
+        toast.error(error);
+        // toast.error(' 🪲   Registration failed');
       }
     } catch (e) {
       setValues({ ...values, error: 'e.message' });

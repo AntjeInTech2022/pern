@@ -103,6 +103,19 @@ const handleChange = (event, newValue) => {
         })}
     </List>
        : 'No received message yet.'}
+        <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
       </TabPanel>
 {/* SAVED CONTACTS PANEL */}
       <TabPanel value={value} index={2}>

@@ -432,7 +432,7 @@ const getSavedContacts = async () => {
           `${backendUrl}/api/users/deleteMessageSent`,
           options
         );
-        console.log('response', response)
+        // console.log('response', response)
       const {success} = await response.json();
      
       console.log('success', success)

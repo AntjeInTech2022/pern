@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import AppForm from '../../components/c_form/AppForm';
 import Typography from '../../components/Typography';
 import Link from '@mui/material/Link';
-
 import LoginForm2 from './LoginForm2';
 import { Container } from '@mui/system';
+import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined';
+import '../../App.css'
 
 const Login = () => {
   return (
@@ -13,6 +14,9 @@ const Login = () => {
          <br></br>
     <br></br>
     <br></br>
+    <EmojiNatureOutlinedIcon 
+    fontSize='large' 
+    className='Animation'/>
     <br></br>
     <br></br>
     <AppForm>

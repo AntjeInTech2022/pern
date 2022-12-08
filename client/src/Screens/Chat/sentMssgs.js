@@ -10,6 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+// TOASTIFY
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // CONTEXT
 import { AuthContext } from '../../Context/authContextTSX';
 // import { AuthContext } from '../../Context/authContext';
@@ -17,6 +20,20 @@ import { AuthContext } from '../../Context/authContextTSX';
 
 const SentMessages = ({ message}) => {
   const { user, deleteMessageSent } = useContext(AuthContext);
+  // const [mssg_id, setMssgId] = useState(message.mssg_id);
+
+  const deleteMessage = async () => {
+    // setMssgId(message.mssg_id)
+    const { success } = await deleteMessageSent(message.mssg_id) 
+    console.log('success', success)
+      if (success) {
+        toast.success('🐝 Message deleted from your Inbox!');
+      } else {
+        toast.error(
+          'Something went wrong.' 
+        );
+      }
+    };
 
   return (
     <>
@@ -55,7 +72,7 @@ const SentMessages = ({ message}) => {
       <IconButton >
         <AccountCircleIcon />
       </IconButton>
-      <IconButton >
+      <IconButton onClick={deleteMessage} >
         <DeleteIcon/>
       </IconButton>
       </Stack>

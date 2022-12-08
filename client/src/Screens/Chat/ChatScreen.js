@@ -51,7 +51,7 @@ const ChatScreen = () => {
   }
   
 
-  const {messages, messagesReceived, getContacts} = useContext(AuthContext);
+  const {messages, messagesReceived, contacts} = useContext(AuthContext);
 
 
 
@@ -106,10 +106,9 @@ const handleChange = (event, newValue) => {
       </TabPanel>
 {/* SAVED CONTACTS PANEL */}
       <TabPanel value={value} index={2}>
-      {getContacts?.getContacts !== null
-        ? 
+      {contacts ? 
      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {getContacts?.map((getContact) => {
+      {contacts?.map((getContact) => {
         return (
           <SavedContacts key={getContact.user_id} getContact={getContact}/>
          );

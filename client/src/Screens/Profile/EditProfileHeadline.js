@@ -28,7 +28,7 @@ export default function EditHeadline({ user, openHeadline, setOpenHeadline }) {
 
   const handleUpdate = async (event) => {
     event.preventDefault();
-    console.log(user);
+    // console.log(user);
     const { success } = await updateProfileHeader(header) ;
     console.log('success', success)
     if (success) {

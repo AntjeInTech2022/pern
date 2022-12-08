@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { GetContacts, Messages, MessagesReceived, User } from '../@types';
+import { Contacts, GetContacts, Messages, MessagesReceived, User } from '../@types';
 
 
 const backendUrl = "http://localhost:5000";
@@ -20,7 +20,7 @@ export type AuthContextValue = {
   getReceivedMessages: () => Promise<{ success: boolean, error: string}> 
   newFavorite: (user_id: string) => Promise<{ success: boolean, error: string}>
   getSavedContacts: () => Promise<{ success: boolean, error: string}> 
-  getContacts: GetContacts | null
+  contacts: Contacts | null
   deleteMessageSent: (mssg_id: number) => Promise<{ success: boolean, error: string}> 
   // deleteUser: () => Promise<{ success: boolean, error: string}> 
 }
@@ -40,7 +40,7 @@ const initialAuth: AuthContextValue = {
   getReceivedMessages: () => { throw new Error('getReiveddMessage not implemented'); },
   newFavorite: () => { throw new Error('newFaroite not implemented'); },
   getSavedContacts: () => { throw new Error('getSavedContacts not implemented'); },
-  getContacts: null,
+  contacts: null,
   deleteMessageSent: () => { throw new Error('deleteMessageSent not implemented'); },
 }
   // deleteUser:() => { throw new Error('deleteUser not implemented'); },
@@ -358,6 +358,7 @@ const newFavorite = async (user_id: string) => {
    
     console.log('success', success)
   if (success){
+    getSavedContacts()
       return { success: true, error: "" };
   } else {
     return { success: false, error: "db error" };
@@ -370,7 +371,7 @@ const newFavorite = async (user_id: string) => {
 };
 
 //GET SAVED CONTACTS
-const [getContacts, setSavedContacts] =  useState<GetContacts | null>(initialAuth.getContacts)
+const [contacts, setSavedContacts] =  useState<Contacts | null>(initialAuth.contacts)
 const getSavedContacts = async () => {
   
   const jwt = localStorage.getItem("jwt");
@@ -417,11 +418,13 @@ const getSavedContacts = async () => {
   } else {
     /* create the req.body for the backend */
     const body = {mssg_id};
+    console.log('mssg_id', mssg_id)
       try {
         const options = {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${jwt}`,
+            "Content-Type": "application/json"
           },
           body: JSON.stringify(body),
         };
@@ -434,6 +437,7 @@ const getSavedContacts = async () => {
      
       console.log('success', success)
     if (success){
+      readSentMessages()
         return { success: true, error: "" };
     } else {
       return { success: false, error: "db error" };
@@ -463,7 +467,7 @@ const getSavedContacts = async () => {
         getReceivedMessages,
         newFavorite,
         getSavedContacts,
-        getContacts,
+        contacts,
         deleteMessageSent
         // deleteUser
       }}

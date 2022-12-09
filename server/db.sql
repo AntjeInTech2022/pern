@@ -12,8 +12,12 @@ CREATE TABLE users(
     user_name VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL UNIQUE, 
-    profile_header VARCHAR(500),
-    profile_description VARCHAR(500),
+    profile_header VARCHAR(2083),
+    profile_description VARCHAR(2083),
+    registration_date TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    profile_picture_url VARCHAR(2083),
+    cover_picture_url VARCHAR(2083),
+    cover_picture_source VARCHAR(2083),
     PRIMARY KEY(pid)
 );
 
@@ -50,11 +54,15 @@ CREATE TABLE IF NOT EXISTS messages (
     sender_id UUID NOT NULL,
     receiver_id UUID NOT NULL,
     sender_name VARCHAR(255) NOT NULL,
+    receiver_name VARCHAR(255) NOT NULL,
     mssg_title VARCHAR(255) NOT NULL,
-    mssg_text VARCHAR(255) NOT NULL,
+    mssg_text VARCHAR(2083) NOT NULL,
    FOREIGN KEY (sender_id) REFERENCES users(pid),
    FOREIGN KEY (receiver_id) REFERENCES users(pid)
 );
+
+-- ALTER TABLE comments ADD CONSTRAINT commentsfk FOREIGN KEY (userid) REFERENCES test (uid) ON DELETE CASCADE;
+-- ALTER TABLE
 
 ALTER TABLE messages
 ADD receiver_name VARCHAR(255);

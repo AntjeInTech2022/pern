@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { Contacts, GetContacts, Messages, MessagesReceived, User } from '../@types';
+import { Contacts, Messages, MessagesReceived, User } from '../@types';
 
-
-const backendUrl = "http://localhost:5000";
+const backendUrl = "https://buzzbackend.vercel.app";
+// const backendUrl = "http://localhost:5000";
 
 
 export type AuthContextValue = {

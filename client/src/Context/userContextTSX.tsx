@@ -8,8 +8,8 @@ export type UsersContextValue = {
    
 }
 
-
-const backendUrl = 'http://localhost:5000';
+const backendUrl = "https://buzzbackend.vercel.app";
+// const backendUrl = 'http://localhost:5000';
 
 // 2. Create Context / Global Store
 const initialAuth: UsersContextValue = {

@@ -24,6 +24,7 @@ All fake users are from the [Random Users Generator](https://uiuxjobsboard.com/r
 - Learn JWT (JSON Web Token) by building a Registration/Login system
 - Building a Authentication and Authorisation system for the user
 - Apply TypeScript (optional)
+- API testing with Postman
 
 ## Requirements:
 
